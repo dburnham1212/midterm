@@ -1,12 +1,12 @@
 nav{
   height: 100px;
-  background-color: black;
+  background-color: #071013;
   width: 100vw;
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 25px;
   border-bottom: 5px solid #30c5ff;
+  padding: 2em;
   position: fixed;
 }
 
@@ -21,10 +21,15 @@ nav{
 .nav-link:hover{
   text-decoration: none;
   color: grey;
-  margin: 1em;
+}
+
+.nav-section{
+  display: flex;
+  align-items: center;
 }
 
 .logo{
-  height: 90px;
+  height: 80px;
   width: auto;
+  margin: 1em;
 }

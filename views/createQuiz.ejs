@@ -17,32 +17,46 @@
   <%- include('partials/_header') %>
   <!-- middle -->
   <main>
-    <h1>Create Quiz</h1>
-    <h1>Quiz Name</h1>
+    <h1 class="text-centered">Create Quiz</h1>
     <form>
-      <label>Question 1:</label>
-      <textarea>
-      </textarea>
-      <br>
-      <label>Answer 1:</label>
-      <textarea>
-      </textarea>
-      <br>
-      <label>Answer 2:</label>
-      <textarea>
-      </textarea>
-      <br>
-      <label>Answer 3:</label>
-      <textarea>
-      </textarea>
-      <label>Answer 4:</label>
-      <textarea>
-      </textarea>
+      <header class="create-quiz-header">
+        <h1 >Quiz Name</h1>
+        <input class="quiz-name-input">
+      </header>
+      <div class="question-card">
+        <div class="question-container">
+          <label>Question 1:</label>
+          <textarea>
+          </textarea>
+          <br>
+        </div>
+        <div class="answer-container">
+          <label class = "answer-text">Answer 1:</label>
+          <input class = "answer-input-field">
+          <input class="answer-checkbox" type = "checkbox">
+        </div>
+        <div class="answer-container">
+          <label class = "answer-text">Answer 2:</label>
+          <input class = "answer-input-field">
+          <input class="answer-checkbox" type = "checkbox">
+        </div>
+        <div class="answer-container">
+          <label class = "answer-text">Answer 3:</label>
+          <input class = "answer-input-field">
+          <input class="answer-checkbox" type = "checkbox">
+        </div>
+        <div class="answer-container">
+          <label class = "answer-text">Answer 4:</label>
+          <input class = "answer-input-field">
+          <input class="answer-checkbox" type = "checkbox">
+        </div>
+        <button class="danger-button delete-question-button">Delete question</button>
+      </div>
     </form>
-    <footer class="questionButton">
-        <button class="button">Add question</button>
-        <button class="button">submit question</button>
-        <button class="button">Delete question</button>
+    <footer class="create-quiz-footer">
+        <button class="submit-button">Add question</button>
+        <button class="submit-button">submit quiz</button>
+
 
     </footer>
   </main>

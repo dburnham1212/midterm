@@ -5,6 +5,7 @@ require('dotenv').config();
 const sassMiddleware = require('./lib/sass-middleware');
 const express = require('express');
 const morgan = require('morgan');
+const cookieSession = require('cookie-session');
 
 const PORT = process.env.PORT || 8080;
 const app = express();
@@ -26,13 +27,21 @@ app.use(
 );
 app.use(express.static('public'));
 
+
+// MIDDLEWARE
+app.use(cookieSession({
+  name: 'session',
+  keys: ['Key1', 'Key2', 'Key3'],
+
+  // Cookie Options
+  maxAge: 24 * 60 * 60 * 1000 // 24 hours
+}));
+
 // Separated Routes for each Resource
 // Note: Feel free to replace the example routes below with your own
 const userApiRoutes = require('./routes/users-api');
 const widgetApiRoutes = require('./routes/widgets-api');
 const usersRoutes = require('./routes/users');
-const loginRoutes = require('./routes/login'); // Registration Routes
-const registerRoutes = require('./routes/register'); // Registration Routes
 const myQuizzesRoutes = require('./routes/myQuizzes'); // My Quizzes Routes
 const createQuizRoutes = require('./routes/createQuiz'); // Create Quiz Routes
 const publicQuizzesRoutes = require('./routes/publicQuizzes'); // Public Quizzes Routes
@@ -43,8 +52,6 @@ const publicQuizzesRoutes = require('./routes/publicQuizzes'); // Public Quizzes
 app.use('/api/users', userApiRoutes);
 app.use('/api/widgets', widgetApiRoutes);
 app.use('/users', usersRoutes);
-app.use('/login', loginRoutes); // Using login Routes
-app.use('/register', registerRoutes); // Using registration Routes
 app.use('/myQuizzes', myQuizzesRoutes); // Using My Quizzes Routes
 app.use('/createQuiz', createQuizRoutes); // Using Create Quiz Routes
 app.use('/publicQuizzes', publicQuizzesRoutes); // Using Public Quizzes Routes

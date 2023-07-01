@@ -14,3 +14,18 @@ main{
   padding-top: 100px;
 }
 
+.list-item{
+  display: flex;
+  border-bottom: 2px solid black;
+  width: 90%;
+  margin: auto;
+}
+
+.list-item-text{
+  width: 25%;
+  text-align: center;
+}
+
+.text-centered{
+  text-align: center;
+}

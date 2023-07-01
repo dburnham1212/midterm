@@ -1,16 +1,27 @@
 <header>
   <nav>
-
+    <% if (user) { %>
     <div class = "nav-section">
       <img class = "logo" src = "../../images/Quizeridoo_logo.png">
+
       <a class = "nav-link" href='/publicQuizzes'>Public Quizzes</a>
       <a class = "nav-link" href='/myQuizzes'>My Quizzes</a>
       <a class = "nav-link" href='/createQuiz'>Create Quiz</a>
-      <a class = "nav-link" href=#>Logout</a>
     </div>
+    <div class ="nav-section">
+      <form action="/users/logout" method="POST">
+      <button  type="submit">Logout</a>
+    </form>
+    </div>
+
+    <% } else { %>
+
     <div class = "nav-section">
-      <a class = "nav-link" href='/register'>Register</a>
-      <a class = "nav-link" href='/login'>Login</a>
+      <img class = "logo" src = "../../images/Quizeridoo_logo.png">
+      <a class = "nav-link" href='/users/register'>Register</a>
+      <a class = "nav-link" href='/users/login'>Login</a>
     </div>
+
+    <% } %>
   </nav>
 </header>

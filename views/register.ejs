@@ -14,19 +14,19 @@
   <%- include('partials/_header') %>
   <!-- middle -->
   <main>
-    <form for = "register" class="form-centered" action="/login" method="POST">
+    <form for = "register" class="form-centered" action="/users/register" method="POST">
       <h1>Register</h1>
       <div class="form-field">
         <label for = "register" class = "form-text-field">Email:</label>
-        <input for = "register" type="email" class="form-input-field"  placeholder="example@gmail.com">
+        <input id = "email" name="email" type="email" class="form-input-field"  placeholder="example@gmail.com">
       </div>
       <div class="form-field">
-        <label for = "register" class = "form-text-field">Password:</label>
-        <input for = "register" type="password" class="form-input-field" placeholder="password">
+        <label   for = "register" class = "form-text-field">Password:</label>
+        <input id = "password" name="password" type="password" class="form-input-field" placeholder="password">
       </div>
       <div class="form-field">
         <label for = "register" class = "form-text-field">Confirm Password:</label>
-        <input for = "register" type="password" class="form-input-field" placeholder="password">
+        <input for = "register"  name="rePassword" type="password" class="form-input-field" placeholder="password">
       </div>
       <button type="submit" class="form-button submit-button">Register</button>
     </form>

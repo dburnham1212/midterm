@@ -1,4 +1,6 @@
 -- Drop and recreate Users table (Example)
+
+-- \i db/schema/01_users.sql
 DROP TABLE IF EXISTS users CASCADE;
 DROP TABLE IF EXISTS quizs CASCADE;
 DROP TABLE IF EXISTS questions CASCADE;
@@ -25,29 +27,13 @@ CREATE TABLE quizs (
 CREATE TABLE questions (
   id SERIAL PRIMARY KEY NOT NULL,
   quiz_id INTEGER REFERENCES quizs(id) ON DELETE CASCADE,
-  title VARCHAR(255) NOT NULL,
+  title VARCHAR(255) NOT NULL
 );
 
 CREATE TABLE answers (
   id SERIAL PRIMARY KEY NOT NULL,
   question_id INTEGER REFERENCES questions(id) ON DELETE CASCADE,
-  title VARCHAR(255) NOT NULL,
-);
-
-CREATE TABLE taker_answers (
-  id SERIAL PRIMARY KEY NOT NULL,
-  result_id INTEGER REFERENCES results(id) ON DELETE CASCADE,
-  option VARCHAR(255) NOT NULL,
-  is_correct BOOLEAN,
-  answer_id INTEGER REFERENCES answers(id) ON DELETE CASCADE
-);
-
-CREATE TABLE taker_answers (
-  id SERIAL PRIMARY KEY NOT NULL,
-  result_id INTEGER REFERENCES results(id) ON DELETE CASCADE,
-  option VARCHAR(255) NOT NULL,
-  is_correct BOOLEAN,
-  answer_id INTEGER REFERENCES answers(id) ON DELETE CASCADE
+  title VARCHAR(255) NOT NULL
 );
 
 CREATE TABLE results (
@@ -59,4 +45,12 @@ CREATE TABLE results (
   current_score TEXT,
   rating INTEGER,
   attempt INTEGER
+);
+
+CREATE TABLE taker_answers (
+  id SERIAL PRIMARY KEY NOT NULL,
+  result_id INTEGER REFERENCES results(id) ON DELETE CASCADE,
+  option VARCHAR(255) NOT NULL,
+  is_correct BOOLEAN,
+  answer_id INTEGER REFERENCES answers(id) ON DELETE CASCADE
 );

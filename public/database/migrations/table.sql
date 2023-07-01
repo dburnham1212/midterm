@@ -1,0 +1,29 @@
+CREATE TABLE users(
+  id SERIAL PRIMARY KEY NOT NULL,
+  name VARCHAR(255) NOT NULL,
+  email VARCHAR(255) NOT NULL,
+  password VARCHAR(255) NOT NULL
+);
+
+CREATE TABLE favorite_quizzes (
+  id SERIAL PRIMARY KEY NOT NULL,
+  user_id INTEGER REFERENCES user(id) ON DELETE CASCADE,
+  quiz_id INTEGER REFERENCES quizzes(id) ON DELETE CASCADE
+)
+
+CREATE TABLE quizzes (
+  id SERIAL PRIMARY KEY NOT NULL,
+  list_of_questions INTEGER,
+  quiz_question_order INTEGER,
+  user_id INTEGER REFERENCES user(id) ON DELETE CASCADE
+)
+
+CREATE TABLE questions (
+  id SERIAL PRIMARY KEY NOT NULL,
+  answer_id INTEGER REFERENCES answers(id) ON DELETE CASCADE,
+  quiz_id INTEGER REFERENCES quizzes(id) ON DELETE CASCADE
+)
+
+CREATE TABLE answers (
+  id SERIAL PRIMARY KEY NOT NULL,
+)

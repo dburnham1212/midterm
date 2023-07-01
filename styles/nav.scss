@@ -1,0 +1,29 @@
+nav{
+  height: 100px;
+  background-color: black;
+  width: 100vw;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 25px;
+  border-bottom: 5px solid #30c5ff;
+}
+
+.nav-link{
+  text-decoration: none;
+  color: white;
+  margin: 1em;
+  font-family: 'Oswald', sans-serif;
+  font-size: 1.25em;
+}
+
+.nav-link:hover{
+  text-decoration: none;
+  color: grey;
+  margin: 1em;
+}
+
+.logo{
+  height: 90px;
+  width: auto;
+}

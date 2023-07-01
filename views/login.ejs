@@ -5,6 +5,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Login</title>
 
+
+
   <!-- Include global styles-->
   <%- include('partials/_global_styling') %>
 
@@ -15,17 +17,17 @@
   <%- include('partials/_header') %>
   <!-- main -->
   <main>
-    <h1> Login </h1>
-    <form for = "login">
-      <div>
-        <label for = "login">Email:</label>
-        <input for = "login" type="email" placeholder="example@gmail.com">
+    <form class="form-centered" for = "login" action="/users/login" method="POST">
+      <h1> Login </h1>
+      <div class="form-field">
+        <label for = "login" class = "form-text-field">Email:</label>
+        <input for = "login" name="email" type="email" class ="form-input-field" placeholder="example@gmail.com">
       </div>
-      <div>
-        <label for = "login">Password:</label>
-        <input for = "login" type="password" placeholder="password">
+      <div class="form-field">
+        <label for = "login" class = "form-text-field">Password:</label>
+        <input for = "login" name="password" type="password" class="form-input-field" placeholder="password">
       </div>
-      <button type="submit">Login</button>
+      <button type="submit" class="form-button submit-button">Login</button>
     </form>
   </main>
   <!-- footer -->

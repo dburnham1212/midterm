@@ -3,7 +3,7 @@ body {
   // flex-direction: column;
   // justify-content: space-between;
   // align-items: center;
-
+  font-family: 'Belanosima', sans-serif;
   min-height: 100vh;
 
   background: #fcf7ff;
@@ -14,3 +14,18 @@ main{
   padding-top: 100px;
 }
 
+.list-item{
+  display: flex;
+  border-bottom: 2px solid black;
+  width: 90%;
+  margin: auto;
+}
+
+.list-item-text{
+  width: 25%;
+  text-align: center;
+}
+
+.text-centered{
+  text-align: center;
+}

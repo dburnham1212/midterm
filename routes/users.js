@@ -35,8 +35,10 @@ router.post('/login', (req, res) => {
   const user = getUserByEmail(email, users);
   if(user){
     req.session.userID = user.id;
+    res.redirect("/publicQuizzes")
+  } else {
+    res.redirect('/users/login');
   }
-  res.redirect('/users/login');
 });
 
 router.post('/register', (req, res) => {

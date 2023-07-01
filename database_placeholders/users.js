@@ -3,6 +3,11 @@ const users = {
     id: 'userID',
     email: "test@gmail.com",
     password: "password"
+  },
+  user2ID: {
+    id: 'user2ID',
+    email: "test2@gmail.com",
+    password: "password"
   }
 }
 

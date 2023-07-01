@@ -1,9 +1,15 @@
 body {
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  align-items: center;
+  // display: flex;
+  // flex-direction: column;
+  // justify-content: space-between;
+  // align-items: center;
+
   min-height: 100vh;
 
   background: #fcf7ff;
+}
+
+main{
+  // Add padding to seperate nav from rest of page, should change if size of nav changes
+  padding-top: 100px;
 }

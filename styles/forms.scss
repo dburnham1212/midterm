@@ -1,0 +1,34 @@
+.form-centered{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.form-field{
+  margin-top: 1em;
+}
+
+.form-text-field{
+  display: inline-block;
+  width: 10em;
+  text-align: center;
+}
+
+.form-input-field{
+  outline: 2px solid #30c5ff;
+  width: 20em;
+}
+
+.form-button{
+  border: 1px solid #30c5ff;
+  margin-top: 2em;
+  padding: .5em 2em;
+  border-radius: 5%;
+}
+
+.form-button:hover{
+  background-color: #30c5ff;
+  margin-top: 2em;
+  padding: .5em 2em;
+  border-radius: 5%;
+}

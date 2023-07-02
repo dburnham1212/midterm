@@ -21,10 +21,12 @@
       <header class="create-quiz-header">
         <h1 >Quiz Name</h1>
       </header>
+      <% let count = 1
+      for(const question of questions){ %>
       <div class="question-card">
         <div class="question-container">
-          <label>Question 1:</label>
-          <p>This is a question</p>
+          <label>Question <%= count %>:</label>
+          <p><%= question.text %></p>
         </div>
         <div class="answer-container">
           <p>1: </p>
@@ -47,6 +49,7 @@
           <input class="answer-checkbox" type = "checkbox">
         </div>
       </div>
+      <% count ++; } %>
     </form>
     <footer class="create-quiz-footer">
         <button class="submit-button">submit quiz</button>

@@ -62,26 +62,95 @@ const questions = [
   {
     id: "question1",
     quiz_id: "quiz1",
-    question: 'What is life?',
+    text: 'What is life?',
     question_number: 1,
   },
   {
     id: "question2",
     quiz_id: "quiz1",
-    question: 'Why are we here?',
+    text: 'Why are we here?',
     question_number: 2,
   },
   {
     id: "question3",
     quiz_id: "quiz1",
-    question: 'Where are we going?',
+    text: 'Where are we going?',
     question_number: 3,
   }
 ]
 
 const answers = [
   {
-
+    id: "answer1",
+    question_id: "question1",
+    text: 'Yes',
+    is_correct: false
+  },
+  {
+    id: "answer2",
+    question_id: "question1",
+    text: 'No',
+    is_correct: false
+  },
+  {
+    id: "answer3",
+    question_id: "question1",
+    text: 'Maybe',
+    is_correct: true
+  },
+  {
+    id: "answer4",
+    question_id: "question1",
+    text: 'Yes',
+    is_correct: false
+  },
+  {
+    id: "answer5",
+    question_id: "question2",
+    text: 'Yes',
+    is_correct: false
+  },
+  {
+    id: "answer6",
+    question_id: "question2",
+    text: 'No',
+    is_correct: false
+  },
+  {
+    id: "answer7",
+    question_id: "question2",
+    text: 'Maybe',
+    is_correct: true
+  },
+  {
+    id: "answer8",
+    question_id: "question2",
+    text: 'Yes',
+    is_correct: false
+  },
+  {
+    id: "answer9",
+    question_id: "question3",
+    text: 'Yes',
+    is_correct: false
+  },
+  {
+    id: "answer10",
+    question_id: "question3",
+    text: 'No',
+    is_correct: false
+  },
+  {
+    id: "answer11",
+    question_id: "question3",
+    text: 'Maybe',
+    is_correct: true
+  },
+  {
+    id: "answer12",
+    question_id: "question3",
+    text: 'Yes',
+    is_correct: false
   }
 ]
 
@@ -107,4 +176,4 @@ const generateRandomString = function(length) {
   return randomString;
 };
 
-module.exports = { users, quizzes, favourites, questions, getUserByEmail, generateRandomString };
+module.exports = { users, quizzes, favourites, questions, answers, getUserByEmail, generateRandomString };

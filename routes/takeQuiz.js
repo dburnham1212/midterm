@@ -1,19 +1,18 @@
 const express = require('express');
 const router  = express.Router();
 
-const { users, quizzes, favourites, questions, getUserByEmail, generateRandomString } = require("../database_placeholders/users");
+const { users, quizzes, favourites, questions, answers, getUserByEmail, generateRandomString } = require("../database_placeholders/users");
 
 router.get('/:id', (req, res) => {
   const userID = req.session.userID;
   console.log(req.params.id);
-  let questions = [];
-  for(const question in questions) {
+  let quizQuestions = [];
+  for(const question of questions) {
     if(question.quiz_id === req.params.id){
-
+      quizQuestions.push(question);
     }
   }
-
-  const templateVars = {user: users[userID], quizzes: quizzes};
+  const templateVars = {user: users[userID], quizzes: quizzes, questions: quizQuestions};
   res.render('takeQuiz', templateVars);
 });
 

@@ -52,51 +52,67 @@ $(() => {
 
 
 
-    const createQuizElement = function(quiz) {
-      const $quizcontain = (`<quiz>
-      <header >
-      <h2>${quiz.name}</h2>
-      <question>
-      <p>${quiz.question}</p>
-      </question>
-      <answer>${quiz.answer}</answer>
-      </header>
-      </quiz>`)
+    // const createQuizElement = function(quiz) {
+    //   const $quizcontain = (`<quiz>
+    //   <header >
+    //   <h2>${quiz.name}</h2>
+    //   <question>
+    //   <p>${quiz.question}</p>
+    //   </question>
+    //   <answer>${quiz.answer}</answer>
+    //   </header>
+    //   </quiz>`)
+    // }
+
+  const getQuizData = function() {
+    $.get('/createQuiz')
+    .then(data => {
+      loadData(data)
     }
 
-//   const getQuizData = function() {
+    )
+  
+  }
+  
+  const loadData = function(data) {
 
+    for (let quizData of data) {
+      console.log(quizData)
+      // createQuizElement(quizData)
+      const returnQuiz = createQuizElement()
+    }
+  }
+
+
+  const renderQuiz = function(data) {
   
-//   }
-  
-  
-//   const renderQuiz = function(data) {
-  
-  
-//       createQuizElement(data)
+    createQuizElement(data)
       
-//     }
-  
-//     const returnQuiz = createQuizElement()
-  
+    }
 
-  
-//     $('.question-container')
-  
-
-//   $('.submit-button').on('Submit', function(event) {
-//     event.preventDefault();
-  
-
-//     $.Ajax({
-//       method: 'POST',
-//       url: '/createQuiz'
-//   }).then(function() {
-  
-//   }
+  $('.submit-button').on('click', function(event) {
+    event.preventDefault();
     
-//   )
-//   })
+    const datatext = $('#new-question-form').serialize();
+    $.ajax({
+      method: 'GET',
+      url: '/createQuiz',
+      data: datatext
+    }).then(res => {
+      console.log(res)
+    })
+
+
+  //   $.Ajax({
+
+  //     method: 'POST',
+  //     url: '/createQuiz'
+  // }).then(function() {
+  //   getQuizData()
+  // }
+    
+  // )
+  })
 
 })
 

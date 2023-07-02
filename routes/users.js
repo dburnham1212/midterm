@@ -8,7 +8,7 @@
 const express = require('express');
 const router  = express.Router();
 
-const { users, public_quizzes, getUserByEmail } = require("../database_placeholders/users");
+const { users, quizzes, favourites, questions, getUserByEmail, generateRandomString } = require("../database_placeholders/users");
 
 router.get('/', (req, res) => {
   res.render('users');
@@ -47,9 +47,16 @@ router.post('/register', (req, res) => {
   const rePassword = req.body.rePassword;
   console.log(req.body.email);
   console.log(req.body.password);
+  const user = getUserByEmail(email, users);
+  if(user){
+    res.redirect('/users/register');
+  } else {
+    let newID = generateRandomString(6);
+    users[newID] = { id: newID, email: email, password: password }
+    req.session.userID = newID;
+    res.redirect('/publicQuizzes');
+  }
 
-  req.session.userID = newID;
-  res.redirect('/users/register');
 });
 
 router.post("/logout", (req, res) => {

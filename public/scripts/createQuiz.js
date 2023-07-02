@@ -1,7 +1,13 @@
 $(() => {
 
   const addquestionTemplate = function() {
-    const $quizquestion = (`<div class="answer-container">
+    const $quizquestion = (`<div class="question-container">
+    <label>Question:</label>
+    <textarea>
+    </textarea>
+    <br>
+  </div>
+  <div class="answer-container">
     <label class = "answer-text">Answer 1:</label>
     <input class = "answer-input-field">
     <input class="answer-checkbox" type = "checkbox">
@@ -26,13 +32,19 @@ $(() => {
   }
 
   const addQuestion = function() {
-    addquestionTemplate()
+    $('.new-question-container').empty();
+    const addquestionToList = addquestionTemplate();
+    $('.new-question-container').append(addquestionToList);
   }
 
     $('.add-button').on('click', function(event) {
       event.preventDefault();
-      $.get('/createQuiz')
-      .then(addQuestion())
+      $.ajax({
+        method: "POST",
+        url: '/createQuiz'
+        })
+      .then(
+        console.log(addQuestion()))
       .catch(err => {
         console.log("Error :",err);
       })

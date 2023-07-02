@@ -54,7 +54,8 @@ const results = [
   {
     quiz_id: 'quiz1',
     user_id: 'userID',
-    result: 5,
+    score: 0,
+    out_of: 0
   }
 ];
 
@@ -176,4 +177,4 @@ const generateRandomString = function(length) {
   return randomString;
 };
 
-module.exports = { users, quizzes, favourites, questions, answers, getUserByEmail, generateRandomString };
+module.exports = { users, quizzes, favourites, questions, answers, results, getUserByEmail, generateRandomString };

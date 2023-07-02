@@ -1,29 +1,69 @@
 const express = require('express');
 const router  = express.Router();
 
-const { users, quizzes, favourites, questions, answers, getUserByEmail, generateRandomString } = require("../database_placeholders/users");
+const { users, quizzes, favourites, questions, answers, results, getUserByEmail, generateRandomString } = require("../database_placeholders/users");
 
 router.get('/:id', (req, res) => {
   const userID = req.session.userID;
-  console.log(req.params.id);
   let currentQuiz;
   for(const quiz of quizzes){
     if(quiz.id === req.params.id){
       currentQuiz=quiz;
     }
   }
-  console.log(req.body);
-  for(const question of questions){
-    if(currentQuiz.id === question.quiz_id){
-      console.log(req.body[question.quiz_id]);
+  let currentResult;
+  for(const result of results) {
+    if(result.quiz_id === req.params.id && userID == result.user_id){
+      currentResult=result;
     }
   }
-  const templateVars = {user: users[userID], quiz: currentQuiz };
+  console.log(currentResult);
+  const templateVars = {user: users[userID], quiz: currentQuiz, result: currentResult };
   res.render('submitQuiz', templateVars);
 });
 
 router.post('/:id', (req, res) => {
-  console.log(req.body);
+  const userID = req.session.userID;
+
+  let currentQuiz;
+  let answerCount = 0;
+  let correctCount = 0;
+
+  for(const quiz of quizzes){
+    if(quiz.id === req.params.id){
+      currentQuiz=quiz;
+    }
+  }
+  for(const question of questions){
+    if(question.quiz_id === currentQuiz.id) {
+      answerCount ++;
+      for(const answer of answers){
+        if(answer.id === req.body[question.id] && answer.is_correct) {
+          correctCount++;
+        }
+      }
+    }
+  }
+  if(currentQuiz){
+    let resultFound = false
+    for(let result of results){
+      if(result.quiz_id === currentQuiz.id && userID == result.user_id){
+        resultFound = true;
+        result.score = correctCount;
+        result.out_of = answerCount;
+      }
+    }
+    if(!resultFound){
+      results.push({
+        quiz_id: currentQuiz.id,
+        user_id: userID,
+        score: correctCount,
+        out_of: answerCount
+      })
+    }
+  }
+  console.log(correctCount, answerCount);
+
   res.redirect(`/submitQuiz/${req.params.id}`);
 });
 

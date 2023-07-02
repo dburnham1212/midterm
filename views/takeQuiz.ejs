@@ -34,7 +34,7 @@
         <div class="answer-container">
           <p><%= answerCount %>: </p>
           <p class = "answer-text-field"><%= answer.text %></p>
-          <input class="answer-checkbox" name=<%- question.id %> type = "radio">
+          <input class="answer-checkbox" name=<%- question.id %> value=<%- answer.id %> type= "radio">
         </div>
         <% answerCount ++; } } %>
       </div>

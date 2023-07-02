@@ -101,7 +101,7 @@ const answers = [
   {
     id: "answer4",
     question_id: "question1",
-    text: 'Yes',
+    text: 'Sure',
     is_correct: false
   },
   {
@@ -125,7 +125,7 @@ const answers = [
   {
     id: "answer8",
     question_id: "question2",
-    text: 'Yes',
+    text: 'Sure',
     is_correct: false
   },
   {
@@ -149,7 +149,7 @@ const answers = [
   {
     id: "answer12",
     question_id: "question3",
-    text: 'Yes',
+    text: 'Sure',
     is_correct: false
   }
 ]

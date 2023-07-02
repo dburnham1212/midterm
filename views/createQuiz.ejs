@@ -5,10 +5,10 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
   <title>Create Quiz</title>
-  
+
   <!-- Include global styles-->
   <%- include('partials/_global_styling') %>
-  
+
   <script src="/vendor/jquery-3.0.0.js"></script>
   <script defer src="/scripts/createQuiz.js"></script>
 
@@ -26,7 +26,7 @@
         <h1 >Quiz Name</h1>
         <input class="quiz-name-input">
       </header>
-      <div class="question-card">
+      <div class="question-card" name="question-card">
         <div class="question-container">
           <label>Question 1:</label>
           <textarea>

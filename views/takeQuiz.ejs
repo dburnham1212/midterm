@@ -17,45 +17,32 @@
   <%- include('partials/_header') %>
   <!-- middle -->
   <main>
-    <form>
+    <form action="/submitQuiz/<%= quizID %>" method="POST">
       <header class="create-quiz-header">
         <h1 >Quiz Name</h1>
       </header>
-      <% let count = 1
+      <% let count = 1;
       for(const question of questions){ %>
       <div class="question-card">
         <div class="question-container">
           <label>Question <%= count %>:</label>
           <p><%= question.text %></p>
         </div>
+        <% let answerCount = 1;
+          for(const answer of answers) {
+          if(answer.question_id === question.id) { %>
         <div class="answer-container">
-          <p>1: </p>
-          <p class = "answer-text-field">Answer 1</p>
-          <input class="answer-checkbox" type = "checkbox">
+          <p><%= answerCount %>: </p>
+          <p class = "answer-text-field"><%= answer.text %></p>
+          <input class="answer-checkbox" name=<%- question.id %> type = "radio">
         </div>
-        <div class="answer-container">
-          <p>2: </p>
-          <p class = "answer-text-field">Answer 2</p>
-          <input class="answer-checkbox" type = "checkbox">
-        </div>
-        <div class="answer-container">
-          <p>3: </p>
-          <p class = "answer-text-field">Answer 3</p>
-          <input class="answer-checkbox" type = "checkbox">
-        </div>
-        <div class="answer-container">
-          <p>4: </p>
-          <p class = "answer-text-field">Answer 4</p>
-          <input class="answer-checkbox" type = "checkbox">
-        </div>
+        <% answerCount ++; } } %>
       </div>
       <% count ++; } %>
+      <footer class="create-quiz-footer">
+          <button class="submit-button">submit quiz</button>
+      </footer>
     </form>
-    <footer class="create-quiz-footer">
-        <button class="submit-button">submit quiz</button>
-
-
-    </footer>
   </main>
 
   <!-- footer -->

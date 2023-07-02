@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <link rel="stylesheet" href="/styles/takeQuiz.css" />
+  <title>Create Quiz</title>
+
+  <!-- Include global styles-->
+  <%- include('partials/_global_styling') %>
+
+  <script src="/vendor/jquery-3.0.0.js"></script>
+  <script defer src="/scripts/app.js"></script>
+</head>
+<body>
+  <%- include('partials/_header') %>
+  <!-- middle -->
+  <main>
+    <form>
+      <header class="create-quiz-header">
+        <h1 >Quiz Name</h1>
+      </header>
+      <div class="question-card">
+        <div class="question-container">
+          <label>Question 1:</label>
+          <p>This is a question</p>
+        </div>
+        <div class="answer-container">
+          <p>1: </p>
+          <p class = "answer-text-field">Answer 1</p>
+          <input class="answer-checkbox" type = "checkbox">
+        </div>
+        <div class="answer-container">
+          <p>2: </p>
+          <p class = "answer-text-field">Answer 2</p>
+          <input class="answer-checkbox" type = "checkbox">
+        </div>
+        <div class="answer-container">
+          <p>3: </p>
+          <p class = "answer-text-field">Answer 3</p>
+          <input class="answer-checkbox" type = "checkbox">
+        </div>
+        <div class="answer-container">
+          <p>4: </p>
+          <p class = "answer-text-field">Answer 4</p>
+          <input class="answer-checkbox" type = "checkbox">
+        </div>
+      </div>
+    </form>
+    <footer class="create-quiz-footer">
+        <button class="submit-button">submit quiz</button>
+
+
+    </footer>
+  </main>
+
+  <!-- footer -->
+  <div>
+
+  </div>
+</body>
+</html>

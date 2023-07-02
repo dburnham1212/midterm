@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <link rel="stylesheet" href="/styles/createQuiz.css" />
+  <title>Create Quiz</title>
+
+  <!-- Include global styles-->
+  <%- include('partials/_global_styling') %>
+
+  <script src="/vendor/jquery-3.0.0.js"></script>
+  <script defer src="/scripts/app.js"></script>
+</head>
+<body>
+  <%- include('partials/_header') %>
+  <!-- middle -->
+  <main>
+    <h1 class="text-centered">Create Quiz</h1>
+    <form>
+      <header class="create-quiz-header">
+        <h1 >Quiz Name</h1>
+        <input class="quiz-name-input">
+      </header>
+      <div class="question-card">
+        <div class="question-container">
+          <label>Question 1:</label>
+          <textarea>
+          </textarea>
+        </div>
+        <div class="answer-container">
+          <label class = "answer-text">Answer 1:</label>
+          <input class = "answer-input-field">
+          <input class="answer-checkbox" type = "checkbox">
+        </div>
+        <div class="answer-container">
+          <label class = "answer-text">Answer 2:</label>
+          <input class = "answer-input-field">
+          <input class="answer-checkbox" type = "checkbox">
+        </div>
+        <div class="answer-container">
+          <label class = "answer-text">Answer 3:</label>
+          <input class = "answer-input-field">
+          <input class="answer-checkbox" type = "checkbox">
+        </div>
+        <div class="answer-container">
+          <label class = "answer-text">Answer 4:</label>
+          <input class = "answer-input-field">
+          <input class="answer-checkbox" type = "checkbox">
+        </div>
+        <button class="danger-button delete-question-button">Delete question</button>
+      </div>
+    </form>
+    <footer class="create-quiz-footer">
+        <button class="submit-button">Add question</button>
+        <button class="submit-button">submit quiz</button>
+
+
+    </footer>
+  </main>
+
+  <!-- footer -->
+  <div>
+
+  </div>
+</body>
+</html>

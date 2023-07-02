@@ -7,6 +7,8 @@ const express = require('express');
 const morgan = require('morgan');
 const cookieSession = require('cookie-session');
 
+const { users, quizzes, favourites, questions, getUserByEmail, generateRandomString } = require("./database_placeholders/users");
+
 const PORT = process.env.PORT || 8080;
 const app = express();
 
@@ -45,6 +47,7 @@ const usersRoutes = require('./routes/users');
 const myQuizzesRoutes = require('./routes/myQuizzes'); // My Quizzes Routes
 const createQuizRoutes = require('./routes/createQuiz'); // Create Quiz Routes
 const publicQuizzesRoutes = require('./routes/publicQuizzes'); // Public Quizzes Routes
+const takeQuizRoutes = require('./routes/publicQuizzes'); // Take Quiz Routes
 
 // Mount all resource routes
 // Note: Feel free to replace the example routes below with your own
@@ -55,6 +58,7 @@ app.use('/users', usersRoutes);
 app.use('/myQuizzes', myQuizzesRoutes); // Using My Quizzes Routes
 app.use('/createQuiz', createQuizRoutes); // Using Create Quiz Routes
 app.use('/publicQuizzes', publicQuizzesRoutes); // Using Public Quizzes Routes
+app.use('/takeQuiz', takeQuizRoutes); // Using Public Quizzes Routes
 
 // Note: mount other resources here, using the same pattern above
 
@@ -63,7 +67,10 @@ app.use('/publicQuizzes', publicQuizzesRoutes); // Using Public Quizzes Routes
 // Separate them into separate routes files (see above).
 
 app.get('/', (req, res) => {
-  res.render('index');
+  const userID = req.session.userID;
+
+  const templateVars = {user: users[userID]};
+  res.render('index', templateVars);
 });
 
 app.listen(PORT, () => {

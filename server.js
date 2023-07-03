@@ -7,7 +7,7 @@ const express = require('express');
 const morgan = require('morgan');
 const cookieSession = require('cookie-session');
 
-const { users, quizzes, favourites, questions, answers, results, getUserByEmail, generateRandomString } = require("./database_placeholders/users");
+const { users, quizzes, questions, answers, results, getUserByEmail, generateRandomString } = require("./database_placeholders/users");
 
 const PORT = process.env.PORT || 8080;
 const app = express();

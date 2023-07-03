@@ -26,7 +26,16 @@
     <%for (const quiz of quizzes) { %>
     <span class="list-item">
       <p class="list-item-text"><%= quiz.title %></p>
-      <p class="list-item-text">0/10</p>
+      <% let currentResult;
+      for(const result of results) {
+        if(result.quiz_id === quiz.id) {
+          currentResult = result;
+        }
+      } if (currentResult) { %>
+        <p class="list-item-text"><%= currentResult.highest_score %> / <%= currentResult.out_of %></p>
+      <% } else { %>
+        <p class="list-item-text">N/A</p>
+      <% } %>
       <p class="list-item-text"><a href="/takeQuiz/<%= quiz.id %>">Take Quiz</a></p>
       <p class="list-item-text"><%= quiz.rating %></p>
     </span>
@@ -46,7 +55,16 @@
     <%for (const quiz of favourites) { %>
     <span class="list-item">
       <p class="list-item-text"><%= quiz.title %></p>
-      <p class="list-item-text">0/10</p>
+      <% let currentResult;
+      for(const result of results) {
+        if(result.quiz_id === quiz.id) {
+          currentResult = result;
+        }
+      } if (currentResult) { %>
+        <p class="list-item-text"><%= currentResult.highest_score %> / <%= currentResult.out_of %></p>
+      <% } else { %>
+        <p class="list-item-text">N/A</p>
+      <% } %>
       <p class="list-item-text"><a href ="/takeQuiz/<%= quiz.id %>">Take Quiz</a></p>
       <p class="list-item-text"><%= quiz.rating %></p>
     </span>

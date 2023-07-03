@@ -3,7 +3,7 @@ const router  = express.Router();
 
 const { users, quizzes, questions, answers, results, getUserByEmail, generateRandomString } = require("../database_placeholders/users");
 
-const { insertQuizsDatabase } = require("../db/queries/postQuizToDatabase");
+const { insertQuizsDatabase, insertquestionsDatabase, insertanswersDatabase } = require("../db/queries/postQuizToDatabase");
 
 router.get('/', (req, res) => {
   const userID = req.session.userID;
@@ -20,7 +20,7 @@ router.post('/', (req, res) => {
   let quizID = generateRandomString(6);
   if(req.body[`${questionCounter}`]) {
     const title = req.body[`quiz-title`];
-    insertQuizsDatabase(title)
+    // insertQuizsDatabase(title)
     quizzes.push(
       {
         id: quizID,
@@ -34,15 +34,16 @@ router.post('/', (req, res) => {
   }
   while(req.body[`${questionCounter}`] ) {
     let questionID = generateRandomString(6);
+
     questions.push(
       {
         id: questionID,
         quiz_id: quizID,
         text: req.body[`${questionCounter}`],
       }
-      
     );
-    // console.log(questions)
+
+
     let correct = Number(req.body[`answer${questionCounter}`])
     let currentAnswers = req.body[`input${questionCounter}`];
     for(let i = 0; i < currentAnswers.length; i++) {
@@ -54,13 +55,12 @@ router.post('/', (req, res) => {
         is_correct: (correct - 1 === i)
       }
 
+      insertanswersDatabase(currentAnswer)
+
       answers.push(currentAnswer);
     }
     questionCounter++;
   }
-  // console.log(quizzes);
-  // insertQuizsDatabase(quizzes.title)
-    // console.log(quizzes.title)
   res.redirect('/myQuizzes');
 });
 

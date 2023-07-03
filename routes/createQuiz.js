@@ -20,7 +20,7 @@ router.post('/', (req, res) => {
   let quizID = generateRandomString(6);
   if(req.body[`${questionCounter}`]) {
     const title = req.body[`quiz-title`];
-    // insertQuizsDatabase(title)
+    insertQuizsDatabase(title)
     quizzes.push(
       {
         id: quizID,
@@ -34,7 +34,8 @@ router.post('/', (req, res) => {
   }
   while(req.body[`${questionCounter}`] ) {
     let questionID = generateRandomString(6);
-
+    const question = req.body[`${questionCounter}`];
+    insertquestionsDatabase(question);
     questions.push(
       {
         id: questionID,

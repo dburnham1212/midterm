@@ -14,16 +14,21 @@ router.get('/', (req, res) => {
   res.render('users');
 });
 
-router.get('/login', (req, res) => {
-  const userID = req.session.userID;
 
+// Simple get route that displays the login form
+router.get('/login', (req, res) => {
+  const userID = req.session.userID; // Set user id to id set in the cookie
+
+  // pass values into template and render it
   const templateVars = {user: users[userID]}
-  res.render('login.ejs', templateVars);
+  res.render('login', templateVars);
 })
 
+// Simple get route that displays the register form
 router.get('/register', (req, res) => {
-  const userID = req.session.userID;
+  const userID = req.session.userID; // Set user id to id set in the cookie
 
+  // pass values into template and render it
   const templateVars = {user: users[userID]}
   res.render('register', templateVars);
 });

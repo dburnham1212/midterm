@@ -11,6 +11,7 @@
   <%- include('partials/_global_styling') %>
   <!--Local Styling -->
   <link rel="stylesheet" href="/styles/submitQuiz.css" />
+  <script defer src="/scripts/reviewQuiz.js"></script>
 
   <script src="/vendor/jquery-3.0.0.js"></script>
   <script defer src="/scripts/app.js"></script>
@@ -28,11 +29,12 @@
       <div class="favourite-container">
         <% if(result.favourited === true) { %>
           <p>Favourited</p>
-          <i class="fa-solid fa-star fav-icon"></i>
+          <i class="fa-solid fa-star fav-icon fav-button"></i>
         <% } else { %>
           <p>Favourite Quiz</p>
-          <i class="fa-regular fa-star fav-icon"></i>
+          <i class="fa-regular fa-star fav-icon fav-button-selected"></i>
         <% } %>
+      </div>
           <p> Rating </p>
           <select name="rating">
             <option value="1">1</option>
@@ -41,7 +43,7 @@
             <option value="4">4</option>
             <option value="5">5</option>
           </select>
-      </div>
+
 
 
         <button class="submit-button form-button"> done </button>

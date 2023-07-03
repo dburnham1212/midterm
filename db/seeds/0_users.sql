@@ -67,8 +67,6 @@ VALUES (2, 'He doesnt look okay?', 9);
 INSERT INTO questions (quiz_id, title, question_order)
 VALUES (2, 'seriously', 10);
 
-\idb/seeds/0_users.sql
-
 INSERT INTO answers (question_id, text, is_correct) VALUES (1, 'Yes', false);
 INSERT INTO answers (question_id, text, is_correct) VALUES (1, 'No', false);
 INSERT INTO answers (question_id, text, is_correct) VALUES (1, 'Maybe', true);

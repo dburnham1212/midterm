@@ -1,26 +1,19 @@
 INSERT INTO users (username, email, password)
 VALUES ('userID', 'test@gmail.com', 'password');
-
 INSERT INTO users (username, email, password)
 VALUES ('user2ID', 'test2@gmail.com', 'password');
-
 INSERT INTO users (username, email, password)
 VALUES ('Alice', 'alice@gmail.com', 'password');
-
 INSERT INTO users (username, email, password)
 VALUES ('Kira', 'kira@gmail.com', 'password');
 
 
-
 INSERT INTO quizs (user_id, title, rating, public)
 VALUES (1, 'This is a quiz', 4, true );
-
 INSERT INTO quizs (user_id, title, rating, public)
 VALUES (1, 'This is also a quiz', 4, false );
-
 INSERT INTO quizs (user_id, title, rating, public)
 VALUES (2, 'This is another quiz', 4, true );
-
 
 
 INSERT INTO questions (quiz_id, title, question_order)
@@ -45,7 +38,6 @@ INSERT INTO questions (quiz_id, title, question_order)
 VALUES (1, 'Where we going are?', 10);
 
 
-
 INSERT INTO questions (quiz_id, title, question_order)
 VALUES (2, 'Are you a person?', 1);
 INSERT INTO questions (quiz_id, title, question_order)
@@ -66,6 +58,7 @@ INSERT INTO questions (quiz_id, title, question_order)
 VALUES (2, 'He doesnt look okay?', 9);
 INSERT INTO questions (quiz_id, title, question_order)
 VALUES (2, 'seriously', 10);
+
 
 INSERT INTO answers (question_id, text, is_correct) VALUES (1, 'Yes', false);
 INSERT INTO answers (question_id, text, is_correct) VALUES (1, 'No', false);
@@ -116,7 +109,6 @@ INSERT INTO answers (question_id, text, is_correct) VALUES (10, 'Yes', false);
 INSERT INTO answers (question_id, text, is_correct) VALUES (10, 'No', false);
 INSERT INTO answers (question_id, text, is_correct) VALUES (10, 'Maybe', true);
 INSERT INTO answers (question_id, text, is_correct) VALUES (10, 'Sure', false);
-
 
 
 INSERT INTO answers (question_id, text, is_correct) VALUES (11, 'Yes', false);

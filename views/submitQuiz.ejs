@@ -4,11 +4,13 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <link rel="stylesheet" href="/styles/takeQuiz.css" />
+
   <title>Create Quiz</title>
 
   <!-- Include global styles-->
   <%- include('partials/_global_styling') %>
+  <!--Local Styling -->
+  <link rel="stylesheet" href="/styles/submitQuiz.css" />
 
   <script src="/vendor/jquery-3.0.0.js"></script>
   <script defer src="/scripts/app.js"></script>
@@ -17,9 +19,15 @@
   <%- include('partials/_header') %>
   <!-- middle -->
   <main>
-    <p> QUIZ COMPLETE! </p>
-    <p> Quiz name: <%= quiz.title %></p>
-    <p> score: <%=result.score %> / <%=result.out_of %></p>
+    <div class ="submit-card">
+      <h1> QUIZ COMPLETE! </h1>
+      <p> Quiz name: <%= quiz.title %></p>
+      <p> Best Score: <%=result.highest_score %> / <%=result.out_of %></p>
+      <p> Last Score: <%=result.last_score %> / <%=result.out_of %></p>
+      <form action="/takeQuiz/<%= quiz.id %>" method="GET">
+        <button class="submit-button form-button"> retry </button>
+      </form>
+    </div>
   </main>
 
   <!-- footer -->

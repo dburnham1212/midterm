@@ -49,7 +49,13 @@ router.post('/:id', (req, res) => {
     for(let result of results){
       if(result.quiz_id === currentQuiz.id && userID == result.user_id){
         resultFound = true;
-        result.score = correctCount;
+        if(result.highest_score < correctCount) {
+          result.highest_score = correctCount;
+          result.last_score = correctCount;
+        } else {
+          result.last_score = correctCount;
+        }
+
         result.out_of = answerCount;
       }
     }
@@ -57,12 +63,13 @@ router.post('/:id', (req, res) => {
       results.push({
         quiz_id: currentQuiz.id,
         user_id: userID,
-        score: correctCount,
+        highest_score: correctCount,
+        last_score: correctCount,
         out_of: answerCount
       })
     }
   }
-  console.log(correctCount, answerCount);
+  console.log(results);
 
   res.redirect(`/submitQuiz/${req.params.id}`);
 });

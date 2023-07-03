@@ -19,7 +19,7 @@
     <span class="list-item">
       <p class="list-item-text">Quiz Name</p>
       <p class="list-item-text">Quiz Author</p>
-      <p class="list-item-text">Quiz ID</p>
+      <p class="list-item-text">Take</p>
       <p class="list-item-text">Rating</p>
     </span>
     <% for (const quiz of quizzes) {
@@ -27,7 +27,7 @@
     <span class="list-item">
       <p class="list-item-text"><%= quiz.title %></p>
       <p class="list-item-text"><%= users[quiz.user_id].email %></p>
-      <p class="list-item-text"><a href="#"><%= quiz.id %></a></p>
+      <p class="list-item-text"><a href="/takeQuiz/<%= quiz.id %>">Take Quiz</a></p>
       <p class="list-item-text"><%= quiz.rating %></p>
     </span>
 

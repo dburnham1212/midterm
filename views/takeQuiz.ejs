@@ -19,7 +19,7 @@
   <main>
     <form action="/submitQuiz/<%= quizID %>" method="POST">
       <header class="create-quiz-header">
-        <h1 >Quiz Name</h1>
+        <h1 ><%= quiz.title %></h1>
       </header>
       <% let count = 1;
       for(const question of questions){ %>

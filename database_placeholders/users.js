@@ -54,7 +54,8 @@ const results = [
   {
     quiz_id: 'quiz1',
     user_id: 'userID',
-    score: 0,
+    highest_score: 0,
+    last_score: 0,
     out_of: 0
   }
 ];
@@ -77,7 +78,31 @@ const questions = [
     quiz_id: "quiz1",
     text: 'Where are we going?',
     question_number: 3,
-  }
+  },
+  {
+    id: "question4",
+    quiz_id: "quiz2",
+    text: 'Are you a person?',
+    question_number: 1,
+  },
+  {
+    id: "question5",
+    quiz_id: "quiz2",
+    text: 'Are you a frog?',
+    question_number: 2,
+  },
+  {
+    id: "question6",
+    quiz_id: "quiz2",
+    text: 'Are you a dog?',
+    question_number: 3,
+  },
+  {
+    id: "question7",
+    quiz_id: "quiz2",
+    text: 'Are you ok?',
+    question_number: 4,
+  },
 ]
 
 const answers = [
@@ -150,6 +175,102 @@ const answers = [
   {
     id: "answer12",
     question_id: "question3",
+    text: 'Sure',
+    is_correct: false
+  },
+  {
+    id: "answer13",
+    question_id: "question4",
+    text: 'Yes',
+    is_correct: false
+  },
+  {
+    id: "answer14",
+    question_id: "question4",
+    text: 'No',
+    is_correct: false
+  },
+  {
+    id: "answer15",
+    question_id: "question4",
+    text: 'Maybe',
+    is_correct: true
+  },
+  {
+    id: "answer16",
+    question_id: "question4",
+    text: 'Sure',
+    is_correct: false
+  },
+  {
+    id: "answer17",
+    question_id: "question5",
+    text: 'Yes',
+    is_correct: false
+  },
+  {
+    id: "answer18",
+    question_id: "question5",
+    text: 'No',
+    is_correct: false
+  },
+  {
+    id: "answer19",
+    question_id: "question5",
+    text: 'Maybe',
+    is_correct: true
+  },
+  {
+    id: "answer20",
+    question_id: "question5",
+    text: 'Sure',
+    is_correct: false
+  },
+  {
+    id: "answer21",
+    question_id: "question6",
+    text: 'Yes',
+    is_correct: false
+  },
+  {
+    id: "answer22",
+    question_id: "question6",
+    text: 'No',
+    is_correct: false
+  },
+  {
+    id: "answer23",
+    question_id: "question6",
+    text: 'Maybe',
+    is_correct: true
+  },
+  {
+    id: "answer24",
+    question_id: "question6",
+    text: 'Sure',
+    is_correct: false
+  },
+  {
+    id: "answer25",
+    question_id: "question7",
+    text: 'Yes',
+    is_correct: false
+  },
+  {
+    id: "answer26",
+    question_id: "question7",
+    text: 'No',
+    is_correct: false
+  },
+  {
+    id: "answer27",
+    question_id: "question7",
+    text: 'Maybe',
+    is_correct: true
+  },
+  {
+    id: "answer28",
+    question_id: "question7",
     text: 'Sure',
     is_correct: false
   }

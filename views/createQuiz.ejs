@@ -21,40 +21,39 @@
   <!-- middle -->
   <main>
     <h1 class="text-centered">Create Quiz</h1>
-    <form id="new-question-form">
+    <form id="new-question-form"  action="/createQuiz" method="POST">
       <header class="create-quiz-header">
         <h1 >Quiz Name</h1>
-        <input class="quiz-name-input">
+        <input class="quiz-name-input" name="quiz-title" required>
       </header>
-      <div class="question-card" name="question-card">
+      <!-- <div class="question-card" name="question-card">
         <div class="question-container">
           <label>Question 1:</label>
-          <textarea>
-          </textarea>
+          <textarea></textarea>
           <br>
         </div>
         <div class="answer-container">
           <label class = "answer-text">Answer 1:</label>
           <input class = "answer-input-field">
-          <input class="answer-checkbox" type = "checkbox">
+          <input class="answer-checkbox" type = "radio">
         </div>
         <div class="answer-container">
           <label class = "answer-text">Answer 2:</label>
           <input class = "answer-input-field">
-          <input class="answer-checkbox" type = "checkbox">
+          <input class="answer-checkbox" type = "radio">
         </div>
         <div class="answer-container">
           <label class = "answer-text">Answer 3:</label>
           <input class = "answer-input-field">
-          <input class="answer-checkbox" type = "checkbox">
+          <input class="answer-checkbox" type = "radio">
         </div>
         <div class="answer-container">
           <label class = "answer-text">Answer 4:</label>
           <input class = "answer-input-field">
-          <input class="answer-checkbox" type = "checkbox">
+          <input class="answer-checkbox" type = "radio">
         </div>
         <button class="danger-button delete-question-button">Delete question</button>
-      </div>
+      </div> -->
       <section class="new-question-container">
 
       </section>

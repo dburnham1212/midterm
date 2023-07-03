@@ -3,7 +3,7 @@ const router  = express.Router();
 
 const { users, quizzes, questions, answers, results, getUserByEmail, generateRandomString } = require("../database_placeholders/users");
 
-const { insertQuizsDatabase } = require("../db/queries/postQuizToDatabase");
+const { insertQuizsDatabase, insertquestionsDatabase, insertanswersDatabase } = require("../db/queries/postQuizToDatabase");
 
 // get route to display quiz creation form
 router.get('/', (req, res) => {
@@ -44,7 +44,8 @@ router.post('/', (req, res) => {
       }
 
     );
-    // console.log(questions)
+
+
     let correct = Number(req.body[`answer${questionCounter}`])
     let currentAnswers = req.body[`input${questionCounter}`];
     for(let i = 0; i < currentAnswers.length; i++) {
@@ -55,6 +56,11 @@ router.post('/', (req, res) => {
         text: currentAnswers[i],
         is_correct: (correct - 1 === i)
       });
+      
+
+      insertanswersDatabase(currentAnswer)
+
+      answers.push(currentAnswer);
     }
     questionCounter++; // increment question counter to set up for the next question if there is one
   }

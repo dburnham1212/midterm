@@ -36,7 +36,10 @@ router.post('/', (req, res) => {
   }
   while(req.body[`${questionCounter}`] ) { // while we still have questions to check
     let questionID = generateRandomString(6); // generate an id for the question
+    const question = req.body[`${questionCounter}`];
+    insertquestionsDatabase(question);
     questions.push( // push the question to the database
+
       {
         id: questionID,
         quiz_id: quizID,

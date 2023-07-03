@@ -1,6 +1,7 @@
 -- Drop and recreate Users table (Example)
 
--- \i db/migrations/01_schema.sql && \i db/seeds/0_users.sql
+-- \i db/migrations/01_schema.sql
+
 DROP TABLE IF EXISTS users CASCADE;
 DROP TABLE IF EXISTS quizs CASCADE;
 DROP TABLE IF EXISTS questions CASCADE;
@@ -57,6 +58,8 @@ CREATE TABLE answers (
 --   option VARCHAR(255) NOT NULL,
 --   is_correct BOOLEAN
 -- );
+
+\i db/seeds/0_users.sql
 
 
 

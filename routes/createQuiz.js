@@ -3,6 +3,8 @@ const router  = express.Router();
 
 const { users, quizzes, favourites, questions, answers, results, getUserByEmail, generateRandomString } = require("../database_placeholders/users");
 
+const { insertQuizsDatabase } = require("../db/queries/postQuizToDatabase");
+
 router.get('/', (req, res) => {
   const userID = req.session.userID;
 
@@ -17,6 +19,8 @@ router.post('/', (req, res) => {
 
   let quizID = generateRandomString(6);
   if(req.body[`${questionCounter}`]) {
+    const title = req.body[`quiz-title`];
+    insertQuizsDatabase(title)
     quizzes.push(
       {
         id: quizID,
@@ -26,6 +30,7 @@ router.post('/', (req, res) => {
         public: true
       }
     );
+    
   }
   while(req.body[`${questionCounter}`] ) {
     let questionID = generateRandomString(6);
@@ -36,8 +41,9 @@ router.post('/', (req, res) => {
         text: req.body[`${questionCounter}`],
         question_number: 2,
       }
+      
     );
-
+    // console.log(questions)
     let correct = Number(req.body[`answer${questionCounter}`])
     let currentAnswers = req.body[`input${questionCounter}`];
     for(let i = 0; i < currentAnswers.length; i++) {
@@ -55,7 +61,9 @@ router.post('/', (req, res) => {
     }
     questionCounter++;
   }
-  console.log(quizzes);
+  // console.log(quizzes);
+  // insertQuizsDatabase(quizzes.title)
+    // console.log(quizzes.title)
   res.redirect('/myQuizzes');
 });
 

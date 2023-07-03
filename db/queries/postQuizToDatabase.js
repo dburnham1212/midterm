@@ -16,24 +16,31 @@ const insertusersDatabase = function(quiz) {
   return db.query(questString, container);
 }
 
-
-const insertquizsDatabase = function(quiz) {
+const insertQuizsDatabase = function(title) {
   const questString = `
   INSERT INTO quizs (
     title
   )
   VALUES (
-    $1
-  );
-  `;
-  const container = [quiz.title];
-  return db.query(questString, container);
+    '${title}'
+  );`
+    return db.query(questString)
+  // const questString = `
+  // INSERT INTO quizs (
+  //   title
+  // )
+  // VALUES (
+  //   ${title}
+  // );
+  // `;
+  // const container = [title];
+  // return db.query(questString, container);
 }
 
 const insertquestionsDatabase = function(quiz) {
   const questString = `
   INSERT INTO questions (
-    
+
   )
   VALUES (
 
@@ -60,4 +67,4 @@ const insertanswersDatabase = function(quiz) {
 }
 
 
-module.exports = { insertDatabase };
+module.exports = { insertQuizsDatabase };

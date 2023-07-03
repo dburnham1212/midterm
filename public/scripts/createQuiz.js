@@ -75,31 +75,31 @@ $(() => {
     //   </quiz>`)
     // }
 
-  const getQuizData = function() {
-    $.get('/createQuiz')
-    .then(data => {
-      loadData(data)
-    }
+  // const getQuizData = function() {
+  //   $.get('/createQuiz')
+  //   .then(data => {
+  //     loadData(data)
+  //   }
 
-    )
+  //   )
 
-  }
+  // }
 
-  const loadData = function(data) {
+  // const loadData = function(data) {
 
-    for (let quizData of data) {
-      console.log(quizData)
-      // createQuizElement(quizData)
-      const returnQuiz = createQuizElement()
-    }
-  }
+  //   for (let quizData of data) {
+  //     console.log(quizData)
+  //     // createQuizElement(quizData)
+  //     const returnQuiz = createQuizElement()
+  //   }
+  // }
 
 
-  const renderQuiz = function(data) {
+  // const renderQuiz = function(data) {
 
-    createQuizElement(data)
+  //   createQuizElement(data)
 
-    }
+  //   }
 
   // $('.submit-button').on('click', function(event) {
   //   event.preventDefault();

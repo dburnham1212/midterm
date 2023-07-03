@@ -1,7 +1,7 @@
 const express = require('express');
 const router  = express.Router();
 
-const { users, quizzes, favourites, questions, answers, results, getUserByEmail, generateRandomString } = require("../database_placeholders/users");
+const { users, quizzes, questions, answers, results, getUserByEmail, generateRandomString } = require("../database_placeholders/users");
 
 router.get('/', (req, res) => {
   const userID = req.session.userID;
@@ -34,7 +34,6 @@ router.post('/', (req, res) => {
         id: questionID,
         quiz_id: quizID,
         text: req.body[`${questionCounter}`],
-        question_number: 2,
       }
     );
 
@@ -46,11 +45,9 @@ router.post('/', (req, res) => {
         id: answerID,
         question_id: questionID,
         text: currentAnswers[i],
-        is_correct: false
+        is_correct: (correct - 1 === i)
       }
-      if(correct - 1 === i){
-        currentAnswer.is_correct = true;
-      }
+
       answers.push(currentAnswer);
     }
     questionCounter++;

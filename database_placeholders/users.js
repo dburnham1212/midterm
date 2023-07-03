@@ -35,28 +35,15 @@ const quizzes = [
   }
 ]
 
-const favourites = [
-  {
-    quiz_id: 'quiz1',
-    user_id: 'userID'
-  },
-  {
-    quiz_id: 'quiz2',
-    user_id: 'user2ID'
-  },
-  {
-    quiz_id: 'quiz3',
-    user_id: 'userID'
-  }
-]
-
 const results = [
   {
     quiz_id: 'quiz1',
     user_id: 'userID',
     highest_score: 0,
     last_score: 0,
-    out_of: 0
+    out_of: 3,
+    favourited: true,
+    rating: 5
   }
 ];
 
@@ -64,44 +51,37 @@ const questions = [
   {
     id: "question1",
     quiz_id: "quiz1",
-    text: 'What is life?',
-    question_number: 1,
+    text: 'What is life?'
   },
   {
     id: "question2",
     quiz_id: "quiz1",
-    text: 'Why are we here?',
-    question_number: 2,
+    text: 'Why are we here?'
   },
   {
     id: "question3",
     quiz_id: "quiz1",
-    text: 'Where are we going?',
-    question_number: 3,
+    text: 'Where are we going?'
   },
   {
     id: "question4",
     quiz_id: "quiz2",
-    text: 'Are you a person?',
-    question_number: 1,
+    text: 'Are you a person?'
   },
   {
     id: "question5",
     quiz_id: "quiz2",
-    text: 'Are you a frog?',
-    question_number: 2,
+    text: 'Are you a frog?'
   },
   {
     id: "question6",
     quiz_id: "quiz2",
-    text: 'Are you a dog?',
-    question_number: 3,
+    text: 'Are you a dog?'
   },
   {
     id: "question7",
     quiz_id: "quiz2",
-    text: 'Are you ok?',
-    question_number: 4,
+    text: 'Are you ok?'
   },
 ]
 
@@ -298,4 +278,4 @@ const generateRandomString = function(length) {
   return randomString;
 };
 
-module.exports = { users, quizzes, favourites, questions, answers, results, getUserByEmail, generateRandomString };
+module.exports = { users, quizzes, questions, answers, results, getUserByEmail, generateRandomString };

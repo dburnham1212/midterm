@@ -1,7 +1,7 @@
 const express = require('express');
 const router  = express.Router();
 
-const { users, quizzes, favourites, questions, answers, results, getUserByEmail, generateRandomString } = require("../database_placeholders/users");
+const { users, quizzes, questions, answers, results, getUserByEmail, generateRandomString } = require("../database_placeholders/users");
 
 router.get('/:id', (req, res) => {
   const userID = req.session.userID;
@@ -20,6 +20,36 @@ router.get('/:id', (req, res) => {
   console.log(currentResult);
   const templateVars = {user: users[userID], quiz: currentQuiz, result: currentResult };
   res.render('submitQuiz', templateVars);
+});
+
+router.get('/submitReview/:id', (req, res) => {
+  const userID = req.session.userID;
+  let currentQuiz;
+  for(const quiz of quizzes){
+    if(quiz.id === req.params.id){
+      currentQuiz=quiz;
+    }
+  }
+  const templateVars = {user: users[userID], quiz: currentQuiz };
+  res.render(`submitReview`, templateVars);
+});
+
+router.post('/submitReview/:id', (req, res) => {
+  const userID = req.session.userID;
+  let currentQuiz;
+  for(const quiz of quizzes){
+    if(quiz.id === req.params.id){
+      currentQuiz=quiz;
+    }
+  }
+  if(currentQuiz){
+    for(let result of results){
+      if(result.quiz_id === currentQuiz.id && userID == result.user_id){
+        result.rating = Number(req.body['rating']);
+      }
+    }
+  }
+  res.redirect(`/submitQuiz/submitReview/${req.params.id}`);
 });
 
 router.post('/:id', (req, res) => {
@@ -65,11 +95,12 @@ router.post('/:id', (req, res) => {
         user_id: userID,
         highest_score: correctCount,
         last_score: correctCount,
-        out_of: answerCount
+        out_of: answerCount,
+        favourited: false,
+        rating: 0
       })
     }
   }
-  console.log(results);
 
   res.redirect(`/submitQuiz/${req.params.id}`);
 });

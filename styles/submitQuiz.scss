@@ -4,3 +4,19 @@
   flex-direction: column;
   align-items: center;
 }
+
+.fav-icon{
+  color: #30c5ff;
+}
+
+.fav-icon:hover:before {
+  font-family: FontAwesome;
+  content: "\f005";
+}
+
+.favourite-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 1em;
+}

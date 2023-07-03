@@ -16,22 +16,39 @@ const getUsers = () => {
 //   return undefined;
 // };
 
-const getUserByEmail = function (email) {
-  return pool
-  .query(`SELECT *
-  FROM users
+// const getUserByEmail = function (email) {
+//   return pool
+//   .query(`SELECT *
+//   FROM users
+//   WHERE email = $1 LIMIT 1`, [email])
+//   .then((result) => {
+//     if (result.rows.length > 0) {
+//       return result.rows[0];
+//     } else {
+//       return null;
+//       }
+//   })
+//   .catch((err) => {
+//     console.log(err.message);
+//   });
+// };
+
+const getUserByEmail = (email, users) => {
+  return db.query(`SELECT * FROM users
   WHERE email = $1 LIMIT 1`, [email])
-  .then((result) => {
-    if (result.rows.length > 0) {
-      return result.rows[0];
-    } else {
-      return null;
-      }
+  .then(data => {
+   console.log(data.rows);
+   console.log()
+   //  if (data.rows === email ) {
+   //   //  return users[data];
+   //  } else {
+   //    return null;
+   //    }
   })
   .catch((err) => {
     console.log(err.message);
   });
-};
+ };
 
 const generateRandomString = function(length) {
   const chars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz1234567890';//usable characters
@@ -47,4 +64,4 @@ const generateRandomString = function(length) {
 };
 
 
-module.exports = { getUsers };
+module.exports = { getUsers, getUserByEmail };

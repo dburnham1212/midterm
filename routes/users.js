@@ -8,7 +8,9 @@
 const express = require('express');
 const router  = express.Router();
 
-const { users, quizzes, questions, answers, results, getUserByEmail, generateRandomString } = require("../database_placeholders/users");
+const {  quizzes, questions, answers, results, generateRandomString } = require("../database_placeholders/users");
+
+const { getUsers, getUserByEmail } = require("../db/queries/users");
 
 router.get('/', (req, res) => {
   res.render('users');
@@ -34,6 +36,8 @@ router.get('/register', (req, res) => {
 });
 
 router.post('/login', (req, res) => {
+  // 'userID'
+  // SELECT * FROM users;
   const email = req.body.email;
   const password = req.body.password;
   const rePassword = req.body.rePassword;

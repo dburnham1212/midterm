@@ -54,7 +54,8 @@ $(() => {
         url: '/createQuiz'
         })
       .then(
-        console.log(addQuestion()))
+        // console.log(addQuestion()))
+         addQuestion())
       .catch(err => {
         console.log("Error :",err);
       })

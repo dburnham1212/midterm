@@ -282,7 +282,51 @@ const getQuizByPublic = () => {
   });
 }
 
+const getMyQuizzesByID = (userID) => {
+  return db
+  .query(`SELECT quizs.id, quizs.user_id, quizs.title, results.highest_score, results.out_of FROM quizs
+  LEFT OUTER JOIN results ON quizs.id = results.quiz_id
+  WHERE quizs.user_id = $1;
+  `, [userID])
+  .then(data => {
+    console.log(data.rows)
+    return data.rows;
+  })
+  .catch((err) => {
+    console.log(err.message);
+  });
+}
 
+const getFavQuizzesByUserId = (userID) => {
+  return db
+  .query(`SELECT quizs.id, quizs.user_id, quizs.title, results.highest_score, results.out_of FROM quizs
+  LEFT OUTER JOIN results ON quizs.id = results.quiz_id
+  WHERE results.user_id = $1 AND results.is_favorite = true;
+  `, [userID])
+  .then(data => {
+    console.log(data.rows)
+    return data.rows;
+  })
+  .catch((err) => {
+    console.log(err.message);
+  });
+}
+
+const getEntireQuiz = (quizID) => {
+  return db
+  .query(`SELECT * FROM quizs
+  JOIN questions ON questions.quiz_id = quizs.id
+  JOIN answers ON questions.id = answers.question_id
+  WHERE quizs.id = $1;
+  `, [quizID])
+  .then(data => {
+    console.log(data.rows)
+    return data.rows;
+  })
+  .catch((err) => {
+    console.log(err.message);
+  });
+}
 
 const getUserByEmail = (email, users) => {
   return db
@@ -310,5 +354,8 @@ module.exports = {
   generateRandomString,
   getUserByEmail,
   getUserById,
-  getQuizByPublic
+  getQuizByPublic,
+  getMyQuizzesByID,
+  getFavQuizzesByUserId,
+  getEntireQuiz
 };

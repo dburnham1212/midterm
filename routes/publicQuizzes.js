@@ -13,6 +13,7 @@ router.get('/', (req, res) => {
     for (const quiz of quizzes) {
       if(quiz.public){
         publicQuizzes.push(quiz)
+        console.log(quiz);
       }
     }
   getUserById(req.session.userID).then((user) =>{ // Get the user from the db

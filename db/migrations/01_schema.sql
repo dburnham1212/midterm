@@ -21,7 +21,7 @@ CREATE TABLE quizs (
   user_id INTEGER REFERENCES users(id) ON DELETE CASCADE,
   title VARCHAR(255) NOT NULL,
   rating INTEGER,
-  public BOOLEAN,
+  public BOOLEAN DEFAULT false,
   date_created TIMESTAMP
 );
 
@@ -32,7 +32,7 @@ CREATE TABLE results (
   highest_score TEXT,
   last_score TEXT,
   out_of INTEGER,
-  is_favorite BOOLEAN,
+  is_favorite BOOLEAN DEFAULT false,
   rating INTEGER
 );
 
@@ -47,7 +47,7 @@ CREATE TABLE answers (
   id SERIAL PRIMARY KEY NOT NULL,
   question_id INTEGER REFERENCES questions(id) ON DELETE CASCADE,
   text VARCHAR(255) NOT NULL,
-  is_correct BOOLEAN
+  is_correct BOOLEAN DEFAULT false
 );
 
 -- CREATE TABLE taker_answers (

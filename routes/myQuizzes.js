@@ -3,6 +3,7 @@ const router  = express.Router();
 
 const { users, quizzes, questions, answers, results, getUserByEmail, generateRandomString } = require("../database_placeholders/users");
 
+const { addResultToDatabase } = require("../db/queries/postQuizToDatabase");
 
 // get route for MyQuizzes page
 router.get('/', (req, res) => {
@@ -28,7 +29,6 @@ router.get('/', (req, res) => {
     } else { // if not set the rating to 1
       quiz.rating = 1;
     }
-
     // if the quiz was created by the user (the ids match) add it to the list to display
     if(quiz.user_id === user.id){
       myQuizzes.push(quiz);
@@ -38,7 +38,11 @@ router.get('/', (req, res) => {
     for(const result of results) {
       if(result.quiz_id === quiz.id && userID === result.user_id && result.favourited) {
         favQuizzes.push(quiz);
+        addResultToDatabase(result, result.favourited);
+      } else {
+        addResultToDatabase(result);
       }
+      
     }
   }
 

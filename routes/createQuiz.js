@@ -53,12 +53,12 @@ router.post('/', (req, res) => {
     let currentAnswers = req.body[`input${questionCounter}`];
     for(let i = 0; i < currentAnswers.length; i++) {
       let answerID = generateRandomString(10); // generate an id for the question
-      answers.push({ // push the answer to the database
+      let currentAnswer = { // push the answer to the database
         id: answerID,
         question_id: questionID,
         text: currentAnswers[i],
         is_correct: (correct - 1 === i)
-      });
+      };
       
 
       insertanswersDatabase(currentAnswer)

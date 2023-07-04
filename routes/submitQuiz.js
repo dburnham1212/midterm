@@ -70,7 +70,11 @@ router.post('/:id', (req, res) => {
     // if there isnt a result for the quiz that we have selected
     if(!resultFound){
       // create a new result object based off of the values and push it into the database
-      results.push({
+
+    //   addResultToDatabase(result, result.favourited);
+    // } else {
+    //   addResultToDatabase(result);
+      let currentResult = {
         quiz_id: currentQuiz.id,
         user_id: userID,
         highest_score: correctCount,
@@ -78,7 +82,9 @@ router.post('/:id', (req, res) => {
         out_of: answerCount,
         favourited: false,
         rating: 0
-      })
+      }
+      addResultToDatabase(currentResult)
+      results.push(currentResult)
     }
   }
 

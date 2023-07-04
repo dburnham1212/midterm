@@ -83,6 +83,7 @@ router.post('/:id', (req, res) => {
         favourited: false,
         rating: 0
       }
+
       addResultToDatabase(currentResult)
       results.push(currentResult)
     }
@@ -106,6 +107,11 @@ router.post('/submitReview/:id', (req, res) => {
     for(let result of results){ // cycle through results and update the result based off of the number that was selected
       if(result.quiz_id === currentQuiz.id && userID == result.user_id){
         result.rating = Number(req.body['rating']);
+        if(req.body['favourite']){
+          result.favourited = true;
+        } else {
+          result.favourited = false;
+        }
       }
     }
   }

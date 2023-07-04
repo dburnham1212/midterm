@@ -8,7 +8,7 @@
 const express = require('express');
 const router  = express.Router();
 
-const {users, quizzes, questions, answers, results, generateRandomString, getUserByEmail, getIdByEmail } = require("../database_placeholders/users");
+const { users, quizzes, questions, answers, results, generateRandomString, getUserByEmail, getUserById } = require("../database_placeholders/users");
 
 // const { getUsers, getUserByEmail } = require("../db/queries/users.js");
 // // const users = getUsers();
@@ -23,16 +23,20 @@ router.get('/login', (req, res) => {
   const userID = req.session.userID; // Set user id to id set in the cookie
 
   // pass values into template and render it
-  const templateVars = { user: users[userID] }
-  res.render('login', templateVars);
+  getUserById(userID).then((user) =>{ // Get the user from the db
+    const templateVars = { user: user }
+    res.render('login', templateVars);
+  });
 })
 
 // Simple get route that displays the register form
 router.get('/register', (req, res) => {
   const userID = req.session.userID; // Set user id to id set in the cookies
   // pass values into template and render it
-  const templateVars = { user: users[userID]}
-  res.render('register', templateVars);
+  getUserById(userID).then((user) =>{ // Get the user from the db
+    const templateVars = { user: user}
+    res.render('register', templateVars);
+  });
 });
 
 
@@ -46,16 +50,16 @@ router.post('/login', (req, res) => {
   const rePassword = req.body.rePassword;
   getUserByEmail(email).then((user) => { // find the user from the database
 
-  if(user){ // if the user exists
-    req.session.userID = user.id; // set the cookie based off of the user that we found
-    console.log('===========');
-    console.log(user.id);
-    console.log('===========');
-    res.redirect("/publicQuizzes") // redirect to public quizzes
-  } else {
-    res.redirect('/users/login'); // redirect back to login form
-  }
-});
+    if(user){ // if the user exists
+      req.session.userID = user.id; // set the cookie based off of the user that we found
+      console.log('===========');
+      console.log(user.id);
+      console.log('===========');
+      res.redirect("/publicQuizzes") // redirect to public quizzes
+    } else {
+      res.redirect('/users/login'); // redirect back to login form
+    }
+  });
 });
 
 router.post('/register', (req, res) => {
@@ -64,18 +68,18 @@ router.post('/register', (req, res) => {
   const rePassword = req.body.rePassword;
   getUserByEmail(email).then((user) => { // Check if there is a user already in the database
 
-  if(user){ // if we do have a user with those credentials
-    res.redirect('/users/register'); // redirect to the register page
-  } else { // if not create a new user and add them to the db
-    let newID = generateRandomString(6);
-    //function that INSERTS getUSEROBJECT into Database
-    users[newID] = { id: newID, email: email, password: password } // creating a new user and adding to db
+    if(user){ // if we do have a user with those credentials
+      res.redirect('/users/register'); // redirect to the register page
+    } else { // if not create a new user and add them to the db
+      let newID = generateRandomString(6);
+      //function that INSERTS getUSEROBJECT into Database
+      users[newID] = { id: newID, email: email, password: password } // creating a new user and adding to db
 
-    req.session.userID = newID;
-    res.redirect('/publicQuizzes');
-  }
+      req.session.userID = newID;
+      res.redirect('/publicQuizzes');
+    }
 
-});
+  });
 });
 
 // Simple post logou route that clears the cookie and redirects to login page

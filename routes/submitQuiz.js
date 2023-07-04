@@ -1,7 +1,7 @@
 const express = require('express');
 const router  = express.Router();
 
-const { users, quizzes, questions, answers, results, getUserByEmail, generateRandomString } = require("../database_placeholders/users");
+const { users, quizzes, questions, answers, results, generateRandomString, getUserByEmail, getUserById } = require("../database_placeholders/users");
 
 // get route for quiz submission
 router.get('/:id', (req, res) => {
@@ -22,8 +22,10 @@ router.get('/:id', (req, res) => {
   }
 
   // pass the values to the webpage and display it
-  const templateVars = {user: users[userID], quiz: currentQuiz, result: currentResult };
-  res.render('submitQuiz', templateVars);
+  getUserById(userID).then((user) =>{ // Get the user from the db
+    const templateVars = {user: user, quiz: currentQuiz, result: currentResult };
+    res.render('submitQuiz', templateVars);
+  });
 });
 
 // Post route for quiz submission
@@ -84,6 +86,7 @@ router.post('/:id', (req, res) => {
         favourited: false,
         rating: 0
       }
+
       addResultToDatabase(currentResult)
       results.push(currentResult)
     }
@@ -107,6 +110,11 @@ router.post('/submitReview/:id', (req, res) => {
     for(let result of results){ // cycle through results and update the result based off of the number that was selected
       if(result.quiz_id === currentQuiz.id && userID == result.user_id){
         result.rating = Number(req.body['rating']);
+        if(req.body['favourite']){
+          result.favourited = true;
+        } else {
+          result.favourited = false;
+        }
       }
     }
   }

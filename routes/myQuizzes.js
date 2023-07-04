@@ -1,17 +1,15 @@
 const express = require('express');
 const router  = express.Router();
 
-const { users, quizzes, questions, answers, results, getUserByEmail, generateRandomString } = require("../database_placeholders/users");
+const { users, quizzes, questions, answers, results, generateRandomString, getUserByEmail, getUserById } = require("../database_placeholders/users");
 
 const { addResultToDatabase } = require("../db/queries/postQuizToDatabase");
 
 // get route for MyQuizzes page
 router.get('/', (req, res) => {
   const userID = req.session.userID; // Set user id to id set in the cookie
-  const user = users[userID]; // Set the user from the table based off of the user id
   let myQuizzes = []; // Create a list of users quizzes
   let favQuizzes = []; // Create a list of favourite quizzes
-  let myQuizzesResults = [];
 
   for(const quiz of quizzes) {
     // Set quiz ratings based off of an average of the overall ratings in the quiz
@@ -30,7 +28,7 @@ router.get('/', (req, res) => {
       quiz.rating = 1;
     }
     // if the quiz was created by the user (the ids match) add it to the list to display
-    if(quiz.user_id === user.id){
+    if(quiz.user_id === userID){
       myQuizzes.push(quiz);
     }
 
@@ -42,13 +40,16 @@ router.get('/', (req, res) => {
       } else {
         addResultToDatabase(result);
       }
-      
+
     }
   }
 
   // pass the values to the webpage and display it
-  const templateVars = {user: user, quizzes: myQuizzes, favourites: favQuizzes, results: results};
-  res.render('myQuizzes', templateVars);
+
+  getUserById(userID).then((user) => {
+    const templateVars = {user: user, quizzes: myQuizzes, favourites: favQuizzes, results: results};
+    res.render('myQuizzes', templateVars);
+  })
 });
 
 

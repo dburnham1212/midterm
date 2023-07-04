@@ -1,6 +1,3 @@
-
-
-
 const users = {
   userID: {
     id: 'userID',
@@ -240,15 +237,6 @@ const answers = [
   }
 ]
 
-// const getUserByEmail = function(email, users) {
-//   for (const userID in users) {
-//     if (users[userID].email === email) {
-//       return users[userID];
-//     }
-//   }
-//   return undefined;
-// };
-
 
 const generateRandomString = function(length) {
   const chars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz1234567890';//usable characters
@@ -266,40 +254,34 @@ const generateRandomString = function(length) {
 
 
 const db = require('../db/connection');
-// db.query(`SELECT username FROM users LIMIT 10;`).then(response => {console.log(response)})
 
-// const users = getUser (user) => {
-//   console.log("userID");
-//   return db.query(`SELECT * FROM users
-//   WHERE username = $1`, [user])
-//     .then(data => {
-//       console.log(data.rows);
-//       return data.rows;
-//     });
-// };
+const getUserById = (id) => {
+  return db
+  .query(`SELECT * FROM users
+  WHERE id = $1 LIMIT 1;`, [id])
+  .then(data => {
+    return data.rows[0];
+  })
+  .catch((err) => {
+    console.log(err.message);
+  });
+}
 
-// const getUser = (user) => {
-//     return db.query(`SELECT * FROM users
-//     WHERE username = $1`, [user])
-//       .then(data => {
-//         console.log(data.rows);
-//         return data.rows;
-//       });
-//   };
+const getQuizByPublic = () => {
+  return db
+  .query(`SELECT * FROM quizs
+  JOIN users ON users.id = user_id
+  WHERE public = true
+  `)
+  .then(data => {
+    console.log(data.rows)
+    return data.rows;
+  })
+  .catch((err) => {
+    console.log(err.message);
+  });
+}
 
-// const email = function getEmailFromUser (user) {
-//   console.log("email");
-//   return db.query(`SELECT email FROM users
-//   WHERE username = $1`, [user])
-//     .then(data => {
-//       console.log(data.rows.email);
-//       return data.rows;
-//     });
-// };
-
-
-
-// const getUserById
 
 
 const getUserByEmail = (email, users) => {
@@ -312,7 +294,6 @@ const getUserByEmail = (email, users) => {
     if (data.rows[0].email === email) {
       //'userID'
       return data.rows[0];
-
     }
   })
   .catch((err) => {
@@ -328,5 +309,6 @@ module.exports = {
   results,
   generateRandomString,
   getUserByEmail,
-
+  getUserById,
+  getQuizByPublic
 };

@@ -58,16 +58,16 @@ const insertanswersDatabase = function(answer) {
   return db.query(questString, container);
 }
 
-const addResultToDatabase = function(result, favourited) {
+const addResultToDatabase = function(result) {
   const questString = `
   INSERT INTO results (
-    highest_score, last_score, out_of, is_favorite, rating
+    user_id, quiz_id, highest_score, last_score, out_of, is_favorite, rating
   )
   VALUES (
-    $1, $2, $3, $4, $5
+    $1, $2, $3, $4, $5, $6, $7
   );
   `;
-  const container = [`${result.highest_score}`, `${result.last_score}`, `${result.out_of}`, `${result.favourited}`, `${result.rating}`];
+  const container = [`${result.user_id}`, `${result.quiz_id}`, `${result.highest_score}`, `${result.last_score}`, `${result.out_of}`, `${result.favourited}`, `${result.rating}`];
   return db.query(questString, container);
 }
 

@@ -1,6 +1,3 @@
-
-
-
 const users = {
   userID: {
     id: 'userID',
@@ -240,15 +237,6 @@ const answers = [
   }
 ]
 
-// const getUserByEmail = function(email, users) {
-//   for (const userID in users) {
-//     if (users[userID].email === email) {
-//       return users[userID];
-//     }
-//   }
-//   return undefined;
-// };
-
 
 const generateRandomString = function(length) {
   const chars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz1234567890';//usable characters
@@ -262,6 +250,7 @@ const generateRandomString = function(length) {
   }
   return randomString;
 };
+
 
 
 const db = require('../db/connection');
@@ -278,6 +267,23 @@ const getUserById = (id) => {
   });
 }
 
+const getQuizByPublic = () => {
+  return db
+  .query(`SELECT * FROM quizs
+  JOIN users ON users.id = user_id
+  WHERE public = true
+  `)
+  .then(data => {
+    console.log(data.rows)
+    return data.rows;
+  })
+  .catch((err) => {
+    console.log(err.message);
+  });
+}
+
+
+
 const getUserByEmail = (email, users) => {
   return db
   .query(`SELECT * FROM users
@@ -288,7 +294,6 @@ const getUserByEmail = (email, users) => {
     if (data.rows[0].email === email) {
       //'userID'
       return data.rows[0];
-
     }
   })
   .catch((err) => {
@@ -304,5 +309,6 @@ module.exports = {
   results,
   generateRandomString,
   getUserByEmail,
-  getUserById
+  getUserById,
+  getQuizByPublic
 };

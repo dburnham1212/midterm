@@ -1,12 +1,10 @@
+
+
+
 const users = {
   userID: {
     id: 'userID',
     email: "test@gmail.com",
-    password: "password"
-  },
-  user2ID: {
-    id: 'user2ID',
-    email: "test2@gmail.com",
     password: "password"
   }
 }
@@ -16,20 +14,6 @@ const quizzes = [
     id: 'quiz1',
     user_id: 'userID',
     title: 'This is a quiz',
-    rating: 4,
-    public: true
-  },
-  {
-    id: 'quiz2',
-    user_id: 'userID',
-    title: 'This is also a quiz',
-    rating: 4,
-    public: false
-  },
-  {
-    id: 'quiz3',
-    user_id: 'user2ID',
-    title: 'This is another quiz',
     rating: 4,
     public: true
   }
@@ -256,14 +240,15 @@ const answers = [
   }
 ]
 
-const getUserByEmail = function(email, users) {
-  for (const userID in users) {
-    if (users[userID].email === email) {
-      return users[userID];
-    }
-  }
-  return undefined;
-};
+// const getUserByEmail = function(email, users) {
+//   for (const userID in users) {
+//     if (users[userID].email === email) {
+//       return users[userID];
+//     }
+//   }
+//   return undefined;
+// };
+
 
 const generateRandomString = function(length) {
   const chars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz1234567890';//usable characters
@@ -278,4 +263,39 @@ const generateRandomString = function(length) {
   return randomString;
 };
 
-module.exports = { users, quizzes, questions, answers, results, getUserByEmail, generateRandomString };
+
+
+const db = require('../db/connection');
+// db.query(`SELECT username FROM users LIMIT 10;`).then(response => {console.log(response)})
+
+
+
+
+
+const getUserByEmail = (email, users) => {
+  return db
+  .query(`SELECT * FROM users
+  WHERE email = $1 LIMIT 1;`, [email])
+  .then(data => {
+    console.log(data.rows[0].email);
+    //'test@gmail.com'
+    if (data.rows[0].email === email) {
+      //'userID'
+      return data.rows[0].username;
+    }
+  })
+  .catch((err) => {
+    console.log(err.message);
+  });
+ };
+
+module.exports = {
+  users,
+  quizzes,
+  questions,
+  answers,
+  results,
+  generateRandomString,
+  getUserByEmail,
+
+};

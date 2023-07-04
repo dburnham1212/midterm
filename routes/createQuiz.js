@@ -1,7 +1,7 @@
 const express = require('express');
 const router  = express.Router();
 
-const { users, quizzes, questions, answers, results, getUserByEmail, generateRandomString } = require("../database_placeholders/users");
+const { users, quizzes, questions, answers, results, generateRandomString, getUserByEmail, getUserById }  = require("../database_placeholders/users");
 
 const { insertQuizsDatabase, insertquestionsDatabase, insertanswersDatabase } = require("../db/queries/postQuizToDatabase");
 
@@ -10,8 +10,10 @@ router.get('/', (req, res) => {
   const userID = req.session.userID; // Set user id to id set in the cookie
 
   // pass the values to the webpage and display it
-  const templateVars = {user: users[userID]};
-  res.render('createQuiz', templateVars);
+  getUserById(userID).then((user) =>{ // Get the user from the db
+    const templateVars = {user: user};
+    res.render('createQuiz', templateVars);
+  });
 });
 
 // Post route for submitting a created quiz
@@ -59,7 +61,7 @@ router.post('/', (req, res) => {
         text: currentAnswers[i],
         is_correct: (correct - 1 === i)
       };
-      
+
 
       insertanswersDatabase(currentAnswer)
 

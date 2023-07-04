@@ -285,7 +285,7 @@ const getQuizByPublic = () => {
 const getMyQuizzesByID = (userID) => {
   return db
   .query(`SELECT quizs.id, quizs.user_id, quizs.title, results.highest_score, results.out_of FROM quizs
-  LEFT OUTER JOIN results ON quizs.id = results.quiz_id
+  JOIN results ON quizs.id = results.quiz_id
   WHERE quizs.user_id = $1;
   `, [userID])
   .then(data => {
@@ -356,6 +356,22 @@ const getQuestionsByQuizId = (quizID) => {
   });
 }
 
+const getResultByUserAndQuiz = (userID, quizID) => {
+  return db
+  .query(`SELECT results.id, results.highest_score, results.last_score, results.out_of, results.is_favorite, results.rating FROM results
+  JOIN quizs ON results.quiz_id = quizs.id
+  JOIN users ON results.user_id = users.id
+  WHERE users.id = $1 AND quizs.id = $2;
+  `, [userID, quizID])
+  .then(data => {
+    console.log(data.rows)
+    return data.rows[0];
+  })
+  .catch((err) => {
+    console.log(err.message);
+  });
+}
+
 const getAnswersByQuizId = (quiz_id) => {
   return db
   .query(`SELECT answers.question_id, answers.text, answers.is_correct FROM answers
@@ -403,5 +419,6 @@ module.exports = {
   getEntireQuiz,
   getQuizByQuizId,
   getQuestionsByQuizId,
-  getAnswersByQuizId
+  getAnswersByQuizId,
+  getResultByUserAndQuiz
 };

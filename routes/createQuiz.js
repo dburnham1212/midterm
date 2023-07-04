@@ -3,7 +3,7 @@ const router  = express.Router();
 
 const { users, quizzes, questions, answers, results, generateRandomString, getUserByEmail, getUserById }  = require("../database_placeholders/users");
 
-const { insertQuizsDatabase, insertquestionsDatabase, insertanswersDatabase } = require("../db/queries/postQuizToDatabase");
+const { insertQuizsDatabase, insertQuestionToDatabase, insertanswersDatabase } = require("../db/queries/postQuizToDatabase");
 
 // get route to display quiz creation form
 router.get('/', (req, res) => {
@@ -21,35 +21,28 @@ router.post('/', (req, res) => {
   const userID = req.session.userID; // Set user id to id set in the cookie
   let questionCounter = 1; // Setup a value to cycle through the questions
 
-  let quizID = generateRandomString(6); // Generate a string to set to the quiz id
   if(req.body[`${questionCounter}`]) { // check if req.body has a question based off of the number provide
-    const title = req.body[`quiz-title`]; // set the tile of the quiz based off of req.body
-    insertQuizsDatabase(title)
-    quizzes.push( // push an object to the database with the quiz id, userId, and quiz title
-      {
-        id: quizID,
+    //const title = req.body[`quiz-title`]; // set the tile of the quiz based off of req.body
+
+   // push an object to the database with the quiz id, userId, and quiz title
+      const newQuiz = {
         user_id: userID,
         title: req.body[`quiz-title`],
         rating: 4,
         public: true
       }
-    );
-
+      insertQuizsDatabase(newQuiz)
   }
   while(req.body[`${questionCounter}`] ) { // while we still have questions to check
-    let questionID = generateRandomString(6); // generate an id for the question
-    const question = req.body[`${questionCounter}`];
-    insertquestionsDatabase(question);
-    questions.push( // push the question to the database
-
-      {
-        id: questionID,
+ // push the question to the database
+    const question =   {
         quiz_id: quizID,
-        text: req.body[`${questionCounter}`] // set the question text to the text found in req.body
+        text: req.body[`${questionCounter}`], // set the question text to the text found in req.body
+        question_order: questionCounter
       }
 
-    );
 
+    insertQuestionToDatabase(question);
 
     let correct = Number(req.body[`answer${questionCounter}`])
     let currentAnswers = req.body[`input${questionCounter}`];

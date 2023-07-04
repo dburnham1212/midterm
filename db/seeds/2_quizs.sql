@@ -16,6 +16,11 @@
 -- JOIN results ON quizs.id = results.quiz_id
 -- WHERE quizs.id = 1;
 
-SELECT answers.question_id, answers.text, answers.is_correct FROM answers
-  JOIN questions ON questions.id = answers.question_id
-  WHERE questions.quiz_id = 1;
+-- SELECT answers.question_id, answers.text, answers.is_correct FROM answers
+--   JOIN questions ON questions.id = answers.question_id
+--   WHERE questions.quiz_id = 1;
+
+SELECT results.id, results.highest_score, results.last_score, results.out_of, results.is_favorite, results.rating FROM results
+JOIN quizs ON results.quiz_id = quizs.id
+JOIN users ON results.user_id = users.id
+WHERE users.id = 1 AND quizs.id = 1;

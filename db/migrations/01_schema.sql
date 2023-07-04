@@ -58,7 +58,7 @@ CREATE TABLE answers (
 --   is_correct BOOLEAN
 -- );
 
--- \i db/seeds/0_users.sql
+ \i db/seeds/0_users.sql
 
 
 

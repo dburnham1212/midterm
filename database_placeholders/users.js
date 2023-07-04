@@ -269,9 +269,9 @@ const getUserById = (id) => {
 
 const getQuizByPublic = () => {
   return db
-  .query(`SELECT * FROM quizs
+  .query(`SELECT quizs.id, quizs.user_id, quizs.title, quizs.rating, users.email FROM quizs
   JOIN users ON users.id = user_id
-  WHERE public = true
+  WHERE public = true;
   `)
   .then(data => {
     console.log(data.rows)
@@ -328,6 +328,49 @@ const getEntireQuiz = (quizID) => {
   });
 }
 
+const getQuizByQuizId = (quizID) => {
+  return db
+  .query(`SELECT * FROM quizs
+  WHERE quizs.id = $1;
+  `, [quizID])
+  .then(data => {
+    console.log(data.rows)
+    return data.rows[0];
+  })
+  .catch((err) => {
+    console.log(err.message);
+  });
+}
+
+const getQuestionsByQuizId = (quizID) => {
+  return db
+  .query(`SELECT * FROM questions
+  WHERE questions.quiz_id = $1;
+  `, [quizID])
+  .then(data => {
+    console.log(data.rows)
+    return data.rows;
+  })
+  .catch((err) => {
+    console.log(err.message);
+  });
+}
+
+const getAnswersByQuizId = (quiz_id) => {
+  return db
+  .query(`SELECT answers.question_id, answers.text, answers.is_correct FROM answers
+  JOIN questions ON questions.id = answers.question_id
+  WHERE questions.quiz_id = $1;
+  `, [quiz_id])
+  .then(data => {
+    console.log(data.rows)
+    return data.rows;
+  })
+  .catch((err) => {
+    console.log(err.message);
+  });
+}
+
 const getUserByEmail = (email, users) => {
   return db
   .query(`SELECT * FROM users
@@ -357,5 +400,8 @@ module.exports = {
   getQuizByPublic,
   getMyQuizzesByID,
   getFavQuizzesByUserId,
-  getEntireQuiz
+  getEntireQuiz,
+  getQuizByQuizId,
+  getQuestionsByQuizId,
+  getAnswersByQuizId
 };

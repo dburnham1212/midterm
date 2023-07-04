@@ -70,7 +70,7 @@ router.post('/:id', (req, res) => {
     // if there isnt a result for the quiz that we have selected
     if(!resultFound){
       // create a new result object based off of the values and push it into the database
-      results.push({
+      let currentResult = {
         quiz_id: currentQuiz.id,
         user_id: userID,
         highest_score: correctCount,
@@ -78,7 +78,11 @@ router.post('/:id', (req, res) => {
         out_of: answerCount,
         favourited: false,
         rating: 0
-      })
+      }
+
+
+      results.push(currentResult);
+
     }
   }
 
@@ -100,6 +104,11 @@ router.post('/submitReview/:id', (req, res) => {
     for(let result of results){ // cycle through results and update the result based off of the number that was selected
       if(result.quiz_id === currentQuiz.id && userID == result.user_id){
         result.rating = Number(req.body['rating']);
+        if(req.body['favourite']){
+          result.favourited = true;
+        } else {
+          result.favourited = false;
+        }
       }
     }
   }

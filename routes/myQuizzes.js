@@ -10,7 +10,6 @@ router.get('/', (req, res) => {
   const user = users[userID]; // Set the user from the table based off of the user id
   let myQuizzes = []; // Create a list of users quizzes
   let favQuizzes = []; // Create a list of favourite quizzes
-  let myQuizzesResults = [];
 
   for(const quiz of quizzes) {
     // Set quiz ratings based off of an average of the overall ratings in the quiz

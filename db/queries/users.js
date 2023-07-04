@@ -1,14 +1,6 @@
 const db = require('../connection');
 
-// const getUsers = function(user) {
-//   console.log("userID");
-//   return db.query(`SELECT * FROM users
-//   WHERE users = $1`, [user])
-//     .then(data => {
-//       console.log(data);
-//       return data.rows;
-//     });
-// };
+
 
 
 // // const getUserByEmail = function(email, users) {

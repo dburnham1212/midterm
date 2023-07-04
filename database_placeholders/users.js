@@ -268,8 +268,38 @@ const generateRandomString = function(length) {
 const db = require('../db/connection');
 // db.query(`SELECT username FROM users LIMIT 10;`).then(response => {console.log(response)})
 
+// const users = getUser (user) => {
+//   console.log("userID");
+//   return db.query(`SELECT * FROM users
+//   WHERE username = $1`, [user])
+//     .then(data => {
+//       console.log(data.rows);
+//       return data.rows;
+//     });
+// };
+
+// const getUser = (user) => {
+//     return db.query(`SELECT * FROM users
+//     WHERE username = $1`, [user])
+//       .then(data => {
+//         console.log(data.rows);
+//         return data.rows;
+//       });
+//   };
+
+// const email = function getEmailFromUser (user) {
+//   console.log("email");
+//   return db.query(`SELECT email FROM users
+//   WHERE username = $1`, [user])
+//     .then(data => {
+//       console.log(data.rows.email);
+//       return data.rows;
+//     });
+// };
 
 
+
+// const getUserById
 
 
 const getUserByEmail = (email, users) => {
@@ -277,11 +307,12 @@ const getUserByEmail = (email, users) => {
   .query(`SELECT * FROM users
   WHERE email = $1 LIMIT 1;`, [email])
   .then(data => {
-    console.log(data.rows[0].email);
+    // console.log(data.rows[0]);
     //'test@gmail.com'
     if (data.rows[0].email === email) {
       //'userID'
-      return data.rows[0].username;
+      return data.rows[0];
+
     }
   })
   .catch((err) => {

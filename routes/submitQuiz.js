@@ -67,6 +67,7 @@ router.post('/:id', (req, res) => {
         result.out_of = answerCount; // set result out of to the number of answers
       }
     }
+
     // if there isnt a result for the quiz that we have selected
     if(!resultFound){
       // create a new result object based off of the values and push it into the database

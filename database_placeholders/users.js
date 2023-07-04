@@ -264,42 +264,7 @@ const generateRandomString = function(length) {
 };
 
 
-
 const db = require('../db/connection');
-// db.query(`SELECT username FROM users LIMIT 10;`).then(response => {console.log(response)})
-
-// const users = getUser (user) => {
-//   console.log("userID");
-//   return db.query(`SELECT * FROM users
-//   WHERE username = $1`, [user])
-//     .then(data => {
-//       console.log(data.rows);
-//       return data.rows;
-//     });
-// };
-
-// const getUser = (user) => {
-//     return db.query(`SELECT * FROM users
-//     WHERE username = $1`, [user])
-//       .then(data => {
-//         console.log(data.rows);
-//         return data.rows;
-//       });
-//   };
-
-// const email = function getEmailFromUser (user) {
-//   console.log("email");
-//   return db.query(`SELECT email FROM users
-//   WHERE username = $1`, [user])
-//     .then(data => {
-//       console.log(data.rows.email);
-//       return data.rows;
-//     });
-// };
-
-
-
-// const getUserById
 
 const getUserById = (id) => {
   return db

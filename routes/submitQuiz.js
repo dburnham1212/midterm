@@ -3,6 +3,9 @@ const router  = express.Router();
 
 const { users, quizzes, questions, answers, results, generateRandomString, getUserByEmail, getUserById } = require("../database_placeholders/users");
 
+const { addResultToDatabase } = require("../db/queries/postQuizToDatabase");
+
+
 // get route for quiz submission
 router.get('/:id', (req, res) => {
   const userID = req.session.userID; // Set user id to id set in the cookie

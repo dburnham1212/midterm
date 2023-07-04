@@ -14,49 +14,50 @@ INSERT INTO quizs (user_id, title, rating, public)
 VALUES (1, 'This is also a quiz', 4, false );
 INSERT INTO quizs (user_id, title, rating, public)
 VALUES (2, 'This is another quiz', 4, true );
+INSERT INTO quizs (user_id, title, rating, public)
+VALUES (1, 'This is a last quiz', 4, true );
 
-
-INSERT INTO questions (quiz_id, title, question_order)
+INSERT INTO questions (quiz_id, question_text, question_order)
 VALUES (1, 'What is life?', 1 );
-INSERT INTO questions (quiz_id, title, question_order)
+INSERT INTO questions (quiz_id, question_text, question_order)
 VALUES (1, 'Why are we here?', 2);
-INSERT INTO questions (quiz_id, title, question_order)
+INSERT INTO questions (quiz_id, question_text, question_order)
 VALUES (1, 'Where are we going?', 3);
-INSERT INTO questions (quiz_id, title, question_order)
+INSERT INTO questions (quiz_id, question_text, question_order)
 VALUES (1, 'Where will we be?', 4);
-INSERT INTO questions (quiz_id, title, question_order)
+INSERT INTO questions (quiz_id, question_text, question_order)
 VALUES (1, 'How are we going?', 5);
-INSERT INTO questions (quiz_id, title, question_order)
+INSERT INTO questions (quiz_id, question_text, question_order)
 VALUES (1, 'Why are we going?', 6);
-INSERT INTO questions (quiz_id, title, question_order)
+INSERT INTO questions (quiz_id, question_text, question_order)
 VALUES (1, 'Where What Who are we going?', 7);
-INSERT INTO questions (quiz_id, title, question_order)
+INSERT INTO questions (quiz_id, question_text, question_order)
 VALUES (1, 'Who who who?', 8);
-INSERT INTO questions (quiz_id, title, question_order)
+INSERT INTO questions (quiz_id, question_text, question_order)
 VALUES (1, 'Where are we?', 9);
-INSERT INTO questions (quiz_id, title, question_order)
+INSERT INTO questions (quiz_id, question_text, question_order)
 VALUES (1, 'Where we going are?', 10);
 
 
-INSERT INTO questions (quiz_id, title, question_order)
+INSERT INTO questions (quiz_id, question_text, question_order)
 VALUES (2, 'Are you a person?', 1);
-INSERT INTO questions (quiz_id, title, question_order)
+INSERT INTO questions (quiz_id, question_text, question_order)
 VALUES (2, 'Are you a frog?', 2);
-INSERT INTO questions (quiz_id, title, question_order)
+INSERT INTO questions (quiz_id, question_text, question_order)
 VALUES (2, 'Are you a dog?', 3);
-INSERT INTO questions (quiz_id, title, question_order)
+INSERT INTO questions (quiz_id, question_text, question_order)
 VALUES (2, 'Are you a hog?', 4);
-INSERT INTO questions (quiz_id, title, question_order)
+INSERT INTO questions (quiz_id, question_text, question_order)
 VALUES (2, 'Are you ok?', 5);
-INSERT INTO questions (quiz_id, title, question_order)
+INSERT INTO questions (quiz_id, question_text, question_order)
 VALUES (2, 'Are we ok?', 6);
-INSERT INTO questions (quiz_id, title, question_order)
+INSERT INTO questions (quiz_id, question_text, question_order)
 VALUES (2, 'Is he okay?', 7);
-INSERT INTO questions (quiz_id, title, question_order)
+INSERT INTO questions (quiz_id, question_text, question_order)
 VALUES (2, 'Are you sure?', 8);
-INSERT INTO questions (quiz_id, title, question_order)
+INSERT INTO questions (quiz_id, question_text, question_order)
 VALUES (2, 'He doesnt look okay?', 9);
-INSERT INTO questions (quiz_id, title, question_order)
+INSERT INTO questions (quiz_id, question_text, question_order)
 VALUES (2, 'seriously', 10);
 
 
@@ -162,8 +163,8 @@ INSERT INTO answers (question_id, text, is_correct) VALUES (20, 'Maybe', true);
 INSERT INTO answers (question_id, text, is_correct) VALUES (20, 'Sure', false);
 
 
-INSERT INTO results (user_id, quiz_id, highest_score, last_score, out_of, is_favorite) VALUES (1, 1, 0, 0, 0, true);
-INSERT INTO results (user_id, quiz_id, highest_score, last_score, out_of, is_favorite) VALUES (2, 2, 0, 0, 0, false);
-INSERT INTO results (user_id, quiz_id, highest_score, last_score, out_of, is_favorite) VALUES (1, 3, 0, 0, 0, false);
+INSERT INTO results (user_id, quiz_id, highest_score, last_score, out_of, is_favorite, rating) VALUES (1, 1, 0, 0, 0, true, 4);
+INSERT INTO results (user_id, quiz_id, highest_score, last_score, out_of, is_favorite, rating) VALUES (2, 2, 0, 0, 0, false, 3);
+INSERT INTO results (user_id, quiz_id, highest_score, last_score, out_of, is_favorite, rating) VALUES (1, 3, 0, 0, 0, false, 2);
 
 

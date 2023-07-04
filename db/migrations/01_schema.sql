@@ -39,7 +39,7 @@ CREATE TABLE results (
 CREATE TABLE questions (
   id SERIAL PRIMARY KEY NOT NULL,
   quiz_id INTEGER REFERENCES quizs(id) ON DELETE CASCADE,
-  title VARCHAR(255) NOT NULL,
+  question_text VARCHAR(255) NOT NULL,
   question_order INTEGER
 );
 

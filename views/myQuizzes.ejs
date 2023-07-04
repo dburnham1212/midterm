@@ -26,13 +26,8 @@
     <%for (const quiz of quizzes) { %>
     <span class="list-item">
       <p class="list-item-text"><%= quiz.title %></p>
-      <% let currentResult;
-      for(const result of results) {
-        if(result.quiz_id === quiz.id) {
-          currentResult = result;
-        }
-      } if (currentResult) { %>
-        <p class="list-item-text"><%= currentResult.highest_score %> / <%= currentResult.out_of %></p>
+      <% if(quiz.highest_score) { %>
+        <p class="list-item-text"><%= quiz.highest_score %> / <%= quiz.out_of %></p>
       <% } else { %>
         <p class="list-item-text">N/A</p>
       <% } %>
@@ -55,13 +50,8 @@
     <%for (const quiz of favourites) { %>
     <span class="list-item">
       <p class="list-item-text"><%= quiz.title %></p>
-      <% let currentResult;
-      for(const result of results) {
-        if(result.quiz_id === quiz.id) {
-          currentResult = result;
-        }
-      } if (currentResult) { %>
-        <p class="list-item-text"><%= currentResult.highest_score %> / <%= currentResult.out_of %></p>
+      <% if(quiz.highest_score) { %>
+        <p class="list-item-text"><%= quiz.highest_score %> / <%= quiz.out_of %></p>
       <% } else { %>
         <p class="list-item-text">N/A</p>
       <% } %>

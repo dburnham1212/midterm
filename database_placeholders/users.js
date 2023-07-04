@@ -301,6 +301,17 @@ const db = require('../db/connection');
 
 // const getUserById
 
+const getUserById = (id) => {
+  return db
+  .query(`SELECT * FROM users
+  WHERE id = $1 LIMIT 1;`, [id])
+  .then(data => {
+    return data.rows[0];
+  })
+  .catch((err) => {
+    console.log(err.message);
+  });
+}
 
 const getUserByEmail = (email, users) => {
   return db
@@ -328,5 +339,5 @@ module.exports = {
   results,
   generateRandomString,
   getUserByEmail,
-
+  getUserById
 };

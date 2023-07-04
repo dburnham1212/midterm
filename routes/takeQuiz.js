@@ -1,7 +1,7 @@
 const express = require('express');
 const router  = express.Router();
 
-const { users, quizzes, questions, answers, results,  getUserByEmail, generateRandomString } = require("../database_placeholders/users");
+const { users, quizzes, questions, answers, results, generateRandomString, getUserByEmail, getUserById } = require("../database_placeholders/users");
 
 // get route used to allow a user to take a quiz
 router.get('/:id', (req, res) => {
@@ -32,8 +32,10 @@ router.get('/:id', (req, res) => {
   }
 
   // Pass all of the values into the take quiz template and display the quiz
-  const templateVars = {user: users[userID], questions: quizQuestions, answers: quizAnswers, quizID: req.params.id, quiz: currentQuiz };
-  res.render('takeQuiz', templateVars);
+  getUserById(userID).then((user) =>{ // Get the user from the db
+    const templateVars = {user: user, questions: quizQuestions, answers: quizAnswers, quizID: req.params.id, quiz: currentQuiz };
+    res.render('takeQuiz', templateVars);
+  });
 });
 
 module.exports = router;

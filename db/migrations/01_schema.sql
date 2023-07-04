@@ -19,7 +19,7 @@ CREATE TABLE users (
 CREATE TABLE quizs (
   id SERIAL PRIMARY KEY NOT NULL,
   user_id INTEGER REFERENCES users(id) ON DELETE CASCADE,
-  title VARCHAR(255) NOT NULL,
+  name VARCHAR(255) NOT NULL,
   rating INTEGER,
   public BOOLEAN DEFAULT false,
   date_created TIMESTAMP

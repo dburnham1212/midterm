@@ -14,13 +14,17 @@ router.get('/', async (req, res) => {
   const myQuizzes = await getMyQuizzesByID(userID); // get my quizzes from db
   const favQuizzes = await getFavQuizzesByUserId(userID); // get favourite quizzes from the db
 
+
+
   // pass the values to the webpage and display it
   const templateVars = {user: user, quizzes: myQuizzes, favourites: favQuizzes};
   res.render('myQuizzes', templateVars);
 });
 
 
-router.post('/favourites', async (req, res) => {
+
+
+router.post('/:id/favourites', async (req, res) => {
   console.log("========");
   console.log(res.body);
   // console.log(Object.keys(req.body));

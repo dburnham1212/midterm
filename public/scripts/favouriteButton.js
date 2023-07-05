@@ -37,9 +37,11 @@ const loadFavourite = (val) => {
 $(document).ready(function() {
 
   $('.favourite').on('click', function(event) {
-    //event.preventDefault();
+    event.preventDefault();
+    console.log($(this).data("quiz"));
     console.log($(this).val());
-    loadFavourite($(this).val());
+    
+    // loadFavourite($(this).val());
   });
 
 //

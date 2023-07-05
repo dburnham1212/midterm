@@ -19,14 +19,14 @@
   <main>
     <form action="/submitQuiz/<%= quizID %>" method="POST">
       <header class="create-quiz-header">
-        <h1 ><%= quiz[0].title %></h1>
+        <h1 ><%= quiz.title %></h1>
       </header>
       <% let count = 1;
       for(const question of questions){ %>
       <div class="question-card">
         <div class="question-container">
           <label>Question <%= count %>:</label>
-          <p><%= question.text %></p>
+          <p><%= question.question_text %></p>
         </div>
         <% let answerCount = 1;
           for(const answer of answers) {
@@ -34,7 +34,7 @@
         <div class="answer-container">
           <p><%= answerCount %>: </p>
           <p class = "answer-text-field"><%= answer.text %></p>
-          <input class="answer-checkbox" name=<%- question.id %> value=<%- answer.id %> type= "radio">
+          <input class="answer-checkbox" name="<%- question.id %>" value="<%- answer.id %>" type= "radio">
         </div>
         <% answerCount ++; } } %>
       </div>

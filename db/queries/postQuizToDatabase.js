@@ -16,48 +16,49 @@ const insertusersDatabase = function(quiz) {
   return db.query(questString, container);
 }
 
-const insertQuizsDatabase = function(title) {
+const insertQuizsDatabase = function(quiz) {
   const questString = `
   INSERT INTO quizs (
-    title
+    user_id, title, rating, public
   )
   VALUES (
-    $1
+    $1, $2, $3, $4
   );
   `;
-  const container = [`${title}`];
+  const container = [`${quiz.user_id}`, `${quiz.title}`, `${quiz.rating}`, `${quiz.public}`];
   return db.query(questString, container);
 }
 
-const insertquestionsDatabase = function(text) {
+const insertQuestionToDatabase = async(question) => {
   const questString = `
   INSERT INTO questions (
-    title
+    quiz_id, question_text, question_order
   )
   VALUES (
-    $1
+    $1, $2, $3
   );
   `;
 
-  const container = [`${text}`];
-  return db.query(questString, container);
+  const container = [`${question.quiz_id}`, `${question.question_text}`, `${question.question_order}`];
+  return await db.query(questString, container);
 }
 
 
 const insertanswersDatabase = function(answer) {
   const questString = `
   INSERT INTO answers (
-    text, is_correct
+    question_id, text, is_correct
   )
   VALUES (
-    $1, $2
+    $1, $2, $3
   );
   `;
 
-  const container = [`${answer.text}`, `${answer.is_correct}`];
+  const container = [`${answer.question_id}`, `${answer.text}`, `${answer.is_correct}`];
   return db.query(questString, container);
 }
 
+// INSERT INTO results (user_id, quiz_id, highest_score, last_score, out_of, is_favorite, rating) VALUES (1, 1, 0, 0, 0, true, 4);
 const addResultToDatabase = function(result) {
   const questString = `
   INSERT INTO results (
@@ -71,5 +72,15 @@ const addResultToDatabase = function(result) {
   return db.query(questString, container);
 }
 
+const updateResult = function(result) {
+  const questString = `
+    UPDATE results
+    SET highest_score = $1, last_score = $2, out_of = $3, is_favorite = $4, rating = $5
+    WHERE results.id = ${result.id};
+  `;
+  const container = [`${result.highest_score}`, `${result.last_score}`, `${result.out_of}`, `${result.is_favorite}`, `${result.rating}`];
+  return db.query(questString, container);
+}
 
-module.exports = { insertQuizsDatabase, insertquestionsDatabase, insertanswersDatabase, addResultToDatabase };
+
+module.exports = { insertQuizsDatabase, insertQuestionToDatabase, insertanswersDatabase, addResultToDatabase, updateResult };

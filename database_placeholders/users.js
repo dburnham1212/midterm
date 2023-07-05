@@ -312,21 +312,19 @@ const getFavQuizzesByUserId = (userID) => {
   });
 }
 
-const getEntireQuiz = (quizID) => {
+const getQuizeByTitleAndUserID = (title, userID) => {
   return db
   .query(`SELECT * FROM quizs
-  JOIN questions ON questions.quiz_id = quizs.id
-  JOIN answers ON questions.id = answers.question_id
-  WHERE quizs.id = $1;
-  `, [quizID])
+  WHERE quizs.title = $1 AND quizs.user_id = $2;
+  `, [title, userID])
   .then(data => {
     console.log(data.rows)
-    return data.rows;
+    return data.rows[0];
   })
   .catch((err) => {
     console.log(err.message);
   });
-}
+};
 
 const getQuizByQuizId = (quizID) => {
   return db
@@ -350,6 +348,20 @@ const getQuestionsByQuizId = (quizID) => {
   .then(data => {
     console.log(data.rows)
     return data.rows;
+  })
+  .catch((err) => {
+    console.log(err.message);
+  });
+}
+
+const getQuestionByQuizIdAndOrder = async (quizID, question_order) => {
+  return await db
+  .query(`SELECT * FROM questions
+  WHERE questions.quiz_id = $1 AND questions.question_order = $2;
+  `, [quizID, question_order])
+  .then(data => {
+    console.log(data.rows)
+    return data.rows[0];
   })
   .catch((err) => {
     console.log(err.message);
@@ -416,9 +428,10 @@ module.exports = {
   getQuizByPublic,
   getMyQuizzesByID,
   getFavQuizzesByUserId,
-  getEntireQuiz,
   getQuizByQuizId,
   getQuestionsByQuizId,
   getAnswersByQuizId,
-  getResultByUserAndQuiz
+  getResultByUserAndQuiz,
+  getQuizeByTitleAndUserID,
+  getQuestionByQuizIdAndOrder
 };

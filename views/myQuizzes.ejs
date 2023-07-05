@@ -10,17 +10,22 @@
 
   <script src="/vendor/jquery-3.0.0.js"></script>
   <script defer src="/scripts/app.js"></script>
+
+
+  <link rel="stylesheet" href="/styles/myQuiz.css" />
 </head>
 <body>
   <%- include('partials/_header') %>
   <!-- middle -->
   <main>
-    <h1 class="text-centered">My Quizzes</h1>
+    <div id="title">
+      <h1 class="text-centered">My Quizzes</h1>
+    </div>
     <span class="list-item">
-      <p class="list-item-text">Quiz Name</p>
-      <p class="list-item-text">Score</p>
-      <p class="list-item-text">Take</p>
-      <p class="list-item-text">Rating</p>
+      <p class="list-item-main">Quiz Name</p>
+      <p class="list-item-main">Score</p>
+      <p class="list-item-main">Take</p>
+      <p class="list-item-main">Rating</p>
     </span>
 
     <%for (const quiz of quizzes) { %>
@@ -37,15 +42,15 @@
     <% }
     if(quizzes.length === 0){ %>
       <span>
-        <p class = "text-centered"> NONE </p>
+        <p class ="text-centered"> NONE </p>
       </span>
     <% } %>
     <h1 class="text-centered">Favourite Quizzes</h1>
     <span class="list-item">
-      <p class="list-item-text">Quiz Name</p>
-      <p class="list-item-text">Score</p>
-      <p class="list-item-text">Take</p>
-      <p class="list-item-text">Rating</p>
+      <p class="list-item-main">Quiz Name</p>
+      <p class="list-item-main">Score</p>
+      <p class="list-item-main">Take</p>
+      <p class="list-item-main">Rating</p>
     </span>
     <%for (const quiz of favourites) { %>
     <span class="list-item">
@@ -55,7 +60,14 @@
       <% } else { %>
         <p class="list-item-text">N/A</p>
       <% } %>
-      <p class="list-item-text"><a href ="/takeQuiz/<%= quiz.id %>">Take Quiz</a></p>
+      <div id="holder">
+        
+      <div class="button"><a class="btnText" href ="/takeQuiz/<%= quiz.id %>">Take Quiz</a>
+        <div class="btnTwo">
+        <a class="btnText2" href ="/takeQuiz/<%= quiz.id %>">GO!</a>
+        </div>
+      </div>
+      </div>
       <p class="list-item-text"><%= quiz.rating %></p>
     </span>
     <% }

@@ -1,18 +1,28 @@
-nav{
+$myBlue: #138fc1;
+$myYellow: #fcc045;
+$myRed: #da5252;
+$myGreen: #21b2bb;
+$myBrown: #100d0b;
+$myGrey: #666;
+$myBlueDark: #012d3d;
+$myFontSize: 22px;
+
+
+nav {
   height: 100px;
-  background-color: #071013;
+  background-color: $myBlueDark;
   width: 100vw;
   display: flex;
   align-items: center;
   justify-content: space-between;
-  border-bottom: 5px solid #30c5ff;
+  border-bottom: 5px solid $myRed;
   padding: 2em;
   position: fixed;
 }
 
 .nav-link{
   text-decoration: none;
-  color: white;
+  color: #fff;
   margin: 1em;
   font-family: 'Oswald', sans-serif;
   font-size: 1.25em;
@@ -20,7 +30,7 @@ nav{
 
 .nav-link:hover{
   text-decoration: none;
-  color: grey;
+  color: $myYellow;
 }
 
 .nav-section{
@@ -30,7 +40,7 @@ nav{
 
 .logout-button{
   background: transparent;
-  border: 1px solid white;
+  border: 1px $myBlue;
 }
 
 .logo{

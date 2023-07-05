@@ -7,6 +7,7 @@ DROP TABLE IF EXISTS questions CASCADE;
 DROP TABLE IF EXISTS answers CASCADE;
 DROP TABLE IF EXISTS taker_answers CASCADE;
 DROP TABLE IF EXISTS results CASCADE;
+DROP TABLE IF EXISTS favourites CASCADE;
 
 CREATE TABLE users (
   id SERIAL PRIMARY KEY NOT NULL,
@@ -32,8 +33,13 @@ CREATE TABLE results (
   highest_score TEXT,
   last_score TEXT,
   out_of INTEGER,
-  is_favorite BOOLEAN DEFAULT false,
   rating INTEGER
+);
+
+CREATE TABLE favourites (
+  id SERIAL PRIMARY KEY NOT NULL,
+  user_id INTEGER REFERENCES users(id) ON DELETE CASCADE,
+  quiz_id INTEGER REFERENCES quizs(id) ON DELETE CASCADE
 );
 
 CREATE TABLE questions (
@@ -49,14 +55,6 @@ CREATE TABLE answers (
   text VARCHAR(255) NOT NULL,
   is_correct BOOLEAN DEFAULT false
 );
-
--- CREATE TABLE taker_answers (
---   id SERIAL PRIMARY KEY NOT NULL,
---   result_id INTEGER REFERENCES results(id) ON DELETE CASCADE,
---   answer_id INTEGER REFERENCES answers(id) ON DELETE CASCADE,
---   option VARCHAR(255) NOT NULL,
---   is_correct BOOLEAN
--- );
 
  \i db/seeds/0_users.sql
 

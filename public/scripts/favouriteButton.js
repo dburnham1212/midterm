@@ -40,8 +40,8 @@ $(document).ready(function() {
     event.preventDefault();
     console.log($(this).data("quiz"));
     console.log($(this).val());
-    
-    // loadFavourite($(this).val());
+
+    loadFavourite($(this).val());
   });
 
 //

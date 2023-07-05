@@ -29,7 +29,7 @@
       <p class="list-item-main">Rating</p>
       <p class="list-item-main">Other</p>
     </span>
- <form>
+
     <%for (const quiz of quizzes) { %>
     <span class="list-item">
       <p class="list-item-text"><%= quiz.title %></p>
@@ -40,16 +40,13 @@
       <% } %>
       <p class="list-item-text"><a href="/takeQuiz/<%= quiz.id %>">Take Quiz3</a></p>
       <p class="list-item-text"><%= quiz.rating %></p>
-
-      <!-- <a><button class="favourite" name="favourites" data-quiz="<%= quiz.id %>" value="[ <%-user.id%>, <%-quiz.id%> ]"><i class="fa-sharp fa-regular fa-heart" href=""></i></button></a>
-      <a><button class="share"><i class="fa-solid fa-share-nodes"href=""></i></button></a> -->
+      <a><button class="favourite" name="favourites" data-quiz="<%=quiz.id%>" value="[ <%-user.id%>, <%-quiz.id%> ]"><i class="fa-sharp fa-regular fa-heart" href=""></i></button></a>
+      <a><button class="share"><i class="fa-solid fa-share-nodes"href=""></i></button></a>
       <!-- <a><button class="btn"><i class="fa-sharp fa-regular fa-heart"href=""></i></button></a> -->
 
     </span>
-
-
     <% } %>
-  </form>
+
     <% if(quizzes.length === 0){ %>
       <span>
         <p class ="text-centered"> NONE5 </p>

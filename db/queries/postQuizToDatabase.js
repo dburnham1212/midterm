@@ -25,7 +25,7 @@ const insertUserToDatabase = function(user) {
     $1, $2, $3
   );
   `;
-  const container = ["username", `${user.email}`, `${user.password}`];
+  const container = [`${user.username}`, `${user.email}`, `${user.password}`];
   return db.query(userString, container);
 }
 

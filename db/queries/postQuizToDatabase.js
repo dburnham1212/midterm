@@ -16,6 +16,19 @@ const insertusersDatabase = function(quiz) {
   return db.query(questString, container);
 }
 
+const insertUserToDatabase = function(user) {
+  const userString = `
+  INSERT INTO users (
+    username, email, password
+  )
+  VALUES (
+    $1, $2, $3
+  );
+  `;
+  const container = ["username", `${user.email}`, `${user.password}`];
+  return db.query(userString, container);
+}
+
 const insertQuizsDatabase = function(quiz) {
   const questString = `
   INSERT INTO quizs (
@@ -29,7 +42,7 @@ const insertQuizsDatabase = function(quiz) {
   return db.query(questString, container);
 }
 
-const insertQuestionToDatabase = async(question) => {
+const insertQuestionToDatabase = (question) => {
   const questString = `
   INSERT INTO questions (
     quiz_id, question_text, question_order
@@ -40,7 +53,7 @@ const insertQuestionToDatabase = async(question) => {
   `;
 
   const container = [`${question.quiz_id}`, `${question.question_text}`, `${question.question_order}`];
-  return await db.query(questString, container);
+  return db.query(questString, container);
 }
 
 
@@ -83,4 +96,4 @@ const updateResult = function(result) {
 }
 
 
-module.exports = { insertQuizsDatabase, insertQuestionToDatabase, insertanswersDatabase, addResultToDatabase, updateResult };
+module.exports = { insertQuizsDatabase, insertQuestionToDatabase, insertanswersDatabase, addResultToDatabase, updateResult, insertUserToDatabase };

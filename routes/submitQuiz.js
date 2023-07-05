@@ -1,31 +1,14 @@
 const express = require('express');
 const router  = express.Router();
 
-const { users, quizzes, questions, answers, results, generateRandomString, getUserByEmail, getUserById, getQuizByQuizId, getQuestionsByQuizId, getAnswersByQuizId, getResultByUserAndQuiz } = require("../database_placeholders/users");
+const { getUserByEmail, getUserById, getQuizByQuizId, getQuestionsByQuizId, getAnswersByQuizId, getResultByUserAndQuiz } = require("../database_placeholders/users");
 
 const { addResultToDatabase, updateResult } = require("../db/queries/postQuizToDatabase");
 
 // get route for quiz submission
 router.get('/:id', (req, res) => {
   const userID = req.session.userID; // Set user id to id set in the cookie
-  //let currentQuiz;
-  // cycle through the quizzes and find the one that maches the url provided
-  // for(const quiz of quizzes){
-  //   if(quiz.id === req.params.id){
-  //     currentQuiz=quiz;
-  //   }
-  // }
   getQuizByQuizId(req.params.id).then(currentQuiz => {
-    // let currentResult;
-    // cycle through results and find the one that matches the quiz that was selected
-    // console.log(results);
-    // console.log(userID);
-    // console.log(req.params.id);
-    // for(const result of results) {
-    //   if(result.quiz_id === Number(req.params.id) && userID === result.user_id){
-    //     currentResult=result;
-    //   }
-    // }
     getResultByUserAndQuiz(userID, currentQuiz.id).then((result) => {
       // pass the values to the webpage and display it
       getUserById(userID).then((user) =>{ // Get the user from the db

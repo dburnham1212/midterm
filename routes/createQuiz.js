@@ -1,7 +1,7 @@
 const express = require('express');
 const router = express.Router();
 
-const { users, quizzes, questions, answers, results, generateRandomString, getUserByEmail, getUserById, getQuizeByTitleAndUserID, getQuestionByQuizIdAndOrder } = require("../database_placeholders/users");
+const { getUserByEmail, getUserById, getQuizeByTitleAndUserID, getQuestionByQuizIdAndOrder } = require("../database_placeholders/users");
 
 const { insertQuizsDatabase, insertQuestionToDatabase, insertanswersDatabase } = require("../db/queries/postQuizToDatabase");
 
@@ -46,8 +46,6 @@ router.post('/', async (req, res) => {
       const thisQuestion = await getQuestionByQuizIdAndOrder(quiz.id, questionCounter);
       let correct = Number(req.body[`answer${questionCounter}`])
       let currentAnswers = req.body[`input${questionCounter}`];
-      console.log("=================");
-      console.log(thisQuestion);
       for (let i = 0; i < currentAnswers.length; i++) {
         let currentAnswer = { // push the answer to the database
           question_id: thisQuestion.id,

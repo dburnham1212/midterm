@@ -1,7 +1,7 @@
 const express = require('express');
 const router  = express.Router();
 
-const { users, quizzes, questions, answers, results, generateRandomString, getUserByEmail, getUserById, getQuizByQuizId, getQuestionsByQuizId, getAnswersByQuizId } = require("../database_placeholders/users");
+const { getUserByEmail, getUserById, getQuizByQuizId, getQuestionsByQuizId, getAnswersByQuizId } = require("../database_placeholders/users");
 
 
 // get route used to allow a user to take a quiz

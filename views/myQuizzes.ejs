@@ -15,12 +15,14 @@
   <%- include('partials/_header') %>
   <!-- middle -->
   <main>
-    <h1 class="text-centered">My Quizzes</h1>
+    <div id="title">
+      <h1 class="text-centered">My Quizzes</h1>
+    </div>
     <span class="list-item">
-      <p class="list-item-text">Quiz Name</p>
-      <p class="list-item-text">Score</p>
-      <p class="list-item-text">Take</p>
-      <p class="list-item-text">Rating</p>
+      <p class="list-item-main">Quiz Name</p>
+      <p class="list-item-main">Score</p>
+      <p class="list-item-main">Take</p>
+      <p class="list-item-main">Rating</p>
     </span>
 
     <%for (const quiz of quizzes) { %>
@@ -37,15 +39,15 @@
     <% }
     if(quizzes.length === 0){ %>
       <span>
-        <p class = "text-centered"> NONE </p>
+        <p class ="text-centered"> NONE </p>
       </span>
     <% } %>
     <h1 class="text-centered">Favourite Quizzes</h1>
     <span class="list-item">
-      <p class="list-item-text">Quiz Name</p>
-      <p class="list-item-text">Score</p>
-      <p class="list-item-text">Take</p>
-      <p class="list-item-text">Rating</p>
+      <p class="list-item-main">Quiz Name</p>
+      <p class="list-item-main">Score</p>
+      <p class="list-item-main">Take</p>
+      <p class="list-item-main">Rating</p>
     </span>
     <%for (const quiz of favourites) { %>
     <span class="list-item">

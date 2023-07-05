@@ -7,7 +7,7 @@ const express = require('express');
 const morgan = require('morgan');
 const cookieSession = require('cookie-session');
 
-const { users, quizzes, questions, answers, results, getUserByEmail, generateRandomString } = require("./database_placeholders/users");
+const { getUserByEmail, getUserById } = require("./database_placeholders/users");
 
 const PORT = process.env.PORT || 8080;
 const app = express();
@@ -68,10 +68,12 @@ app.use('/submitQuiz', submitQuizRoutes); // Using Public Quizzes Routes
 // Warning: avoid creating more routes in this file!
 // Separate them into separate routes files (see above).
 
-app.get('/', (req, res) => {
-  const userID = req.session.userID;
+app.get('/', async(req, res) => {
+  const userID = req.session.userID; // Set user id to id set in the cookie
 
-  const templateVars = {user: users[userID]};
+  // pass values into template and render it
+  const user = await getUserById(userID);// Get the user from the db
+  const templateVars = { user: user }
   res.render('index', templateVars);
 });
 

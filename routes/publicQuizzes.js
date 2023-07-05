@@ -12,13 +12,11 @@ router.get('/', async ( req, res) => {
   const quizzes = await getQuizByPublic();
 
   for(const quiz of quizzes){
-
     let average = await getQuizAvgRatingById(quiz.id);
     quiz.rating = parseFloat(average.rating);
     if(quiz.rating){
       await updateQuizRating(quiz.id, quiz.rating);
     }
-
   }
 
   const templateVars = { user: user, quizzes: quizzes};

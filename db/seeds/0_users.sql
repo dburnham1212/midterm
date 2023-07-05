@@ -164,6 +164,9 @@ INSERT INTO answers (question_id, text, is_correct) VALUES (20, 'Sure', false);
 
 
 INSERT INTO results (user_id, quiz_id, highest_score, last_score, out_of, is_favorite, rating) VALUES (1, 1, 0, 0, 0, true, 4);
+INSERT INTO results (user_id, quiz_id, highest_score, last_score, out_of, is_favorite, rating) VALUES (2, 1, 0, 0, 0, true, 3);
+INSERT INTO results (user_id, quiz_id, highest_score, last_score, out_of, is_favorite, rating) VALUES (3, 1, 0, 0, 0, true, 1);
+INSERT INTO results (user_id, quiz_id, highest_score, last_score, out_of, is_favorite, rating) VALUES (4, 1, 0, 0, 0, true, 5);
 INSERT INTO results (user_id, quiz_id, highest_score, last_score, out_of, is_favorite, rating) VALUES (2, 2, 0, 0, 0, false, 3);
 INSERT INTO results (user_id, quiz_id, highest_score, last_score, out_of, is_favorite, rating) VALUES (1, 3, 0, 0, 0, false, 2);
 

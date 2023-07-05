@@ -13,7 +13,7 @@ CREATE TABLE users (
   username VARCHAR(255) NOT NULL,
   email VARCHAR(255) NOT NULL,
   password VARCHAR(255) NOT NULL,
-  date_created TIMESTAMP
+  date_created TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
 
 CREATE TABLE quizs (
@@ -22,7 +22,7 @@ CREATE TABLE quizs (
   title VARCHAR(255) NOT NULL,
   rating INTEGER,
   public BOOLEAN DEFAULT false,
-  date_created TIMESTAMP
+  date_created TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
 
 CREATE TABLE results (

@@ -7,4 +7,3 @@ JOIN quizs ON user_id = users.id
 JOIN results ON results.quiz_id = quizs.id
 JOIN questions ON questions.quiz_id = quizs.id
 JOIN answers ON question_id = questions.id
-GROUP BY users.id;

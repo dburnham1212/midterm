@@ -24,3 +24,6 @@
 -- JOIN quizs ON results.quiz_id = quizs.id
 -- JOIN users ON results.user_id = users.id
 -- WHERE users.id = 1 AND quizs.id = 1;
+
+SELECT * FROM quizs
+WHERE quiz.title = 1 AND quiz.user_id = 2;

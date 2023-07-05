@@ -22,7 +22,6 @@ router.post('/', async (req, res) => {
   let questionCounter = 1; // Setup a value to cycle through the questions
 
   if (req.body[`${questionCounter}`]) { // check if req.body has a question based off of the number provide
-    //const title = req.body[`quiz-title`]; // set the tile of the quiz based off of req.body
 
     // push an object to the database with the quiz id, userId, and quiz title
     const newQuiz = {
@@ -46,6 +45,7 @@ router.post('/', async (req, res) => {
       const thisQuestion = await getQuestionByQuizIdAndOrder(quiz.id, questionCounter);
       let correct = Number(req.body[`answer${questionCounter}`])
       let currentAnswers = req.body[`input${questionCounter}`];
+      console.log(thisQuestion);
       for (let i = 0; i < currentAnswers.length; i++) {
         let currentAnswer = { // push the answer to the database
           question_id: thisQuestion.id,

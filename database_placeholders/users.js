@@ -19,7 +19,6 @@ const getQuizByPublic = () => {
   WHERE public = true;
   `)
   .then(data => {
-    console.log(data.rows)
     return data.rows;
   })
   .catch((err) => {
@@ -30,11 +29,10 @@ const getQuizByPublic = () => {
 const getMyQuizzesByID = (userID) => {
   return db
   .query(`SELECT quizs.id, quizs.user_id, quizs.title, results.highest_score, results.out_of FROM quizs
-  JOIN results ON quizs.id = results.quiz_id
+  LEFT OUTER JOIN results ON quizs.id = results.quiz_id
   WHERE quizs.user_id = $1;
   `, [userID])
   .then(data => {
-    console.log(data.rows)
     return data.rows;
   })
   .catch((err) => {
@@ -44,12 +42,11 @@ const getMyQuizzesByID = (userID) => {
 
 const getFavQuizzesByUserId = (userID) => {
   return db
-  .query(`SELECT quizs.id, quizs.user_id, quizs.title, results.highest_score, results.out_of FROM quizs
+  .query(`SELECT quizs.id as quiz_id, quizs.user_id as id, quizs.title, results.highest_score, results.out_of FROM quizs
   LEFT OUTER JOIN results ON quizs.id = results.quiz_id
   WHERE results.user_id = $1 AND results.is_favorite = true;
   `, [userID])
   .then(data => {
-    console.log(data.rows)
     return data.rows;
   })
   .catch((err) => {
@@ -63,7 +60,6 @@ const getQuizeByTitleAndUserID = (title, userID) => {
   WHERE quizs.title = $1 AND quizs.user_id = $2;
   `, [title, userID])
   .then(data => {
-    console.log(data.rows)
     return data.rows[0];
   })
   .catch((err) => {
@@ -77,7 +73,6 @@ const getQuizByQuizId = (quizID) => {
   WHERE quizs.id = $1;
   `, [quizID])
   .then(data => {
-    console.log(data.rows)
     return data.rows[0];
   })
   .catch((err) => {
@@ -91,7 +86,6 @@ const getQuestionsByQuizId = (quizID) => {
   WHERE questions.quiz_id = $1;
   `, [quizID])
   .then(data => {
-    console.log(data.rows)
     return data.rows;
   })
   .catch((err) => {
@@ -105,7 +99,6 @@ const getQuestionByQuizIdAndOrder = (quizID, question_order) => {
   WHERE questions.quiz_id = $1 AND questions.question_order = $2;
   `, [quizID, question_order])
   .then(data => {
-    console.log(data.rows)
     return data.rows[0];
   })
   .catch((err) => {
@@ -121,7 +114,6 @@ const getResultByUserAndQuiz = (userID, quizID) => {
   WHERE users.id = $1 AND quizs.id = $2;
   `, [userID, quizID])
   .then(data => {
-    console.log(data.rows)
     return data.rows[0];
   })
   .catch((err) => {
@@ -131,12 +123,25 @@ const getResultByUserAndQuiz = (userID, quizID) => {
 
 const getAnswersByQuizId = (quiz_id) => {
   return db
-  .query(`SELECT answers.question_id, answers.text, answers.is_correct FROM answers
+  .query(`SELECT answers.id, answers.question_id, answers.text, answers.is_correct FROM answers
   JOIN questions ON questions.id = answers.question_id
   WHERE questions.quiz_id = $1;
   `, [quiz_id])
   .then(data => {
-    console.log(data.rows)
+    return data.rows;
+  })
+  .catch((err) => {
+    console.log(err.message);
+  });
+}
+
+const getCorrectAnswersByQuizId = (quiz_id) => {
+  return db
+  .query(`SELECT answers.id, answers.question_id, answers.text, answers.is_correct FROM answers
+  JOIN questions ON questions.id = answers.question_id
+  WHERE questions.quiz_id = $1 AND is_correct=true;
+  `, [quiz_id])
+  .then(data => {
     return data.rows;
   })
   .catch((err) => {
@@ -172,5 +177,6 @@ module.exports = {
   getAnswersByQuizId,
   getResultByUserAndQuiz,
   getQuizeByTitleAndUserID,
-  getQuestionByQuizIdAndOrder
+  getQuestionByQuizIdAndOrder,
+  getCorrectAnswersByQuizId
 };

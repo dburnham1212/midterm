@@ -28,7 +28,11 @@
       <p class="list-item-text"><%= quiz.title %></p>
       <p class="list-item-text"><%= quiz.email %></p>
       <p class="list-item-text"><a href="/takeQuiz/<%= quiz.id %>">Take Quiz</a></p>
-      <p class="list-item-text"><%= quiz.rating %></p>
+      <% if(quiz.rating) { %>
+        <p class="list-item-text"><%= quiz.rating %></p>
+      <% } else { %>
+        <p class="list-item-text">N/A</p>
+      <% }  %>
     </span>
     <% }%>
   </main>

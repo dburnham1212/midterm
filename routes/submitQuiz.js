@@ -72,6 +72,7 @@ router.post('/:id', async (req, res) => {
     }
   }
 
+
   // redirect to submit quiz route
   res.redirect(`/submitQuiz/${req.params.id}`);
 });

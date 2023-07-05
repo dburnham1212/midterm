@@ -7,7 +7,7 @@ const db = require('../connection');
 //   insertquestionsDatabase();
 // }
 
-const insertusersDatabase = function(quiz) {
+const insertusersDatabase = function (quiz) {
   const questString = `
   INSERT INTO users;
   `;
@@ -16,7 +16,7 @@ const insertusersDatabase = function(quiz) {
   return db.query(questString, container);
 }
 
-const insertUserToDatabase = function(user) {
+const insertUserToDatabase = function (user) {
   const userString = `
   INSERT INTO users (
     username, email, password
@@ -29,7 +29,7 @@ const insertUserToDatabase = function(user) {
   return db.query(userString, container);
 }
 
-const insertQuizsDatabase = function(quiz) {
+const insertQuizsDatabase = function (quiz) {
   const questString = `
   INSERT INTO quizs (
     user_id, title, rating, public
@@ -57,7 +57,7 @@ const insertQuestionToDatabase = (question) => {
 }
 
 
-const insertanswersDatabase = function(answer) {
+const insertanswersDatabase = function (answer) {
   const questString = `
   INSERT INTO answers (
     question_id, text, is_correct
@@ -72,7 +72,7 @@ const insertanswersDatabase = function(answer) {
 }
 
 // INSERT INTO results (user_id, quiz_id, highest_score, last_score, out_of, is_favorite, rating) VALUES (1, 1, 0, 0, 0, true, 4);
-const addResultToDatabase = function(result) {
+const addResultToDatabase = function (result) {
   const questString = `
   INSERT INTO results (
     user_id, quiz_id, highest_score, last_score, out_of, is_favorite, rating
@@ -85,7 +85,7 @@ const addResultToDatabase = function(result) {
   return db.query(questString, container);
 }
 
-const updateResult = function(result) {
+const updateResult = function (result) {
   const questString = `
     UPDATE results
     SET highest_score = $1, last_score = $2, out_of = $3, is_favorite = $4, rating = $5
@@ -95,5 +95,14 @@ const updateResult = function(result) {
   return db.query(questString, container);
 }
 
+const updateQuizRating = function (quizID, newRating) {
+  const ratingString = `
+  UPDATE quizs
+    SET rating = $1
+    WHERE id = $2; `
+  const container = [`${newRating}`, `${quizID}`];
+  return db.query(ratingString, container);
+}
 
-module.exports = { insertQuizsDatabase, insertQuestionToDatabase, insertanswersDatabase, addResultToDatabase, updateResult, insertUserToDatabase };
+
+module.exports = { insertQuizsDatabase, insertQuestionToDatabase, insertanswersDatabase, addResultToDatabase, updateResult, insertUserToDatabase, updateQuizRating };

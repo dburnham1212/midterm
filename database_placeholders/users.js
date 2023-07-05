@@ -14,9 +14,11 @@ const getUserById = (id) => {
 
 const getQuizByPublic = () => {
   return db
-  .query(`SELECT quizs.id, quizs.user_id, quizs.title, quizs.rating, users.email FROM quizs
+  .query(`SELECT quizs.id, quizs.user_id, quizs.title, quizs.rating, users.email
+  FROM quizs
   JOIN users ON users.id = user_id
-  WHERE public = true;
+  WHERE public = true
+  ORDER BY quizs.date_created;
   `)
   .then(data => {
     return data.rows;
@@ -106,6 +108,20 @@ const getQuestionByQuizIdAndOrder = (quizID, question_order) => {
   });
 }
 
+const getQuizAvgRatingById = (quizID) => {
+  return db
+  .query(`SELECT ROUND(AVG(results.rating), 2) AS rating FROM quizs
+  LEFT OUTER JOIN results ON results.quiz_id = quizs.id
+  WHERE quizs.id = $1;
+  `, [quizID])
+  .then(data => {
+    return data.rows[0];
+  })
+  .catch((err) => {
+    console.log(err.message);
+  });
+}
+
 const getResultByUserAndQuiz = (userID, quizID) => {
   return db
   .query(`SELECT results.id, results.highest_score, results.last_score, results.out_of, results.is_favorite, results.rating FROM results
@@ -154,10 +170,7 @@ const getUserByEmail = (email, users) => {
   .query(`SELECT * FROM users
   WHERE email = $1 LIMIT 1;`, [email])
   .then(data => {
-    // console.log(data.rows[0]);
-    //'test@gmail.com'
     if (data.rows[0].email === email) {
-      //'userID'
       return data.rows[0];
     }
   })
@@ -178,5 +191,6 @@ module.exports = {
   getResultByUserAndQuiz,
   getQuizeByTitleAndUserID,
   getQuestionByQuizIdAndOrder,
-  getCorrectAnswersByQuizId
+  getCorrectAnswersByQuizId,
+  getQuizAvgRatingById
 };

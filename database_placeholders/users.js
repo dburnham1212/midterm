@@ -189,14 +189,25 @@ const getUserByEmail = (email, users) => {
 //   const container = [`${newRating}`, `${quizID}`];
 //   return db.query(ratingString, container);
 // }
-
-
-const getFavourite = function (quizID, userID) {
+const getFavourite = function (userID, quizID) {
   return db
-  .query(`Update
-  SET is_favorite = true
+  .query(`SELECT is_favorite FROM results
   WHERE user_id = $1
-  AND quiz_id = $2`, [quizID, userID]);
+  AND quiz_id = $2`, [userID, quizID]).then(data => {
+    console.log(data.rows[0]);
+    return data.rows[0];
+  })
+  .catch((err) => {
+    console.log(err.message);
+  })
+};
+
+const updateFavourite = function (userID, quizID, isTrue) {
+  return db
+  .query(`UPDATE results
+  SET is_favorite = $3
+  WHERE user_id = $1
+  AND quiz_id = $2`, [userID, quizID, isTrue]);
 };
 
 module.exports = {
@@ -213,5 +224,6 @@ module.exports = {
   getQuestionByQuizIdAndOrder,
   getCorrectAnswersByQuizId,
   getQuizAvgRatingById,
-  getFavourite
+  getFavourite,
+  updateFavourite
 };

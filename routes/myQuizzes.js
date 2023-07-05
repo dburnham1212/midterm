@@ -1,7 +1,7 @@
 const express = require('express');
 const router  = express.Router();
 
-const { getUserByEmail, getUserById, getMyQuizzesByID, getFavQuizzesByUserId, getFavourite } = require("../database_placeholders/users");
+const { getUserByEmail, getUserById, getMyQuizzesByID, getFavQuizzesByUserId, getFavourite, updateFavourite } = require("../database_placeholders/users");
 
 const { addResultToDatabase } = require("../db/queries/postQuizToDatabase");
 
@@ -21,12 +21,19 @@ router.get('/', async (req, res) => {
 
 
 router.post('/favourites', async (req, res) => {
- console.log(req.body);
- const userID = req.session.userID;
+  console.log("========");
+  console.log(res.body);
+  // console.log(Object.keys(req.body));
+  let keys = Object.keys(req.body).toString().split(",");
+  let userID = Number(keys[0]);
+  let quizID = Number(keys[1]);
+  console.log("========");
+  const favourite = await getFavourite(userID, quizID);
+  await updateFavourite(userID, quizID, !favourite.is_favorite);
 
- getFavourite(req.body);
 
- res.redirect('/myQuizzes');
+
+  res.redirect('/myQuizzes');
 });
 
 

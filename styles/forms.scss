@@ -15,6 +15,17 @@ $myBackground: grey;
   align-items: center;
 }
 
+.form-inline-field{
+  display: flex;
+  align-items: center;
+  gap: 1em
+}
+
+.form-checkbox{
+  height: 1em;
+  width: 1em;
+}
+
 .form-field{
   margin-top: 1em;
 }

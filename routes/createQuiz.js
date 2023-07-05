@@ -20,15 +20,17 @@ router.get('/', (req, res) => {
 router.post('/', async (req, res) => {
   const userID = req.session.userID; // Set user id to id set in the cookie
   let questionCounter = 1; // Setup a value to cycle through the questions
-
   if (req.body[`${questionCounter}`]) { // check if req.body has a question based off of the number provide
-
+    let is_public = false;
+    if(req.body.public){
+      is_public = true;
+    }
     // push an object to the database with the quiz id, userId, and quiz title
     const newQuiz = {
       user_id: userID,
       title: req.body[`quiz-title`],
       rating: 4,
-      public: true
+      public: is_public
     }
     await insertQuizsDatabase(newQuiz);
     const quiz = await getQuizeByTitleAndUserID(req.body[`quiz-title`], userID);

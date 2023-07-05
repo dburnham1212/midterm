@@ -4,7 +4,7 @@
  *   these routes are mounted onto /users
  * See: https://expressjs.com/en/guide/using-middleware.html#middleware.router
  */
-
+const bcrypt = require('bcryptjs');
 const express = require('express');
 const router = express.Router();
 
@@ -36,7 +36,7 @@ router.get('/register', async (req, res) => {
   // pass values into template and render it
   const user = await getUserById(userID);// Get the user from the db
   const templateVars = { user: user }
-  res.render('login', templateVars);
+  res.render('register', templateVars);
 });
 
 
@@ -47,33 +47,49 @@ router.post('/login', async (req, res) => {
   //users['userID'] = {id:'userID', email:'test@gmail.com', password:'password'}
   const email = req.body.email; // Get the email from the template
   const password = req.body.password;
-  const rePassword = req.body.rePassword;
   const user = await getUserByEmail(email); // find the user from the database
-
+  console.log(user);
   if (user) { // if the user exists
     req.session.userID = user.id; // set the cookie based off of the user that we found
-    res.redirect("/publicQuizzes") // redirect to public quizzes
+    console.log(user.password);
+    if (bcrypt.compareSync(password, user.password)) {
+      return res.redirect("/publicQuizzes") // redirect to public quizzes
+    } else {
+      return res.send('password wrong');
+    }
   } else {
-    res.redirect('/users/login'); // redirect back to login form
+    return res.send('no email exits'); // redirect back to login form
   }
 });
 
 router.post('/register', async (req, res) => {
-  const email = req.body.email; // Get the email from the template
-  const password = req.body.password; // Get the password from the template
-  const rePassword = req.body.rePassword;
+ console.log(req.body);
+  const username = req.body.username;
+  let email = req.body.email; // Get the email from the template
+  let password = req.body.password; // Get the password from the template
+  let rePassword = req.body.rePassword;
+
   let user = await getUserByEmail(email)// Check if there is a user already in the database
 
   if (user) { // if we do have a user with those credentials
-    res.redirect('/users/register'); // redirect to the register page
+    return res.redirect('/users/register'); // redirect to the register page
   } else { // if not create a new user and add them to the db
-    const newUser = { email: email, password: password } // creating a new user and adding to db
-
-    await insertUserToDatabase(newUser);
-    user = await getUserByEmail(email);
-
-    req.session.userID = user.id;
-    res.redirect('/publicQuizzes');
+    const salt = bcrypt.genSaltSync(10);
+    let hashPassword = bcrypt.hashSync(password, salt);
+    let hashRePassword = bcrypt.hashSync(rePassword, salt)
+    if(hashPassword === hashRePassword){
+      const newUser = { username: username, email: email, password: hashPassword } // creating a new user and adding to db
+  
+      await insertUserToDatabase(newUser);
+      user = await getUserByEmail(email);
+  
+  
+  
+      req.session.userID = user.id;
+      return res.redirect('/publicQuizzes');
+    } else {
+      return res.send("you password doesn't match!");
+    }
   }
 });
 

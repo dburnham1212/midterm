@@ -61,7 +61,7 @@ $(() => {
       })
     })
 
-
+    addQuestion();
 
     // const createQuizElement = function(quiz) {
     //   const $quizcontain = (`<quiz>

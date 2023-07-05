@@ -179,6 +179,26 @@ const getUserByEmail = (email, users) => {
   });
  };
 
+//  const getUserByPublic = ()
+
+// const favourite = function (quizID, userId) {
+//   const ratingString =  `
+//   UPDATE
+//     SET favorite = $1
+//     WHERE id = $2; `
+//   const container = [`${newRating}`, `${quizID}`];
+//   return db.query(ratingString, container);
+// }
+
+
+const getFavourite = function (quizID, userID) {
+  return db
+  .query(`Update
+  SET is_favorite = true
+  WHERE user_id = $1
+  AND quiz_id = $2`, [quizID, userID]);
+};
+
 module.exports = {
   getUserByEmail,
   getUserById,
@@ -192,5 +212,6 @@ module.exports = {
   getQuizeByTitleAndUserID,
   getQuestionByQuizIdAndOrder,
   getCorrectAnswersByQuizId,
-  getQuizAvgRatingById
+  getQuizAvgRatingById,
+  getFavourite
 };

@@ -10,6 +10,7 @@
 
   <script src="/vendor/jquery-3.0.0.js"></script>
   <script defer src="/scripts/app.js"></script>
+  <script defer src="/scripts/favouriteButton.js"></script>
 
 
   <link rel="stylesheet" href="/styles/myQuiz.css" />
@@ -26,8 +27,9 @@
       <p class="list-item-main">Score</p>
       <p class="list-item-main">Take</p>
       <p class="list-item-main">Rating</p>
+      <p class="list-item-main">Other</p>
     </span>
-
+ <form>
     <%for (const quiz of quizzes) { %>
     <span class="list-item">
       <p class="list-item-text"><%= quiz.title %></p>
@@ -36,13 +38,21 @@
       <% } else { %>
         <p class="list-item-text">N/A</p>
       <% } %>
-      <p class="list-item-text"><a href="/takeQuiz/<%= quiz.id %>">Take Quiz</a></p>
+      <p class="list-item-text"><a href="/takeQuiz/<%= quiz.id %>">Take Quiz3</a></p>
       <p class="list-item-text"><%= quiz.rating %></p>
+
+      <a><button class="favourite" value="[ <%-user.id%>, <%-quiz.id%> ]"><i class="fa-sharp fa-regular fa-heart" href=""></i></button></a>
+      <a><button class="share"><i class="fa-solid fa-share-nodes"href=""></i></button></a>
+      <a><button class="btn"><i class="fa-sharp fa-regular fa-heart"href=""></i></button></a>
+
     </span>
-    <% }
-    if(quizzes.length === 0){ %>
+
+
+    <% } %>
+  </form>
+    <% if(quizzes.length === 0){ %>
       <span>
-        <p class ="text-centered"> NONE </p>
+        <p class ="text-centered"> NONE5 </p>
       </span>
     <% } %>
     <h1 class="text-centered">Favourite Quizzes</h1>
@@ -51,6 +61,8 @@
       <p class="list-item-main">Score</p>
       <p class="list-item-main">Take</p>
       <p class="list-item-main">Rating</p>
+      <p class="list-item-main">Other</p>
+
     </span>
     <%for (const quiz of favourites) { %>
     <span class="list-item">
@@ -61,7 +73,7 @@
         <p class="list-item-text">N/A</p>
       <% } %>
       <div id="holder">
-        
+
       <div class="button"><a class="btnText" href ="/takeQuiz/<%= quiz.id %>">Take Quiz</a>
         <div class="btnTwo">
         <a class="btnText2" href ="/takeQuiz/<%= quiz.id %>">GO!</a>
@@ -69,13 +81,20 @@
       </div>
       </div>
       <p class="list-item-text"><%= quiz.rating %></p>
+      <!-- <form method="POST" action="" class="symbols"> -->
+        <a><button class="favourite"><i class="fa-sharp fa-regular fa-heart" href="/"></i></button></a>
+        <a><button class="share"><i class="fa-solid fa-share-nodes"href=""></i></button></a>
+        <a><button class="btn"><i class="fa-sharp fa-regular fa-heart"href=""></i></button></a>
+      <!-- </form> -->
     </span>
     <% }
     if(favourites.length === 0){ %>
       <span>
         <p class = "text-centered"> NONE </p>
+
       </span>
     <% } %>
+
   </main>
   <!-- footer -->
   <div>

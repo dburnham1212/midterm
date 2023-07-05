@@ -105,4 +105,6 @@ const updateQuizRating = function (quizID, newRating) {
 }
 
 
+
+
 module.exports = { insertQuizsDatabase, insertQuestionToDatabase, insertanswersDatabase, addResultToDatabase, updateResult, insertUserToDatabase, updateQuizRating };

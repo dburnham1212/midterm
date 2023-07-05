@@ -1,7 +1,7 @@
 const express = require('express');
 const router  = express.Router();
 
-const { getUserByEmail, getUserById, getMyQuizzesByID, getFavQuizzesByUserId } = require("../database_placeholders/users");
+const { getUserByEmail, getUserById, getMyQuizzesByID, getFavQuizzesByUserId, getFavourite } = require("../database_placeholders/users");
 
 const { addResultToDatabase } = require("../db/queries/postQuizToDatabase");
 
@@ -18,6 +18,17 @@ router.get('/', async (req, res) => {
   const templateVars = {user: user, quizzes: myQuizzes, favourites: favQuizzes};
   res.render('myQuizzes', templateVars);
 });
+
+
+router.post('/favourites', async (req, res) => {
+ console.log(req.body);
+ const userID = req.session.userID;
+
+ getFavourite(req.body);
+
+ res.redirect('/myQuizzes');
+});
+
 
 
 

@@ -29,7 +29,7 @@ const insertQuizsDatabase = function(quiz) {
   return db.query(questString, container);
 }
 
-const insertQuestionToDatabase = function(question) {
+const insertQuestionToDatabase = async(question) => {
   const questString = `
   INSERT INTO questions (
     quiz_id, question_text, question_order
@@ -40,21 +40,21 @@ const insertQuestionToDatabase = function(question) {
   `;
 
   const container = [`${question.quiz_id}`, `${question.question_text}`, `${question.question_order}`];
-  return db.query(questString, container);
+  return await db.query(questString, container);
 }
 
 
 const insertanswersDatabase = function(answer) {
   const questString = `
   INSERT INTO answers (
-    text, is_correct
+    question_id, text, is_correct
   )
   VALUES (
-    $1, $2
+    $1, $2, $3
   );
   `;
 
-  const container = [`${answer.text}`, `${answer.is_correct}`];
+  const container = [`${answer.question_id}`, `${answer.text}`, `${answer.is_correct}`];
   return db.query(questString, container);
 }
 

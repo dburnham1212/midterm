@@ -1,49 +1,52 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
   <title>Create Quiz</title>
 
+  <!-- Bootstrap CSS -->
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css"
+    integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
+
   <!-- Include global styles-->
   <%- include('partials/_global_styling') %>
 
-  <script src="/vendor/jquery-3.0.0.js"></script>
-  <script defer src="/scripts/createQuiz.js"></script>
+    <script src="/vendor/jquery-3.0.0.js"></script>
+    <script defer src="/scripts/createQuiz.js"></script>
 
 
-  <link rel="stylesheet" href="/styles/createQuiz.css" />
+    <link rel="stylesheet" href="/styles/createQuiz.css" />
 </head>
+
 <body>
   <%- include('partials/_header') %>
-  <!-- middle -->
-  <main>
-  <section class="create-quiz">
-    <h1 class="text-centered">Create Quiz</h1>
-    <form id="new-question-form"  action="/createQuiz" method="POST">
-      <header class="create-quiz-header">
-        <h1 >Quiz Name</h1>
-        <input class="quiz-name-input" name="quiz-title" required>
-        <div class="form-inline-field">
-          <p>Public</p>
-          <input name="public" class="form-checkbox" type="checkbox"/>
-        </div>
-      </header>
-      <section class="new-question-container">
+    <!-- middle -->
+    <main>
+      <section class="create-quiz">
+        <h1 class="text-centered">Create Quiz</h1>
+        <form id="new-question-form" action="/createQuiz" method="POST">
+          <header class="create-quiz-header">
+            <h1>Quiz Name</h1>
+            <input class="quiz-name-input" name="quiz-title" required>
+            <div class="form-inline-field">
+              <p>Public</p>
+              <input name="public" class="form-checkbox" type="checkbox" />
+            </div>
+          </header>
+          <section class="new-question-container">
 
+          </section>
+          <footer class="create-quiz-footer">
+            <button class="add-button submit-button">Add question</button>
+            <button class="submit-button">submit quiz</button>
+          </footer>
+        </form>
       </section>
-      <footer class="create-quiz-footer">
-        <button class="add-button submit-button">Add question</button>
-        <button class="submit-button">submit quiz</button>
-      </footer>
-    </form>
-  </section>
-  </main>
-
-  <!-- footer -->
-  <div>
-
-  </div>
+    </main>
+    <%- include('partials/_bootstrap') %>
 </body>
+
 </html>

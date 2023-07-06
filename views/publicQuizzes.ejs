@@ -5,11 +5,21 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Public Quizzes</title>
 
+  <!-- Bootstrap CSS -->
+    <link
+    rel="stylesheet"
+    href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css"
+    integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS"
+    crossorigin="anonymous"
+  />
   <!-- Include global styles-->
   <%- include('partials/_global_styling') %>
 
   <script src="/vendor/jquery-3.0.0.js"></script>
   <script defer src="/scripts/copyToClipboard.js"></script>
+
+
+
 </head>
 <body>
   <%- include('partials/_header') %>
@@ -36,14 +46,12 @@
       <% } else { %>
         <p class="list-item-text">N/A</p>
       <% }  %>
-      <button class="clipboard-button list-item-text" data-copy="/takeQuiz/<%= quiz.id %>"></button>
+      <button class="clipboard-button list-item-text btn-info" data-copy="/takeQuiz/<%= quiz.id %>"></button>
       <p></p>
     </span>
     <% }%>
   </main>
-  <!-- footer -->
-  <div>
-
-  </div>
+  <!-- Bootstrap -->
+  <%- include('partials/_bootstrap') %>
 </body>
 </html>

@@ -1,4 +1,4 @@
--- Drop and recreate Users table (Example)
+--Create Database Tables and Populate
 
 -- \i db/migrations/01_schema.sql
 DROP TABLE IF EXISTS users CASCADE;

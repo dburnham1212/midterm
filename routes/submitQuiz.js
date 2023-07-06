@@ -115,4 +115,30 @@ router.post('/submitReview/:id', async(req, res) => {
   res.redirect(`/myQuizzes`);
 });
 
+// create a sharable link t
+router.post('/submitReview/:id', async(req, res) => {
+  const userID = req.session.userID; // Set user id to id set in the cookie
+  // let currentQuiz;
+  // cycle through quizzes and find the one that was taken
+  const currentQuiz = await getQuizByQuizId(req.params.id);
+  const result = await getResultByUserAndQuiz(userID, currentQuiz.id);
+  if (currentQuiz) { // check if we have found a quiz or not
+    result.rating = Number(req.body['rating']);
+    const favourite = await getFavourite(userID, currentQuiz.id);
+    if (req.body['favourite']) {
+      if (!favourite) {
+        await addToFavourites(userID, currentQuiz.id);
+      }
+    } else {
+      if (favourite) {
+        await removeFromFavourites(userID, currentQuiz.id);
+      }
+    }
+  }
+  updateResult(result);
+
+  // redirect to myquizzes page
+  res.redirect(`/myQuizzes`);
+});
+
 module.exports = router;

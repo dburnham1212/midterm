@@ -5,12 +5,21 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Public Quizzes</title>
 
+  <!-- Bootstrap CSS -->
+    <link
+    rel="stylesheet"
+    href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css"
+    integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS"
+    crossorigin="anonymous"
+  />
   <!-- Include global styles-->
   <%- include('partials/_global_styling') %>
 
   <script src="/vendor/jquery-3.0.0.js"></script>
-  <script defer src="/scripts/app.js"></script>
   <script defer src="/scripts/copyToClipboard.js"></script>
+
+
+
 </head>
 <body>
   <%- include('partials/_header') %>
@@ -26,25 +35,29 @@
       <p class="list-item-main">Rating</p>
       <p class="list-item-main">Copy URL</p>
     </span>
+    <!-- Cycle through quizzes to display them -->
     <% for (const quiz of quizzes) { %>
     <span class="list-item">
       <p class="list-item-text"><%= quiz.title %></p>
       <p class="list-item-text"><%= quiz.email %></p>
       <p class="list-item-text"><a href="/takeQuiz/<%= quiz.id %>">Take Quiz</a></p>
+      <!-- Check if there is a quiz rating or not, if so display the rating, if not display n/a-->
       <% if(quiz.rating) { %>
         <p class="list-item-text"><%= quiz.rating %> <i class="fa-solid fa-star" style="color: #fcc045;"></i></p>
       <% } else { %>
         <p class="list-item-text">n/a</p>
       <% }  %>
+<<<<<<< HEAD
       <button class="clipboard-button list-item-text" data-copy="/takeQuiz/<%= quiz.id %>"><i class="fa-solid fa-copy"></i></button>
+=======
+      <button class="clipboard-button list-item-text btn-info" data-copy="/takeQuiz/<%= quiz.id %>"></button>
+>>>>>>> 08a01706c47e1b0fb64fc61c6ade8be1a238e74a
       <p></p>
     </span>
     <% }%>
   </section>
   </main>
-  <!-- footer -->
-  <div>
-
-  </div>
+  <!-- Bootstrap -->
+  <%- include('partials/_bootstrap') %>
 </body>
 </html>

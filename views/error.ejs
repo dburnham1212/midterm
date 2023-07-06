@@ -4,21 +4,29 @@
 <head>
   <title>Home Page</title>
 
-  <meta charset="UTF-8" >
-  <meta http-equiv="X-UA-Compatible" content="IE=edge" >
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" >
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <!-- Bootstrap CSS -->
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css"
+    integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
 
   <!-- Include global styles-->
   <%- include('partials/_global_styling') %>
 
-  <script src="/vendor/jquery-3.0.0.js"></script>
+    <script src="/vendor/jquery-3.0.0.js"></script>
 </head>
+
 <body>
   <%- include('partials/_header') %>
-  <main>
-    <h1 class="text-centered">Error</h1>
-    <h1 class="text-centered"><%= error %></h1>
-  </main>
+    <main>
+      <h1 class="text-centered">Error</h1>
+      <h1 class="text-centered">
+        <%= error %>
+      </h1>
+    </main>
 </body>
+<%- include('partials/_bootstrap') %>
 
 </html>

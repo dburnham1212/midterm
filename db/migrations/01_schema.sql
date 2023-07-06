@@ -1,6 +1,6 @@
 -- Drop and recreate Users table (Example)
 
--- \i db/migrations/01_schema.sql
+-- \c midterm \i db/migrations/01_schema.sql
 DROP TABLE IF EXISTS users CASCADE;
 DROP TABLE IF EXISTS quizs CASCADE;
 DROP TABLE IF EXISTS questions CASCADE;

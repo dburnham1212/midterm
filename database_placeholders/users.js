@@ -212,7 +212,7 @@ const removeFromFavourites = function (userID, quizID) {
 
 const getFavourite = function (userID, quizID) {
   return db
-  .query(`SELECT is_favorite FROM results
+  .query(`SELECT * FROM favourites
   WHERE user_id = $1
   AND quiz_id = $2`, [userID, quizID]).then(data => {
     console.log(data.rows[0]);

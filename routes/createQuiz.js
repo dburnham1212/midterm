@@ -4,21 +4,20 @@ const router = express.Router();
 // User get queries
 const { getUserById } = require("../db/queries/userGetQueries");
 // Quiz get queries
-const { getQuizByTitleAndUserID, getTitleByUser  } = require("../db/queries/quizGetQueries");
+const { getQuizByTitleAndUserID, getTitleByUser } = require("../db/queries/quizGetQueries");
 // Question get queries
 const { getQuestionByQuizIdAndOrder } = require("../db/queries/questionGetQueries");
 // Misc Add Queries
 const { addToQuizs, addToQuestions, addToAnswers } = require("../db/queries/miscAddQueries");
 
 // get route to display quiz creation form
-router.get('/', (req, res) => {
+router.get('/', async (req, res) => {
   const userID = req.session.userID; // Set user id to id set in the cookie
 
   // pass the values to the webpage and display it
-  getUserById(userID).then((user) => { // Get the user from the db
-    const templateVars = { user: user };
-    res.render('createQuiz', templateVars);
-  });
+  const user = await getUserById(userID)// Get the user from the db
+  const templateVars = { user: user };
+  res.render('createQuiz', templateVars);
 });
 
 // Post route for submitting a created quiz
@@ -27,7 +26,7 @@ router.post('/', async (req, res) => {
   let questionCounter = 1; // Setup a value to cycle through the questions
   if (req.body[`${questionCounter}`]) { // check if req.body has a question based off of the number provide
     let is_public = false;
-    if(req.body.public){
+    if (req.body.public) {
       is_public = true;
     }
     // push an object to the database with the quiz id, userId, and quiz title
@@ -40,8 +39,8 @@ router.post('/', async (req, res) => {
 
     //Edge case: check if the same title exist in the user
     const titleExits = await getTitleByUser(newQuiz)
-    if(titleExits[0]){
-      if(titleExits[0].title === newQuiz.title){
+    if (titleExits[0]) {
+      if (titleExits[0].title === newQuiz.title) {
 
         return res.send("The quiz already exist");
       }

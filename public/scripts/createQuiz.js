@@ -49,15 +49,15 @@ $(() => {
 
     $('.add-button').on('click', function(event) {
       event.preventDefault();
-      $.ajax({
-        method: "POST",
-        url: '/createQuiz'
-        })
-      .then(
-         addQuestion())
-      .catch(err => {
-        console.log("Error :",err);
-      })
+      // $.ajax({
+      //   method: "POST",
+      //   url: '/createQuiz'
+      //   })
+      // .then(
+         addQuestion()//)
+      // .catch(err => {
+      //   console.log("Error :",err);
+      // })
     })
 
     addQuestion();

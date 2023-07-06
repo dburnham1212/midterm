@@ -1,6 +1,6 @@
 $(() => {
   let questionCount = 0;
-  const addquestionTemplate = function() {
+  const addquestionTemplate = function () {
     const $quizquestion = (`<div class="question-card" name="question-card">
     <div class="question-container">
     <label>Question:</label>
@@ -33,34 +33,23 @@ $(() => {
     return $quizquestion
   }
 
-  const addQuestion = function() {
-    //$('.new-question-container').empty();
+  const addQuestion = function () {
     questionCount++;
-
-
     const addquestionToList = addquestionTemplate();
     $('.new-question-container').append(addquestionToList);
 
-    $('.delete-question-button').on('click', function(event) {
+    $('.delete-question-button').on('click', function (event) {
       event.preventDefault();
       $(this).closest(".question-card").remove();
     })
   }
 
-    $('.add-button').on('click', function(event) {
-      event.preventDefault();
-      // $.ajax({
-      //   method: "POST",
-      //   url: '/createQuiz'
-      //   })
-      // .then(
-         addQuestion()//)
-      // .catch(err => {
-      //   console.log("Error :",err);
-      // })
-    })
-
+  $('.add-button').on('click', function (event) {
+    event.preventDefault();
     addQuestion();
+  })
+
+  addQuestion();
 })
 
 

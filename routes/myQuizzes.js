@@ -12,61 +12,43 @@ const { updateFavourite, updateQuizRating  } = require("../db/queries/miscUpdate
 
 
 // get route for MyQuizzes page
-router.get('/', async (req, res) => {
+router.get('/', async(req, res) => {
   const userID = req.session.userID; // Set user id to id set in the cookie
 
   const user = await getUserById(userID); // get the user from the db
-
   const myQuizzes = await getMyQuizzesByID(userID); // get my quizzes from db
-  for(const quiz of myQuizzes){
-    let average = await getQuizAvgRatingById(quiz.id);
+
+  // Cycle through the quizzes
+  for (const quiz of myQuizzes) {
+    let average = await getQuizAvgRatingById(quiz.id); // Get the average based off of the results
     quiz.rating = parseFloat(average.rating);
-    if(quiz.rating){
+    if (quiz.rating) { // update the rating in the quiz accordingly
       await updateQuizRating(quiz.id, quiz.rating);
     }
 
-    let result = await getResultByUserAndQuiz(userID, quiz.id);
-    if(result){
+    let result = await getResultByUserAndQuiz(userID, quiz.id);//Get the result for the quiz and user
+    if (result) { // If the result exists set the score string based off of user score
       quiz.scoreString = `${result.highest_score} / ${result.out_of}`;
-    } else {
-      quiz.scoreString = " ";
+    } else { // Otherwise set the string to n/a
+      quiz.scoreString = "n/a";
     }
   }
 
   const favQuizzes = await getFavQuizzesByUserId(userID); // get favourite quizzes from the db
-  for(const quiz of favQuizzes){
-    let average = await getQuizAvgRatingById(quiz.id);
+
+  // Cycle through favourite quizzes
+  for (const quiz of favQuizzes) {
+    let average = await getQuizAvgRatingById(quiz.id); // Get the average for the specific quiz
     quiz.rating = parseFloat(average.rating);
-    if(quiz.rating){
+    if (quiz.rating) { // update the rating in the quiz accordingly
       await updateQuizRating(quiz.id, quiz.rating);
     }
   }
-
 
   // pass the values to the webpage and display it
   const templateVars = {user: user, quizzes: myQuizzes, favourites: favQuizzes};
   res.render('myQuizzes', templateVars);
 });
-
-
-
-
-router.post('/:id/favourites', async (req, res) => {
-  console.log("========");
-  console.log(res.body);
-  // console.log(Object.keys(req.body));
-  let keys = Object.keys(req.body).toString().split(",");
-  let userID = Number(keys[0]);
-  let quizID = Number(keys[1]);
-  console.log("========");
-  const favourite = await getFavourite(userID, quizID);
-  await updateFavourite(userID, quizID, !favourite.is_favorite);
-
-
-
-  res.redirect('/myQuizzes');
-});
-
 
 
 

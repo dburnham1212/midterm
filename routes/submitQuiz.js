@@ -19,12 +19,12 @@ const { removeFromFavourites } = require("../db/queries/miscDeleteQueries");
 
 
 // get route for quiz submission
-router.get('/:id', async (req, res) => {
+router.get('/:id', async(req, res) => {
   const userID = req.session.userID; // Set user id to id set in the cookie
 
+  // Get objects from the db
   const user = await getUserById(userID); // Get the user from the db
-
-  const currentQuiz = await getQuizByQuizId(req.params.id)
+  const currentQuiz = await getQuizByQuizId(req.params.id);
   const result = await getResultByUserAndQuiz(userID, currentQuiz.id);
 
   // pass the values to the webpage and display it
@@ -33,7 +33,7 @@ router.get('/:id', async (req, res) => {
 });
 
 // Post route for quiz submission
-router.post('/:id', async (req, res) => {
+router.post('/:id', async(req, res) => {
   const userID = req.session.userID; // Set user id to id set in the cookie
 
   // let currentQuiz;
@@ -79,8 +79,8 @@ router.post('/:id', async (req, res) => {
         last_score: correctCount,
         out_of: answerCount,
         rating: 0
-      }
-      await addToResults(currentResult)
+      };
+      await addToResults(currentResult);
     }
   }
 
@@ -90,7 +90,7 @@ router.post('/:id', async (req, res) => {
 });
 
 // post route used for ratings when a user has reviewed their results
-router.post('/submitReview/:id', async (req, res) => {
+router.post('/submitReview/:id', async(req, res) => {
   const userID = req.session.userID; // Set user id to id set in the cookie
   // let currentQuiz;
   // cycle through quizzes and find the one that was taken
@@ -98,13 +98,39 @@ router.post('/submitReview/:id', async (req, res) => {
   const result = await getResultByUserAndQuiz(userID, currentQuiz.id);
   if (currentQuiz) { // check if we have found a quiz or not
     result.rating = Number(req.body['rating']);
-    const favourite = await getFavourite(userID, currentQuiz.id)
+    const favourite = await getFavourite(userID, currentQuiz.id);
     if (req.body['favourite']) {
-      if(!favourite){
+      if (!favourite) {
         await addToFavourites(userID, currentQuiz.id);
       }
     } else {
-      if(favourite){
+      if (favourite) {
+        await removeFromFavourites(userID, currentQuiz.id);
+      }
+    }
+  }
+  updateResult(result);
+
+  // redirect to myquizzes page
+  res.redirect(`/myQuizzes`);
+});
+
+// create a sharable link t
+router.post('/submitReview/:id', async(req, res) => {
+  const userID = req.session.userID; // Set user id to id set in the cookie
+  // let currentQuiz;
+  // cycle through quizzes and find the one that was taken
+  const currentQuiz = await getQuizByQuizId(req.params.id);
+  const result = await getResultByUserAndQuiz(userID, currentQuiz.id);
+  if (currentQuiz) { // check if we have found a quiz or not
+    result.rating = Number(req.body['rating']);
+    const favourite = await getFavourite(userID, currentQuiz.id);
+    if (req.body['favourite']) {
+      if (!favourite) {
+        await addToFavourites(userID, currentQuiz.id);
+      }
+    } else {
+      if (favourite) {
         await removeFromFavourites(userID, currentQuiz.id);
       }
     }

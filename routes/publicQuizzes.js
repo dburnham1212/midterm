@@ -1,7 +1,9 @@
 const express = require('express');
 const router  = express.Router();
 
-const { getUserByEmail,getQuizByPublic, getUserById, getQuizAvgRatingById } = require("../database_placeholders/users");
+const { getQuizzesByPublic, getQuizAvgRatingById  } = require("../db/queries/quizGetQueries");
+
+const { getUserById } = require("../db/queries/userGetQueries");
 
 const { addResultToDatabase, updateQuizRating } = require("../db/queries/postQuizToDatabase");
 
@@ -9,7 +11,7 @@ const { addResultToDatabase, updateQuizRating } = require("../db/queries/postQui
 router.get('/', async ( req, res) => {
 
   const user = await getUserById(req.session.userID)// Get the user from the db
-  const quizzes = await getQuizByPublic();
+  const quizzes = await getQuizzesByPublic();
 
 
   for(const quiz of quizzes){

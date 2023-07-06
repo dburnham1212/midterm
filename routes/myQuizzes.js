@@ -1,9 +1,12 @@
 const express = require('express');
 const router  = express.Router();
 
-const { getUserByEmail, getUserById, getMyQuizzesByID, getFavQuizzesByUserId, getFavourite, updateFavourite, getQuizAvgRatingById, getResultByUserAndQuiz } = require("../database_placeholders/users");
+const { getMyQuizzesByID, getFavQuizzesByUserId, getQuizAvgRatingById } = require("../db/queries/quizGetQueries");
 
-const { addResultToDatabase, updateQuizRating } = require("../db/queries/postQuizToDatabase");
+const { updateFavourite } = require("../db/queries/miscUpdateQueries");
+const { getFavourite, getResultByUserAndQuiz } = require("../db/queries/miscGetQueries");
+const { getUserById } = require("../db/queries/userGetQueries");
+const { updateQuizRating } = require("../db/queries/postQuizToDatabase");
 
 // get route for MyQuizzes page
 router.get('/', async (req, res) => {

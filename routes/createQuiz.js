@@ -1,10 +1,10 @@
 const express = require('express');
 const router = express.Router();
 
-const { getUserByEmail, getUserById, getQuizeByTitleAndUserID, getQuestionByQuizIdAndOrder } = require("../database_placeholders/users");
-
+const { getUserById } = require("../db/queries/userGetQueries");
+const { getQuestionByQuizIdAndOrder } = require("../db/queries/questionGetQueries");
+const { getQuizByTitleAndUserID  } = require("../db/queries/quizGetQueries");
 const { insertQuizsDatabase, insertQuestionToDatabase, insertanswersDatabase } = require("../db/queries/postQuizToDatabase");
-
 const { getTitleByUser } = require('../db/queries/getTitleByUser');
 
 // get route to display quiz creation form
@@ -34,7 +34,7 @@ router.post('/', async (req, res) => {
       rating: 4,
       public: is_public
     }
-    
+
     //Edge case: check if the same title exist in the user
     const titleExits = await getTitleByUser(newQuiz)
     if(titleExits[0]){
@@ -46,7 +46,7 @@ router.post('/', async (req, res) => {
 
 
     await insertQuizsDatabase(newQuiz);
-    const quiz = await getQuizeByTitleAndUserID(req.body[`quiz-title`], userID);
+    const quiz = await getQuizByTitleAndUserID(req.body[`quiz-title`], userID);
 
     while (req.body[`${questionCounter}`]) { // while we still have questions to check
       // push the question to the database

@@ -8,17 +8,14 @@ const bcrypt = require('bcryptjs');
 const express = require('express');
 const router = express.Router();
 
-const { getUserByEmail, getUserById } = require("../database_placeholders/users");
-
+const { getUserById, getUserByEmail } = require("../db/queries/userGetQueries");
 const { insertUserToDatabase } = require("../db/queries/postQuizToDatabase");
 
 // const { getUsers, getUserByEmail } = require("../db/queries/users.js");
 // // const users = getUsers();
-
 router.get('/', (req, res) => {
   res.render('users');
 });
-
 
 // Simple get route that displays the login form
 router.get('/login', async (req, res) => {

@@ -5,9 +5,8 @@ DROP TABLE IF EXISTS users CASCADE;
 DROP TABLE IF EXISTS quizs CASCADE;
 DROP TABLE IF EXISTS questions CASCADE;
 DROP TABLE IF EXISTS answers CASCADE;
-DROP TABLE IF EXISTS taker_answers CASCADE;
-DROP TABLE IF EXISTS results CASCADE;
 DROP TABLE IF EXISTS favourites CASCADE;
+DROP TABLE IF EXISTS results CASCADE;
 
 CREATE TABLE users (
   id SERIAL PRIMARY KEY NOT NULL,
@@ -26,6 +25,20 @@ CREATE TABLE quizs (
   date_created TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
 
+CREATE TABLE questions (
+  id SERIAL PRIMARY KEY NOT NULL,
+  quiz_id INTEGER REFERENCES quizs(id) ON DELETE CASCADE,
+  question_text VARCHAR(255) NOT NULL,
+  question_order INTEGER
+);
+
+CREATE TABLE answers (
+  id SERIAL PRIMARY KEY NOT NULL,
+  question_id INTEGER REFERENCES questions(id) ON DELETE CASCADE,
+  text VARCHAR(255) NOT NULL,
+  is_correct BOOLEAN DEFAULT false
+);
+
 CREATE TABLE results (
   id SERIAL PRIMARY KEY NOT NULL,
   user_id INTEGER REFERENCES users(id) ON DELETE CASCADE,
@@ -42,22 +55,13 @@ CREATE TABLE favourites (
   quiz_id INTEGER REFERENCES quizs(id) ON DELETE CASCADE
 );
 
-CREATE TABLE questions (
-  id SERIAL PRIMARY KEY NOT NULL,
-  quiz_id INTEGER REFERENCES quizs(id) ON DELETE CASCADE,
-  question_text VARCHAR(255) NOT NULL,
-  question_order INTEGER
-);
 
-CREATE TABLE answers (
-  id SERIAL PRIMARY KEY NOT NULL,
-  question_id INTEGER REFERENCES questions(id) ON DELETE CASCADE,
-  text VARCHAR(255) NOT NULL,
-  is_correct BOOLEAN DEFAULT false
-);
+
+
 
  \i db/seeds/0_users.sql
-
-
-
-
+ \i db/seeds/2_quizs.sql
+ \i db/seeds/3_questions.sql
+ \i db/seeds/4_answers.sql
+ \i db/seeds/5_favourites.sql
+ \i db/seeds/1_results.sql

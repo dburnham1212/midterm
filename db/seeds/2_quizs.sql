@@ -1,29 +1,20 @@
--- QUERY TO GET QUIZZES FOR A SPECIFIC USER
--- SELECT quizs.id, quizs.user_id, quizs.title, results.highest_score, results.out_of FROM quizs
---   LEFT OUTER JOIN results ON quizs.id = results.quiz_id
---   WHERE quizs.user_id = 1
-
--- SELECT quizs.id, quizs.user_id, quizs.title, results.highest_score, results.out_of FROM quizs
---  LEFT OUTER JOIN results ON quizs.id = results.quiz_id
---  WHERE results.user_id = 1 AND results.is_favorite = true;
-
--- SELECT * FROM quizs
--- JOIN questions ON questions.quiz_id = quizs.id
--- JOIN answers ON questions.id = answers.question_id
--- WHERE quizs.id = 1;
-
--- SELECT AVG(results.rating) FROM quizs
--- JOIN results ON quizs.id = results.quiz_id
--- WHERE quizs.id = 1;
-
--- SELECT answers.question_id, answers.text, answers.is_correct FROM answers
---   JOIN questions ON questions.id = answers.question_id
---   WHERE questions.quiz_id = 1;
-
--- SELECT results.id, results.highest_score, results.last_score, results.out_of, results.is_favorite, results.rating FROM results
--- JOIN quizs ON results.quiz_id = quizs.id
--- JOIN users ON results.user_id = users.id
--- WHERE users.id = 1 AND quizs.id = 1;
-
-SELECT * FROM quizs
-WHERE quiz.title = 1 AND quiz.user_id = 2;
+INSERT INTO quizs (user_id, title, rating, public)
+VALUES (1, '1t. Do you know Animals?', 4, true );
+INSERT INTO quizs (user_id, title, rating, public)
+VALUES (1, '1f. Cartoon Trivia', 4, false );
+INSERT INTO quizs (user_id, title, rating, public)
+VALUES (2, '2t. Chemistry Trivia', 4, true );
+INSERT INTO quizs (user_id, title, rating, public)
+VALUES (2, '2f. Geography Quiz', 4, false );
+INSERT INTO quizs (user_id, title, rating, public)
+VALUES (3, '3t. Christmas Trivia', 4, true );
+INSERT INTO quizs (user_id, title, rating, public)
+VALUES (3, '3f. Easy History', 4, false );
+INSERT INTO quizs (user_id, title, rating, public)
+VALUES (4, '4t. Dinosaurs', 4, true );
+INSERT INTO quizs (user_id, title, rating, public)
+VALUES (4, '4f. Biology', 4, false );
+INSERT INTO quizs (user_id, title, rating, public)
+VALUES (5, '5t. Nursery Rhymes', 4, true );
+INSERT INTO quizs (user_id, title, rating, public)
+VALUES (5, '5f. Disney Trivia', 4, false );

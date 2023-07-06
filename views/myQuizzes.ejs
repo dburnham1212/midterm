@@ -27,7 +27,7 @@
       <p class="list-item-main">Score</p>
       <p class="list-item-main">Take</p>
       <p class="list-item-main">Rating</p>
-      <p class="list-item-main">Other</p>
+      <!-- <p class="list-item-main">Other</p> -->
     </span>
 
     <%for (const quiz of quizzes) { %>
@@ -38,7 +38,7 @@
       <% } else { %>
         <p class="list-item-text">N/A</p>
       <% } %>
-      <p class="list-item-text"><a href="/takeQuiz/<%= quiz.id %>">Take Quiz3</a></p>
+      <p class="list-item-text"><a href="/takeQuiz/<%= quiz.id %>">Take Quiz</a></p>
       <p class="list-item-text"><%= quiz.rating %></p>
 
       <form>

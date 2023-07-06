@@ -65,7 +65,6 @@ router.post('/:id', async (req, res) => {
         highest_score: correctCount,
         last_score: correctCount,
         out_of: answerCount,
-        favourited: false,
         rating: 0
       }
       await addResultToDatabase(currentResult)
@@ -87,9 +86,7 @@ router.post('/submitReview/:id', async (req, res) => {
   if (currentQuiz) { // check if we have found a quiz or not
     result.rating = Number(req.body['rating']);
     if (req.body['favourite']) {
-      result.is_favorite = true;
-    } else {
-      result.is_favorite = false;
+
     }
   }
   updateResult(result);

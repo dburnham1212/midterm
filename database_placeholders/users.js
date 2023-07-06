@@ -44,9 +44,10 @@ const getMyQuizzesByID = (userID) => {
 
 const getFavQuizzesByUserId = (userID) => {
   return db
-  .query(`SELECT quizs.id as quiz_id, quizs.user_id as id, quizs.title, results.highest_score, results.out_of FROM quizs
-  LEFT OUTER JOIN results ON quizs.id = results.quiz_id
-  WHERE results.user_id = $1 AND results.is_favorite = true;
+  .query(`SELECT quizs.id as quiz_id, quizs.user_id as id, quizs.title FROM quizs
+  JOIN favourites ON favourites.quiz_id = quizs.id
+  JOIN users ON favourites.user_id = users.id
+  WHERE favourites.user_id = $1;
   `, [userID])
   .then(data => {
     return data.rows;
@@ -124,7 +125,7 @@ const getQuizAvgRatingById = (quizID) => {
 
 const getResultByUserAndQuiz = (userID, quizID) => {
   return db
-  .query(`SELECT results.id, results.highest_score, results.last_score, results.out_of, results.is_favorite, results.rating FROM results
+  .query(`SELECT results.id, results.highest_score, results.last_score, results.out_of, results.rating FROM results
   JOIN quizs ON results.quiz_id = quizs.id
   JOIN users ON results.user_id = users.id
   WHERE users.id = $1 AND quizs.id = $2;
@@ -179,16 +180,36 @@ const getUserByEmail = (email, users) => {
   });
  };
 
-//  const getUserByPublic = ()
 
-// const favourite = function (quizID, userId) {
-//   const ratingString =  `
-//   UPDATE
-//     SET favorite = $1
-//     WHERE id = $2; `
-//   const container = [`${newRating}`, `${quizID}`];
-//   return db.query(ratingString, container);
-// }
+ const addToFavourites = function (userID, quizID) {
+  return db
+  .query(`INSERT INTO favourites (
+    user_id, quiz_id
+  )
+  VALUES (
+    $1, $2
+  );`, [userID, quizID]).then(data => {
+    console.log(data.rows[0]);
+    return data.rows[0];
+  })
+  .catch((err) => {
+    console.log(err.message);
+  })
+};
+
+const removeFromFavourites = function (userID, quizID) {
+  return db
+  .query(`DELETE FROM favourites
+  WHERE user_id = $1
+  AND quiz_id = $2`, [userID, quizID]).then(data => {
+    console.log(data.rows[0]);
+    return data.rows[0];
+  })
+  .catch((err) => {
+    console.log(err.message);
+  })
+};
+
 const getFavourite = function (userID, quizID) {
   return db
   .query(`SELECT is_favorite FROM results
@@ -225,5 +246,7 @@ module.exports = {
   getCorrectAnswersByQuizId,
   getQuizAvgRatingById,
   getFavourite,
-  updateFavourite
+  updateFavourite,
+  addToFavourites,
+  removeFromFavourites
 };

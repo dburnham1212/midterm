@@ -49,6 +49,7 @@ const createQuizRoutes = require('./routes/createQuiz'); // Create Quiz Routes
 const publicQuizzesRoutes = require('./routes/publicQuizzes'); // Public Quizzes Routes
 const takeQuizRoutes = require('./routes/takeQuiz'); // Take Quiz Routes
 const submitQuizRoutes = require('./routes/submitQuiz'); // Submit Quiz Routes
+const errorRoutes = require('./routes/error'); // Error Routes
 
 // Mount all resource routes
 // Note: Feel free to replace the example routes below with your own
@@ -63,6 +64,7 @@ app.use('/createQuiz', createQuizRoutes); // Using Create Quiz Routes
 app.use('/publicQuizzes', publicQuizzesRoutes); // Using Public Quizzes Routes
 app.use('/takeQuiz', takeQuizRoutes); // Using Public Quizzes Routes
 app.use('/submitQuiz', submitQuizRoutes); // Using Public Quizzes Routes
+app.use('/error', errorRoutes); // Using Public Quizzes Routes
 
 // Note: mount other resources here, using the same pattern above
 

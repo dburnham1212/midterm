@@ -9,9 +9,6 @@
   <%- include('partials/_global_styling') %>
 
   <script src="/vendor/jquery-3.0.0.js"></script>
-  <script defer src="/scripts/app.js"></script>
-  <script defer src="/scripts/favouriteButton.js"></script>
-
 
   <link rel="stylesheet" href="/styles/myQuiz.css" />
 </head>
@@ -27,19 +24,19 @@
       <p class="list-item-main">Score</p>
       <p class="list-item-main">Take</p>
       <p class="list-item-main">Rating</p>
-      <!-- <p class="list-item-main">Other</p> -->
     </span>
-
+    <!-- Cycle through my quizzes to display them -->
     <%for (const quiz of quizzes) { %>
     <span class="list-item">
       <p class="list-item-text"><%= quiz.title %></p>
       <p class="list-item-text"><%= quiz.scoreString %></p>
       <p class="list-item-text"><a href="/takeQuiz/<%= quiz.id %>">Take Quiz</a></p>
-      <p class="list-item-text"><%= quiz.rating %></p>
-      <!-- <a><button class="favourite" name="favourites" data-quiz="<%=quiz.id%>" value="[ <%-user.id%>, <%-quiz.id%> ]"><i class="fa-sharp fa-regular fa-heart" href=""></i></button></a>
-      <a><button class="share"><i class="fa-solid fa-share-nodes"href=""></i></button></a> -->
-      <!-- <a><button class="btn"><i class="fa-sharp fa-regular fa-heart"href=""></i></button></a> -->
-
+      <!-- Check if there is a quiz rating or not, if so display the rating, if not display n/a-->
+      <% if(quiz.rating) { %>
+        <p class="list-item-text"><%= quiz.rating %></p>
+      <% } else { %>
+        <p class="list-item-text">n/a</p>
+      <% }  %>
     </span>
     <% } %>
 
@@ -54,15 +51,21 @@
       <p class="list-item-main">Author</p>
       <p class="list-item-main">Take</p>
       <p class="list-item-main">Rating</p>
-      <!-- <p class="list-item-main">Other</p> -->
+
 
     </span>
+    <!-- Cycle through favourites to display them -->
     <%for (const quiz of favourites) { %>
     <span class="list-item">
       <p class="list-item-text"><%= quiz.title %></p>
       <p class="list-item-text"><%= quiz.username %></p>
       <p class="list-item-text"><a  href ="/takeQuiz/<%= quiz.id %>">Take Quiz</a></p>
-      <p class="list-item-text"><%= quiz.rating %></p>
+      <!-- Check if there is a quiz rating or not, if so display the rating, if not display n/a-->
+      <% if(quiz.rating) { %>
+        <p class="list-item-text"><%= quiz.rating %></p>
+      <% } else { %>
+        <p class="list-item-text">n/a</p>
+      <% }  %>
     </span>
     <% }
     if(favourites.length === 0){ %>

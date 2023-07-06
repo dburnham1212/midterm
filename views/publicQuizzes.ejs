@@ -9,7 +9,6 @@
   <%- include('partials/_global_styling') %>
 
   <script src="/vendor/jquery-3.0.0.js"></script>
-  <script defer src="/scripts/app.js"></script>
   <script defer src="/scripts/copyToClipboard.js"></script>
 </head>
 <body>
@@ -25,11 +24,13 @@
       <p class="list-item-main">Rating</p>
       <p class="list-item-main">Copy URL</p>
     </span>
+    <!-- Cycle through quizzes to display them -->
     <% for (const quiz of quizzes) { %>
     <span class="list-item">
       <p class="list-item-text"><%= quiz.title %></p>
       <p class="list-item-text"><%= quiz.email %></p>
       <p class="list-item-text"><a href="/takeQuiz/<%= quiz.id %>">Take Quiz</a></p>
+      <!-- Check if there is a quiz rating or not, if so display the rating, if not display n/a-->
       <% if(quiz.rating) { %>
         <p class="list-item-text"><%= quiz.rating %></p>
       <% } else { %>

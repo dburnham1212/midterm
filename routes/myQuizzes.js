@@ -1,9 +1,9 @@
 const express = require('express');
 const router  = express.Router();
 
-const { getUserByEmail, getUserById, getMyQuizzesByID, getFavQuizzesByUserId, getFavourite, updateFavourite } = require("../database_placeholders/users");
+const { getUserByEmail, getUserById, getMyQuizzesByID, getFavQuizzesByUserId, getFavourite, updateFavourite, getQuizAvgRatingById, getResultByUserAndQuiz } = require("../database_placeholders/users");
 
-const { addResultToDatabase } = require("../db/queries/postQuizToDatabase");
+const { addResultToDatabase, updateQuizRating } = require("../db/queries/postQuizToDatabase");
 
 // get route for MyQuizzes page
 router.get('/', async (req, res) => {
@@ -12,8 +12,29 @@ router.get('/', async (req, res) => {
   const user = await getUserById(userID); // get the user from the db
 
   const myQuizzes = await getMyQuizzesByID(userID); // get my quizzes from db
-  const favQuizzes = await getFavQuizzesByUserId(userID); // get favourite quizzes from the db
+  for(const quiz of myQuizzes){
+    let average = await getQuizAvgRatingById(quiz.id);
+    quiz.rating = parseFloat(average.rating);
+    if(quiz.rating){
+      await updateQuizRating(quiz.id, quiz.rating);
+    }
 
+    let result = await getResultByUserAndQuiz(userID, quiz.id);
+    if(result){
+      quiz.scoreString = `${result.highest_score} / ${result.out_of}`;
+    } else {
+      quiz.scoreString = "N/A"
+    }
+  }
+
+  const favQuizzes = await getFavQuizzesByUserId(userID); // get favourite quizzes from the db
+  for(const quiz of favQuizzes){
+    let average = await getQuizAvgRatingById(quiz.id);
+    quiz.rating = parseFloat(average.rating);
+    if(quiz.rating){
+      await updateQuizRating(quiz.id, quiz.rating);
+    }
+  }
 
 
   // pass the values to the webpage and display it

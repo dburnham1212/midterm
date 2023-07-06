@@ -75,23 +75,23 @@ const insertanswersDatabase = function (answer) {
 const addResultToDatabase = function (result) {
   const questString = `
   INSERT INTO results (
-    user_id, quiz_id, highest_score, last_score, out_of, is_favorite, rating
+    user_id, quiz_id, highest_score, last_score, out_of, rating
   )
   VALUES (
-    $1, $2, $3, $4, $5, $6, $7
+    $1, $2, $3, $4, $5, $6
   );
   `;
-  const container = [`${result.user_id}`, `${result.quiz_id}`, `${result.highest_score}`, `${result.last_score}`, `${result.out_of}`, `${result.favourited}`, `${result.rating}`];
+  const container = [`${result.user_id}`, `${result.quiz_id}`, `${result.highest_score}`, `${result.last_score}`, `${result.out_of}`, `${result.rating}`];
   return db.query(questString, container);
 }
 
 const updateResult = function (result) {
   const questString = `
     UPDATE results
-    SET highest_score = $1, last_score = $2, out_of = $3, is_favorite = $4, rating = $5
+    SET highest_score = $1, last_score = $2, out_of = $3, rating = $5
     WHERE results.id = ${result.id};
   `;
-  const container = [`${result.highest_score}`, `${result.last_score}`, `${result.out_of}`, `${result.is_favorite}`, `${result.rating}`];
+  const container = [`${result.highest_score}`, `${result.last_score}`, `${result.out_of}`, `${result.rating}`];
   return db.query(questString, container);
 }
 

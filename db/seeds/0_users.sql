@@ -1,12 +1,11 @@
 INSERT INTO users (username, email, password)
-VALUES ('userID', 'test@gmail.com', 'password');
+VALUES ('userID', 'test@gmail.com', '$2a$10$xiMLnOMFA.V6DPvPu.x5fegvmdbwVuR1vapQhLuMCQhRA3PJOZiKq');
 INSERT INTO users (username, email, password)
-VALUES ('user2ID', 'test2@gmail.com', 'password');
+VALUES ('user2ID', 'test2@gmail.com', '$2a$10$xiMLnOMFA.V6DPvPu.x5fegvmdbwVuR1vapQhLuMCQhRA3PJOZiKq');
 INSERT INTO users (username, email, password)
-VALUES ('Alice', 'alice@gmail.com', 'password');
+VALUES ('Alice', 'alice@gmail.com', '$2a$10$xiMLnOMFA.V6DPvPu.x5fegvmdbwVuR1vapQhLuMCQhRA3PJOZiKq');
 INSERT INTO users (username, email, password)
-VALUES ('Kira', 'kira@gmail.com', 'password');
-
+VALUES ('Kira', 'kira@gmail.com', '$2a$10$xiMLnOMFA.V6DPvPu.x5fegvmdbwVuR1vapQhLuMCQhRA3PJOZiKq');
 
 INSERT INTO quizs (user_id, title, rating, public)
 VALUES (1, 'This is a quiz', 4, true );
@@ -163,11 +162,26 @@ INSERT INTO answers (question_id, text, is_correct) VALUES (20, 'Maybe', true);
 INSERT INTO answers (question_id, text, is_correct) VALUES (20, 'Sure', false);
 
 
-INSERT INTO results (user_id, quiz_id, highest_score, last_score, out_of, is_favorite, rating) VALUES (1, 1, 0, 0, 0, true, 4);
-INSERT INTO results (user_id, quiz_id, highest_score, last_score, out_of, is_favorite, rating) VALUES (2, 1, 0, 0, 0, true, 3);
-INSERT INTO results (user_id, quiz_id, highest_score, last_score, out_of, is_favorite, rating) VALUES (3, 1, 0, 0, 0, true, 1);
-INSERT INTO results (user_id, quiz_id, highest_score, last_score, out_of, is_favorite, rating) VALUES (4, 1, 0, 0, 0, true, 5);
-INSERT INTO results (user_id, quiz_id, highest_score, last_score, out_of, is_favorite, rating) VALUES (2, 2, 0, 0, 0, false, 3);
-INSERT INTO results (user_id, quiz_id, highest_score, last_score, out_of, is_favorite, rating) VALUES (1, 3, 0, 0, 0, false, 2);
+INSERT INTO results (user_id, quiz_id, highest_score, last_score, out_of, rating) VALUES (1, 1, 0, 0, 0, 4);
+INSERT INTO results (user_id, quiz_id, highest_score, last_score, out_of, rating) VALUES (2, 1, 0, 0, 0, 3);
+INSERT INTO results (user_id, quiz_id, highest_score, last_score, out_of, rating) VALUES (3, 1, 0, 0, 0, 1);
+INSERT INTO results (user_id, quiz_id, highest_score, last_score, out_of, rating) VALUES (4, 1, 0, 0, 0, 5);
+INSERT INTO results (user_id, quiz_id, highest_score, last_score, out_of, rating) VALUES (2, 2, 0, 0, 0, 3);
+INSERT INTO results (user_id, quiz_id, highest_score, last_score, out_of, rating) VALUES (1, 3, 0, 0, 0, 2);
 
+
+INSERT INTO favourites (user_id, quiz_id) VALUES (1, 1);
+INSERT INTO favourites (user_id, quiz_id) VALUES (1, 2);
+INSERT INTO favourites (user_id, quiz_id) VALUES (1, 3);
+INSERT INTO favourites (user_id, quiz_id) VALUES (1, 4);
+INSERT INTO favourites (user_id, quiz_id) VALUES (2, 1);
+INSERT INTO favourites (user_id, quiz_id) VALUES (2, 2);
+INSERT INTO favourites (user_id, quiz_id) VALUES (3, 1);
+INSERT INTO favourites (user_id, quiz_id) VALUES (3, 2);
+INSERT INTO favourites (user_id, quiz_id) VALUES (3, 3);
+INSERT INTO favourites (user_id, quiz_id) VALUES (3, 4);
+INSERT INTO favourites (user_id, quiz_id) VALUES (4, 1);
+INSERT INTO favourites (user_id, quiz_id) VALUES (4, 2);
+INSERT INTO favourites (user_id, quiz_id) VALUES (4, 3);
+INSERT INTO favourites (user_id, quiz_id) VALUES (4, 4);
 

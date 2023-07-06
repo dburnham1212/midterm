@@ -7,9 +7,12 @@ $myGrey: #666;
 $myBlueDark: #012d3d;
 $myFontSize: 22px;
 $myBackground: grey;
+$myButton: $myGreen;
+$myButtonHover: $myBlue;
+$myButtonBottom: $myRed;
 
 
-.form-centered{
+.form-centered {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -20,7 +23,7 @@ $myBackground: grey;
   align-items: center;
   gap: 1em
 }
-
+// checkbox
 .form-checkbox{
   height: 1em;
   width: 1em;
@@ -46,7 +49,7 @@ $myBackground: grey;
 }
 
 .submit-button {
-  background-color: $myBlue;
+  background-color: $myButton;
   // border: 1px solid black;
 
   border: none;
@@ -66,14 +69,14 @@ $myBackground: grey;
 }
 
 .submit-button:hover {
-  background-color: $myGreen;
-  box-shadow: 0px 15px 20px #30c5ff;
+  background-color: $myBlue;
+  box-shadow: 0px 15px 20px $myButtonBottom;
   color: #fff;
   transform: translateY(-7px);
 }
 
 .danger-button{
-  background-color: $myBlue;
+  background-color: $myButton;
   width: 140px;
   height: 45px;
   font-family: 'Roboto', sans-serif;
@@ -92,8 +95,8 @@ $myBackground: grey;
 }
 
 .danger-button:hover{
-  background-color: $myRed;
-  box-shadow: 0px 15px 20px #cc2936;
+  background-color: $myButtonHover;
+  box-shadow: 0px 15px 20px $myButtonBottom;
   color: #fff;
   transform: translateY(-7px);
 }

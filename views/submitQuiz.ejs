@@ -27,17 +27,19 @@
       <p> Last Score: <%=result.last_score %> / <%=result.out_of %></p>
       <form action="/submitQuiz/submitReview/<%= quiz.id %>" method="POST">
       <div class="favourite-container">
-        <p>Favourited</p>
-        <input type="checkbox" id="fav-button" name="favourite" checked="<%= result.favourited %>"></input>
+        <p><i class="fa-solid fa-heart" style="color: #da5252;"></i>Favourited
+        <input type="checkbox" id="fav-button" name="favourite" checked="<%= result.favourited %>"></input></p>
 
-        <p> Rating </p>
+        <p><i class="fa-solid fa-star" style="color: #fcc045;"></i>Rating
+
         <select name="rating">
           <option value="1">1</option>
           <option value="2">2</option>
           <option value="3">3</option>
           <option value="4">4</option>
           <option value="5">5</option>
-        </select>
+        </select></p>
+
       </div>
 
 

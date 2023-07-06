@@ -15,6 +15,11 @@ body {
   // flex-direction: column;
   // justify-content: space-between;
   // align-items: center;
+  background-image: url('../images/lighthouse.jpeg');
+  background-size: 200%;
+  background-position:  91% 44%;
+  // background-size:cover;
+  background-attachment: fixed;
   font-size: $myFontSize;
   font-family: 'Belanosima', sans-serif;
   min-height: 100vh;
@@ -28,7 +33,7 @@ main{
 
 .list-item{
   display: flex;
-  border-bottom: 2px solid $myGrey;
+  border-bottom: 1.5px solid $myGrey;
   width: 90%;
   margin: auto;
 }
@@ -53,12 +58,56 @@ main{
 
 h1.text-centered {
   color: #fff;
+  width: 70vw;
   background-color: $myBlue;
   text-align: center;
-  padding: 0.25em;
+  padding: 0.3em 0 0.3em 0;
+  background-image: url('../images/natural-paper.png');
+  border-bottom: 2px, $myRed;
+
 }
 
 #title {
   margin: 0.25;
-  box-shadow: 10px, #012d3d;
+  box-shadow: 10px, $myBlueDark;
+}
+
+
+section {
+  // border-style: solid;
+  background-image: url('../images/natural-paper.png');
+  background-color:rgba(255,255,255,0.7);
+  width:  70vw;
+  padding: 0;
+  margin-left: 24%;
+  box-shadow: 17px 15px 5px RGBA(61,76,82,0.8);
+}
+
+section.favourite-quizzes {
+  margin-top: 1em;
+}
+
+p.list-item-text a {
+  color: $myBlueDark;
+}
+
+p.list-item-text a:hover {
+ color: $myRed;
+}
+
+
+button, html [type="button"], [type="reset"], [type="submit"] {
+  background-color: rgba(0,0,0,0);
+  border-style: none;
+  color: $myBlueDark;
+}
+
+i.fa-solid.fa-share:hover {
+  color: $myRed;
+}
+
+.clipboard-button .list-item-text {
+  margin: 0;
+  padding: 0;
+  block-size: 0;
 }

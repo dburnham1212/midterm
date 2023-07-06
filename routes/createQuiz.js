@@ -22,7 +22,9 @@ router.get('/', async (req, res) => {
 
 // Post route for submitting a created quiz
 router.post('/', async (req, res) => {
-  const userID = req.session.userID; // Set user id to id set in the cookie
+  const userID = req.session.userID;
+
+  // Set user id to id set in the cookie
   //let questionCounter = 1; // Setup a value to cycle through the questions
 
   // if (req.body[`${questionCounter}`]) { // check if req.body has a question based off of the number provide

@@ -29,7 +29,7 @@ router.get('/', async (req, res) => {
     if(result){
       quiz.scoreString = `${result.highest_score} / ${result.out_of}`;
     } else {
-      quiz.scoreString = "N/A"
+      quiz.scoreString = " ";
     }
   }
 

@@ -1,71 +1,100 @@
-textarea {
-  resize: none;
-  height: 50px;
-  width: 400px;
-}
+// section {
+//   border-style: solid;
+//   border-color: #0b0b0b;
+//   width:  65vw;
+//   padding: 0;
+//   margin: auto;
+//   // box-shadow: 7px 5px 5px #3D4C53;
+// }
 
-.create-quiz-header{
+// section.favourite-quizzes {
+//   margin-top: 1em;
+// }
+
+header.create-quiz-header {
+  border: solid red;
   display: flex;
-  justify-content: center;
   flex-direction: column;
   align-items: center;
-  margin: 1em;
+
 }
+
+div.question-card {
+  border: solid green;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+}
+
+// textarea {
+//   resize: none;
+//   height: 50px;
+//   width: 400px;
+// }
+
+// .create-quiz-header{
+//   display: flex;
+//   justify-content: center;
+//   flex-direction: column;
+//   align-items: center;
+//   // margin: 1em;
+// }
 
 .quiz-name-input{
   width: 25%;
 }
 
-.create-quiz-footer {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  gap: 1em;
-  margin: 1em;
-}
+// .create-quiz-footer {
+//   display: flex;
+//   justify-content: center;
+//   align-items: center;
+//   gap: 1em;
+//   margin: 1em;
+// }
 
-.question-card{
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  border: 1px solid black;
-}
+// .question-card{
+//   display: flex;
+//   flex-direction: column;
+//   align-items: center;
+//   border: 1px solid black;
+// }
 
-.question-container{
-  margin: 1em;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-}
+// .question-container{
+//   margin: 1em;
+//   display: flex;
+//   flex-direction: column;
+//   align-items: center;
+// }
 
-.questionButton {
-  display: flex;
-  justify-content: center;
-}
+// .questionButton {
+//   display: flex;
+//   justify-content: center;
+// }
 
-.answer-container{
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  margin: .5em 0;
-}
+// .answer-container{
+//   display: flex;
+//   align-items: center;
+//   justify-content: center;
+//   margin: .5em 0;
+// }
 
-.answer-text{
-  width: 5em;
-}
+// .answer-text{
+//   width: 5em;
+// }
 
-.answer-input-field{
-  width: 40em;
-  height: 1.5em;
-}
+// .answer-input-field{
+//   width: 40em;
+//   height: 1.5em;
+// }
 
-.answer-checkbox{
-  width: 1em;
-  height: 1em;
-  margin-left: 1em;
-}
+// .answer-checkbox{
+//   width: 1em;
+//   height: 1em;
+//   margin-left: 1em;
+// }
 
-.delete-question-button{
-  margin: 1em;
-}
+// .delete-question-button{
+//   margin: 1em;
+// }
 

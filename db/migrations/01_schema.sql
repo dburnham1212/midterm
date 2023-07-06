@@ -46,7 +46,7 @@ CREATE TABLE results (
   highest_score TEXT,
   last_score TEXT,
   out_of INTEGER,
-  rating INTEGER
+  rating INTEGER DEFAULT 1
 );
 
 CREATE TABLE favourites (

@@ -1,14 +1,22 @@
 const express = require('express');
 const router = express.Router();
 
-const { getQuizByQuizId } = require("../db/queries/quizGetQueries");
-const { removeFromFavourites } = require("../db/queries/miscDeleteQueries");
-const { getQuestionsByQuizId } = require("../db/queries/questionGetQueries");
+// User get queries
 const { getUserById } = require("../db/queries/userGetQueries");
-const { addResultToDatabase, updateResult } = require("../db/queries/postQuizToDatabase");
+// Quiz get queries
+const { getQuizByQuizId } = require("../db/queries/quizGetQueries");
+// Question get queries
+const { getQuestionsByQuizId } = require("../db/queries/questionGetQueries");
+// Misc get queries
 const { getResultByUserAndQuiz, getFavourite, getCorrectAnswersByQuizId } = require("../db/queries/miscGetQueries");
-// Add queries
-const { addToFavourites } = require("../db/queries/miscAddQueries");
+// Misc Add queries
+const { addToFavourites, addToResults } = require("../db/queries/miscAddQueries");
+// Misc update queries
+const { updateResult } = require("../db/queries/miscUpdateQueries");
+// Misc delete queries
+const { removeFromFavourites } = require("../db/queries/miscDeleteQueries");
+
+
 
 // get route for quiz submission
 router.get('/:id', async (req, res) => {
@@ -72,7 +80,7 @@ router.post('/:id', async (req, res) => {
         out_of: answerCount,
         rating: 0
       }
-      await addResultToDatabase(currentResult)
+      await addToResults(currentResult)
     }
   }
 

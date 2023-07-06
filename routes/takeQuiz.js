@@ -1,9 +1,13 @@
 const express = require('express');
 const router = express.Router();
 
-const { getQuizByQuizId } = require("../db/queries/quizGetQueries");
+// User get queries
 const { getUserById } = require("../db/queries/userGetQueries");
+// Quiz get queries
+const { getQuizByQuizId } = require("../db/queries/quizGetQueries");
+// Question get queries
 const { getQuestionsByQuizId } = require("../db/queries/questionGetQueries");
+// Answer get queries
 const { getAnswersByQuizId } = require("../db/queries/miscGetQueries");
 
 

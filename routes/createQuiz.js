@@ -1,11 +1,14 @@
 const express = require('express');
 const router = express.Router();
 
+// User get queries
 const { getUserById } = require("../db/queries/userGetQueries");
+// Quiz get queries
+const { getQuizByTitleAndUserID, getTitleByUser  } = require("../db/queries/quizGetQueries");
+// Question get queries
 const { getQuestionByQuizIdAndOrder } = require("../db/queries/questionGetQueries");
-const { getQuizByTitleAndUserID  } = require("../db/queries/quizGetQueries");
-const { insertQuizsDatabase, insertQuestionToDatabase, insertanswersDatabase } = require("../db/queries/postQuizToDatabase");
-const { getTitleByUser } = require('../db/queries/getTitleByUser');
+// Misc Add Queries
+const { addToQuizs, addToQuestions, addToAnswers } = require("../db/queries/miscAddQueries");
 
 // get route to display quiz creation form
 router.get('/', (req, res) => {
@@ -45,7 +48,7 @@ router.post('/', async (req, res) => {
     }
 
 
-    await insertQuizsDatabase(newQuiz);
+    await addToQuizs(newQuiz);
     const quiz = await getQuizByTitleAndUserID(req.body[`quiz-title`], userID);
 
     while (req.body[`${questionCounter}`]) { // while we still have questions to check
@@ -56,7 +59,7 @@ router.post('/', async (req, res) => {
         question_order: questionCounter
       }
 
-      await insertQuestionToDatabase(question);
+      await addToQuestions(question);
       const thisQuestion = await getQuestionByQuizIdAndOrder(quiz.id, questionCounter);
       let correct = Number(req.body[`answer${questionCounter}`])
       let currentAnswers = req.body[`input${questionCounter}`];
@@ -67,12 +70,9 @@ router.post('/', async (req, res) => {
           text: currentAnswers[i],
           is_correct: (correct - 1 === i)
         };
-
-
-        await insertanswersDatabase(currentAnswer);
+        await addToAnswers(currentAnswer);
       }
       // increment question counter to set up for the next question if there is one
-
       questionCounter++;
     }
   }

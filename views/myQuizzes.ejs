@@ -40,15 +40,13 @@
       <% } %>
       <p class="list-item-text"><a href="/takeQuiz/<%= quiz.id %>">Take Quiz</a></p>
       <p class="list-item-text"><%= quiz.rating %></p>
-
-      <form>
-      <a><button class="favourite" name="favourites" data-quiz="<%=quiz.id%>" value="[ <%-user.id%>, <%-quiz.id%> ]"><i class="fa-sharp fa-regular fa-heart" href=""></i></button></a>
-      <a><button class="share"><i class="fa-solid fa-share-nodes"href=""></i></button></a>
+      <!-- <a><button class="favourite" name="favourites" data-quiz="<%=quiz.id%>" value="[ <%-user.id%>, <%-quiz.id%> ]"><i class="fa-sharp fa-regular fa-heart" href=""></i></button></a>
+      <a><button class="share"><i class="fa-solid fa-share-nodes"href=""></i></button></a> -->
       <!-- <a><button class="btn"><i class="fa-sharp fa-regular fa-heart"href=""></i></button></a> -->
 
     </span>
     <% } %>
-  </form>
+
     <% if(quizzes.length === 0){ %>
       <span>
         <p class ="text-centered"> NONE5 </p>
@@ -79,12 +77,12 @@
         <a class="btnText2" href ="/takeQuiz/<%= quiz.id %>">GO!</a>
         </div>
       </div> -->
-      </div>
+      <!-- </div> -->
       <p class="list-item-text"><%= quiz.rating %></p>
       <!-- <form method="POST" action="" class="symbols"> -->
-        <a><button class="favourite"><i class="fa-sharp fa-regular fa-heart" href="/"></i></button></a>
+        <!-- <a><button class="favourite"><i class="fa-sharp fa-regular fa-heart" href="/"></i></button></a>
         <a><button class="share"><i class="fa-solid fa-share-nodes"href=""></i></button></a>
-        <a><button class="btn"><i class="fa-sharp fa-regular fa-heart"href=""></i></button></a>
+        <a><button class="btn"><i class="fa-sharp fa-regular fa-heart"href=""></i></button></a> -->
       <!-- </form> -->
     </span>
     <% }

@@ -51,7 +51,6 @@ $myButtonBottom: $myRed;
 .submit-button {
   background-color: $myButton;
   // border: 1px solid black;
-
   border: none;
   color: #fff;
   width: 140px;
@@ -74,6 +73,8 @@ $myButtonBottom: $myRed;
   color: #fff;
   transform: translateY(-7px);
 }
+
+
 
 .danger-button{
   background-color: $myButton;

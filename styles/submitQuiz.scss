@@ -20,9 +20,17 @@
   align-items: center;
   gap: 1em;
 }
+.submit-button-myQuiz {
+  margin-left: 75px;
+}
+.icon-container {
+  display: flex;
+}
 
 .share-button {
   border-radius: 50%;
+  background-color: #21b2bb;
+  margin-top: 30px;
   width: 40px;
   height: 40px;
 }

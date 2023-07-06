@@ -71,13 +71,14 @@
       <% } else { %>
         <p class="list-item-text">N/A</p>
       <% } %>
-      <div id="holder">
+      <a class="list-item-text" href ="/takeQuiz/<%= quiz.id %>">Take Quiz</a>
+      <!-- <div id="holder">
 
       <div class="button"><a class="btnText" href ="/takeQuiz/<%= quiz.id %>">Take Quiz</a>
         <div class="btnTwo">
         <a class="btnText2" href ="/takeQuiz/<%= quiz.id %>">GO!</a>
         </div>
-      </div>
+      </div> -->
       </div>
       <p class="list-item-text"><%= quiz.rating %></p>
       <!-- <form method="POST" action="" class="symbols"> -->

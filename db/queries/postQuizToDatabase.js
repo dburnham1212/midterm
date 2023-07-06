@@ -88,7 +88,7 @@ const addResultToDatabase = function (result) {
 const updateResult = function (result) {
   const questString = `
     UPDATE results
-    SET highest_score = $1, last_score = $2, out_of = $3, rating = $5
+    SET highest_score = $1, last_score = $2, out_of = $3, rating = $4
     WHERE results.id = ${result.id};
   `;
   const container = [`${result.highest_score}`, `${result.last_score}`, `${result.out_of}`, `${result.rating}`];

@@ -1,7 +1,7 @@
 const express = require('express');
 const router = express.Router();
 
-const { getUserByEmail, getUserById, getQuizByQuizId, getQuestionsByQuizId, getAnswersByQuizId, getResultByUserAndQuiz, getCorrectAnswersByQuizId } = require("../database_placeholders/users");
+const { getUserByEmail, getUserById, getQuizByQuizId, getQuestionsByQuizId, getAnswersByQuizId, getResultByUserAndQuiz, getCorrectAnswersByQuizId, getFavourite, addToFavourites, removeFromFavourites} = require("../database_placeholders/users");
 
 const { addResultToDatabase, updateResult } = require("../db/queries/postQuizToDatabase");
 
@@ -85,8 +85,15 @@ router.post('/submitReview/:id', async (req, res) => {
   const result = await getResultByUserAndQuiz(userID, currentQuiz.id);
   if (currentQuiz) { // check if we have found a quiz or not
     result.rating = Number(req.body['rating']);
+    const favourite = await getFavourite(userID, currentQuiz.id)
     if (req.body['favourite']) {
-
+      if(!favourite){
+        await addToFavourites(userID, currentQuiz.id);
+      }
+    } else {
+      if(favourite){
+        await removeFromFavourites(userID, currentQuiz.id);
+      }
     }
   }
   updateResult(result);

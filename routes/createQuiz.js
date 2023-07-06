@@ -5,6 +5,8 @@ const { getUserByEmail, getUserById, getQuizeByTitleAndUserID, getQuestionByQuiz
 
 const { insertQuizsDatabase, insertQuestionToDatabase, insertanswersDatabase } = require("../db/queries/postQuizToDatabase");
 
+const { getTitleByUser } = require('../db/queries/getTitleByUser');
+
 // get route to display quiz creation form
 router.get('/', (req, res) => {
   const userID = req.session.userID; // Set user id to id set in the cookie
@@ -20,9 +22,9 @@ router.get('/', (req, res) => {
 router.post('/', async (req, res) => {
   const userID = req.session.userID; // Set user id to id set in the cookie
   let questionCounter = 1; // Setup a value to cycle through the questions
-
+  
   if (req.body[`${questionCounter}`]) { // check if req.body has a question based off of the number provide
-
+    
     // push an object to the database with the quiz id, userId, and quiz title
     const newQuiz = {
       user_id: userID,
@@ -30,6 +32,14 @@ router.post('/', async (req, res) => {
       rating: 4,
       public: true
     }
+    
+    //Edge case: check if the same title exist in the user
+    const titleExits = await getTitleByUser(newQuiz)
+    if(titleExits[0].title === newQuiz.title){
+      return res.send("The quiz already exist");
+    }
+
+
     await insertQuizsDatabase(newQuiz);
     const quiz = await getQuizeByTitleAndUserID(req.body[`quiz-title`], userID);
 
@@ -45,7 +55,7 @@ router.post('/', async (req, res) => {
       const thisQuestion = await getQuestionByQuizIdAndOrder(quiz.id, questionCounter);
       let correct = Number(req.body[`answer${questionCounter}`])
       let currentAnswers = req.body[`input${questionCounter}`];
-      console.log(thisQuestion);
+      // console.log(thisQuestion);
       for (let i = 0; i < currentAnswers.length; i++) {
         let currentAnswer = { // push the answer to the database
           question_id: thisQuestion.id,

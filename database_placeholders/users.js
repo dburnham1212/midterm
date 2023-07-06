@@ -30,9 +30,10 @@ const getQuizByPublic = () => {
 
 const getMyQuizzesByID = (userID) => {
   return db
-  .query(`SELECT quizs.id, quizs.user_id, quizs.title, results.highest_score, results.out_of FROM quizs
-  LEFT OUTER JOIN results ON quizs.id = results.quiz_id
-  WHERE quizs.user_id = $1;
+  .query(`SELECT quizs.id, quizs.user_id, quizs.title
+  FROM quizs
+  WHERE quizs.user_id = $1
+  ORDER BY quizs.date_created;
   `, [userID])
   .then(data => {
     return data.rows;
@@ -44,10 +45,11 @@ const getMyQuizzesByID = (userID) => {
 
 const getFavQuizzesByUserId = (userID) => {
   return db
-  .query(`SELECT quizs.id as quiz_id, quizs.user_id as id, quizs.title FROM quizs
+  .query(`SELECT quizs.id, users.username, quizs.title, quizs.rating FROM quizs
   JOIN favourites ON favourites.quiz_id = quizs.id
-  JOIN users ON favourites.user_id = users.id
-  WHERE favourites.user_id = $1;
+  JOIN users ON quizs.user_id = users.id
+  WHERE favourites.user_id = $1
+  ORDER BY quizs.date_created;
   `, [userID])
   .then(data => {
     return data.rows;

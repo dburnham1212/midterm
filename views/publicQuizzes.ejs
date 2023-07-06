@@ -10,6 +10,7 @@
 
   <script src="/vendor/jquery-3.0.0.js"></script>
   <script defer src="/scripts/app.js"></script>
+  <script defer src="/scripts/copyToClipboard.js"></script>
 </head>
 <body>
   <%- include('partials/_header') %>
@@ -33,6 +34,8 @@
       <% } else { %>
         <p class="list-item-text">N/A</p>
       <% }  %>
+      <button class="clipboard-button list-item-text" data-copy="/takeQuiz/<%= quiz.id %>"></button>
+      <p></p>
     </span>
     <% }%>
   </main>

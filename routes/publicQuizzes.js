@@ -11,6 +11,7 @@ router.get('/', async ( req, res) => {
   const user = await getUserById(req.session.userID)// Get the user from the db
   const quizzes = await getQuizByPublic();
 
+
   for(const quiz of quizzes){
     let average = await getQuizAvgRatingById(quiz.id);
     quiz.rating = parseFloat(average.rating);

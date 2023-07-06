@@ -1,11 +1,11 @@
 INSERT INTO users (username, email, password)
-VALUES ('userID', 'test@gmail.com', 'password');
+VALUES ('userID', 'test@gmail.com', '$2a$10$xiMLnOMFA.V6DPvPu.x5fegvmdbwVuR1vapQhLuMCQhRA3PJOZiKq');
 INSERT INTO users (username, email, password)
-VALUES ('user2ID', 'test2@gmail.com', 'password');
+VALUES ('user2ID', 'test2@gmail.com', '$2a$10$xiMLnOMFA.V6DPvPu.x5fegvmdbwVuR1vapQhLuMCQhRA3PJOZiKq');
 INSERT INTO users (username, email, password)
-VALUES ('Alice', 'alice@gmail.com', 'password');
+VALUES ('Alice', 'alice@gmail.com', '$2a$10$xiMLnOMFA.V6DPvPu.x5fegvmdbwVuR1vapQhLuMCQhRA3PJOZiKq');
 INSERT INTO users (username, email, password)
-VALUES ('Kira', 'kira@gmail.com', 'password');
+VALUES ('Kira', 'kira@gmail.com', '$2a$10$xiMLnOMFA.V6DPvPu.x5fegvmdbwVuR1vapQhLuMCQhRA3PJOZiKq');
 
 INSERT INTO quizs (user_id, title, rating, public)
 VALUES (1, 'This is a quiz', 4, true );

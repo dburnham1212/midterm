@@ -76,15 +76,16 @@ router.post('/register', async (req, res) => {
   } else { // if not create a new user and add them to the db
     const salt = bcrypt.genSaltSync(10);
     let hashPassword = bcrypt.hashSync(password, salt);
+    console.log(hashPassword);
     let hashRePassword = bcrypt.hashSync(rePassword, salt)
     if(hashPassword === hashRePassword){
       const newUser = { username: username, email: email, password: hashPassword } // creating a new user and adding to db
-  
+
       await insertUserToDatabase(newUser);
       user = await getUserByEmail(email);
-  
-  
-  
+
+
+
       req.session.userID = user.id;
       return res.redirect('/publicQuizzes');
     } else {

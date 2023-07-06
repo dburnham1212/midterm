@@ -37,8 +37,11 @@ router.post('/', async (req, res) => {
     
     //Edge case: check if the same title exist in the user
     const titleExits = await getTitleByUser(newQuiz)
-    if(titleExits[0].title === newQuiz.title){
-      return res.send("The quiz already exist");
+    if(titleExits[0]){
+      if(titleExits[0].title === newQuiz.title){
+
+        return res.send("The quiz already exist");
+      }
     }
 
 

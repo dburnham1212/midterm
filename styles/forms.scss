@@ -21,7 +21,7 @@ $myButtonBottom: $myRed;
 .form-inline-field{
   display: flex;
   align-items: center;
-  gap: 1em
+  gap: 0.25em
 }
 // checkbox
 .form-checkbox{
@@ -33,11 +33,11 @@ $myButtonBottom: $myRed;
   margin-top: 1em;
 }
 
-.form-text-field{
-  display: inline-block;
-  width: 10em;
-  text-align: center;
-}
+// .form-text-field{
+//   display: inline-block;
+//   width: 10em;
+//   text-align: center;
+// }
 
 .form-input-field{
   outline: 2px solid $myBlueDark;

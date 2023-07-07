@@ -1,37 +1,123 @@
-// section {
-//   border-style: solid;
-//   border-color: #0b0b0b;
-//   width:  65vw;
-//   padding: 0;
-//   margin: auto;
-//   // box-shadow: 7px 5px 5px #3D4C53;
-// }
+$myBlue: #18a3dd;
+$myYellow:#fcc045;
+$myRed: #da5252;
+$myGreen: #21b2bb;
+$myBrown: #100d0b;
+$myGrey: #666;
+$myBlueDark: #012d3d;
+$myFontSize: 22px;
+$myBackground: grey;
+$myButton: $myGreen;
+$myButtonHover: $myBlue;
+$myButtonBottom: $myRed;
 
-// section.favourite-quizzes {
-//   margin-top: 1em;
-// }
+section.create-quiz {
+  // border-style: solid;
+  border-color: #0b0b0b;
+  // width:  70vw;
+  padding: 0;
+  // margin-left: auto;
+  // box-shadow: 7px 5px 5px #3D4C53;
+}
+
+section.favourite-quizzes {
+  // margin-top: 1em;
+}
+
+#new-question-form > header > div > div > div {
+  margin: 0;
+}
+
+#new-question-form > header > div > div > div > textarea {
+  margin-top: 0.5em;
+}
+
+header div h1 {
+  // display: flex;
+  // justify-content: center;
+  margin: 0;
+  color: #fff;
+  width: 70vw;
+  background-color: $myBlueDark;
+  text-align: center;
+  // padding: 0.3em 0 0.3em 0;
+  background-image: url('../images/natural-paper.png');
+  // border-bottom: 2px, $myRed;
+}
 
 header.create-quiz-header {
-  border: solid red;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
+  // border: solid red;
+  // display: flex;
+  // justify-content: center;
+  // flex-direction: column;
+  // align-items: center;
+
+}
+.question-main {
 
 }
 
-div.question-card {
-  border: solid green;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
+.question-main {
+  // display:flex;
+  // flex-direction: rows;
+  // justify-content: center;
+}
+
+article {
+  margin: 1em;
+}
+
+.question-container {
+  // display: flex;
+  // flex-direction: row;
+}
+
+.question-container textarea {
+  margin-left: 0.5em;
+}
+.answer-container {
+  // margin-right: 24%;
+  // display: flex;
+  // flex-direction: column;
+  // align-items: center;
+}
+
+
+.question-card {
+  // display: flex;
+  // flex-direction: column;
+  // justify-content: space-between;
+  // align-items: center;
 
 }
 
-// textarea {
-//   resize: none;
-//   height: 50px;
-//   width: 400px;
+section.new-question-container {
+  // margin: 0;
+}
+
+// #new-question-form > header > div > div > div > div > p {
 // }
+
+
+#new-question-form > header > div > div > div {
+  display: flex;
+  justify-content: center;
+  // flex-direction: row-reverse;
+  margin: 1em;
+}
+
+.input-public p {
+  padding-left: 1em;
+
+}
+
+.quiz-name-input {
+
+  height: 40px;
+  width: 40vw;
+  margin: 1em;
+
+}
 
 // .create-quiz-header{
 //   display: flex;
@@ -41,48 +127,44 @@ div.question-card {
 //   // margin: 1em;
 // }
 
-.quiz-name-input{
-  width: 25%;
+.create-quiz-footer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 1em;
+  margin: 1em;
+  padding-bottom: 2em;
 }
 
-// .create-quiz-footer {
-//   display: flex;
-//   justify-content: center;
-//   align-items: center;
-//   gap: 1em;
-//   margin: 1em;
-// }
+article.question-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 0;
+  padding: 0;
+}
 
-// .question-card{
-//   display: flex;
-//   flex-direction: column;
-//   align-items: center;
-//   border: 1px solid black;
-// }
+.question-card textarea {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  margin: 0;
+  padding: 0;
+  width: 50vw ;
+}
 
-// .question-container{
-//   margin: 1em;
-//   display: flex;
-//   flex-direction: column;
-//   align-items: center;
-// }
+.answer-container{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
 
-// .questionButton {
-//   display: flex;
-//   justify-content: center;
-// }
-
-// .answer-container{
-//   display: flex;
-//   align-items: center;
-//   justify-content: center;
-//   margin: .5em 0;
-// }
-
-// .answer-text{
-//   width: 5em;
-// }
-
+.delete-container {
+  display: flex;
+  justify-content: flex-end;
+  padding-right: 2em;
+}
 // .answer-input-field{
 //   width: 40em;
 //   height: 1.5em;

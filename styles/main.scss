@@ -15,20 +15,21 @@ body {
   // flex-direction: column;
   // justify-content: space-between;
   // align-items: center;
-  background-image: url('../images/lighthouse.jpeg');
-  background-size: 150%;
-  background-position:  91% 44%;
+  background-image: url('../images/lighthouseflip.png');
+  background-size: 180%;
+  background-position:  97% 13%;
   // background-size:cover;
   background-attachment: fixed;
   font-size: $myFontSize;
   font-family: 'Belanosima', sans-serif;
-  min-height: 100vh;
+  // min-height: 100vh;
 }
 
 main{
   // Add padding to seperate nav from rest of page, should change if size of nav changes
   // background-color:#012d3d;
-  padding-top: 100px;
+  padding-top: 110px;
+  padding-bottom: 100px;
 }
 
 .list-item{
@@ -77,10 +78,23 @@ h1.text-centered {
 }
 
 
-section {
+section.public-quizzes,
+section.my-quizzes,
+section.favourite-quizzes {
   // border-style: solid;
   background-image: url('../images/natural-paper.png');
-  background-color:rgba(255,255,255,0.7);
+  background-color:rgba(255,255,255,0.77);
+  width:  70vw;
+  padding: 0.5em;
+  margin-left: 24%;
+  box-shadow: 17px 15px 5px RGBA(61,76,82,0.6);
+  // margin-bottom: 2em;
+}
+
+section.create-quiz {
+  // border-style: solid;
+  background-image: url('../images/natural-paper.png');
+  background-color:rgba(255,255,255,0.77);
   width:  70vw;
   padding: 0;
   margin: auto;
@@ -115,3 +129,4 @@ i.fa-solid.fa-copy:hover {
   padding: 0;
   block-size: 0;
 }
+

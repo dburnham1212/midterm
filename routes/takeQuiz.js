@@ -18,7 +18,7 @@ router.get('/:id', async(req, res) => {
     return res.redirect("/users/login");
   }
   // Get Files from the database for user, quiz, questions and answers
-  const user = getUserById(userID);
+  const user = await getUserById(userID);
   const quiz = await getQuizByQuizId(req.params.id);
   const questions = await getQuestionsByQuizId(req.params.id);
   const answers = await getAnswersByQuizId(req.params.id);

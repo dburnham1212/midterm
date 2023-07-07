@@ -32,13 +32,12 @@
       <p class="list-item-main">Quiz Name</p>
       <p class="list-item-main">Quiz Author</p>
       <p class="list-item-main">Rating</p>
-      <p class="list-item-main">Take</p>
       <p class="list-item-main">Copy URL</p>
     </span>
     <!-- Cycle through quizzes to display them -->
     <% for (const quiz of quizzes) { %>
     <span class="list-item">
-      <p class="list-item-text"><%= quiz.title %></p>
+      <p class="list-item-text"><a href="/takeQuiz/<%= quiz.id %>"><%= quiz.title %></a></p>
       <p class="list-item-text"><%= quiz.email %></p>
 
       <!-- Check if there is a quiz rating or not, if so display the rating, if not display n/a-->
@@ -47,8 +46,6 @@
       <% } else { %>
         <p class="list-item-text">n/a</p>
       <% }  %>
-
-      <p class="list-item-text"><a href="/takeQuiz/<%= quiz.id %>">Take Quiz</a></p>
       <button class="clipboard-button list-item-text" data-copy="/takeQuiz/<%= quiz.id %>"><i class="fa-solid fa-copy"></i></button>
       <p></p>
     </span>

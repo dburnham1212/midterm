@@ -13,7 +13,9 @@ const { addToQuizs, addToQuestions, addToAnswers } = require("../db/queries/misc
 // get route to display quiz creation form
 router.get('/', async (req, res) => {
   const userID = req.session.userID; // Set user id to id set in the cookie
-
+  if(!userID){
+    return res.redirect("/users/login");
+  }
   // pass the values to the webpage and display it
   const user = await getUserById(userID)// Get the user from the db
   const templateVars = { user: user };
@@ -23,6 +25,9 @@ router.get('/', async (req, res) => {
 // Post route for submitting a created quiz
 router.post('/', async (req, res) => {
   const userID = req.session.userID; // Set user id to id set in the cookie
+  if(!userID){
+    return res.redirect("/users/login");
+  }
 
   let bodyKeys = Object.keys(req.body);
   console.log(bodyKeys);

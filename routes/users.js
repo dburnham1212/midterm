@@ -21,8 +21,11 @@ router.get('/', (req, res) => {
 
 // Simple get route that displays the login form
 router.get('/login', async(req, res) => {
-  const userID = req.session.userID; // Set user id to id set in the cookie
 
+  const userID = req.session.userID; // Set user id to id set in the cookie
+  if(userID){
+    return res.redirect("/publicQuizzes");
+  }
   // pass values into template and render it
   const user = await getUserById(userID);// Get the user from the db
   const templateVars = { user: user };
@@ -32,6 +35,9 @@ router.get('/login', async(req, res) => {
 // Simple get route that displays the register form
 router.get('/register', async(req, res) => {
   const userID = req.session.userID; // Set user id to id set in the cookies
+  if(userID){
+    return res.redirect("/publicQuizzes");
+  }
   // pass values into template and render it
   const user = await getUserById(userID);// Get the user from the db
   const templateVars = { user: user };

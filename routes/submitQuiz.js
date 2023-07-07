@@ -21,7 +21,9 @@ const { removeFromFavourites } = require("../db/queries/miscDeleteQueries");
 // get route for quiz submission
 router.get('/:id', async(req, res) => {
   const userID = req.session.userID; // Set user id to id set in the cookie
-
+  if(!userID){
+    return res.redirect("/login");
+  }
   // Get objects from the db
   const user = await getUserById(userID); // Get the user from the db
   const currentQuiz = await getQuizByQuizId(req.params.id);
@@ -35,7 +37,9 @@ router.get('/:id', async(req, res) => {
 // Post route for quiz submission
 router.post('/:id', async(req, res) => {
   const userID = req.session.userID; // Set user id to id set in the cookie
-
+  if(!userID){
+    return res.redirect("/login");
+  }
   // let currentQuiz;
   let answerCount = 0;
   let correctCount = 0;
@@ -92,6 +96,9 @@ router.post('/:id', async(req, res) => {
 // post route used for ratings when a user has reviewed their results
 router.post('/submitReview/:id', async(req, res) => {
   const userID = req.session.userID; // Set user id to id set in the cookie
+  if(!userID){
+    return res.redirect("/login");
+  }
   // let currentQuiz;
   // cycle through quizzes and find the one that was taken
   const currentQuiz = await getQuizByQuizId(req.params.id);

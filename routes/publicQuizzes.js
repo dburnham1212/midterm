@@ -10,8 +10,12 @@ const { updateQuizRating  } = require("../db/queries/miscUpdateQueries");
 
 // Get route for publicQuizzes
 router.get('/', async ( req, res) => {
+  const userID = req.session.userID;
+  if(!userID){
+    return res.redirect("/users/login");
+  }
   // Getting files from the db
-  const user = await getUserById(req.session.userID)// Get the user from the db
+  const user = await getUserById(userID)// Get the user from the db
   const quizzes = await getQuizzesByPublic(); // Get pulblic quizzes from the db
 
   // Cycle through the quizzes

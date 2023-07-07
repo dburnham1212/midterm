@@ -30,10 +30,10 @@ textarea {
   display: flex;
   flex-direction: column;
   align-items: center;
-  border-top: 2px solid black;
-  background-color: rgba(255, 255, 255, 0.7);
+  border-top: 2px solid $myBlueDark;
+  background-color: rgba(255, 255, 255, 0.8);
   background-image: url(../images/natural-paper.png);
-  width: 1000px;
+  width: 80%;
   margin: auto;
 }
 
@@ -58,7 +58,7 @@ textarea {
 
 .answer-text-field{
   padding: 0 1em;
-  width: 40em;
+  width: 25em;
   height: 1em;
 }
 
@@ -97,4 +97,3 @@ textarea {
 .button:active { /*Clicked and held*/
   box-shadow: 0px 5px 6px rgba(0,0,0,0.3);
 }
-

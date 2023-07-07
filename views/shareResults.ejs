@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+
+  <title>Quiz Review Shared</title>
+
+  <!-- Bootstrap CSS -->
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css"
+    integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
+
+  <!-- Include global styles-->
+  <%- include('partials/_global_styling') %>
+  <!--Local Styling -->
+  <link rel="stylesheet" href="/styles/submitQuiz.css" />
+
+  <script src="/vendor/jquery-3.0.0.js"></script>
+</head>
+<body>
+  <!-- middle -->
+  <main>
+    <div class="submit-container">
+      <div class ="submit-card">
+        <h1 class="text-centered"> QUIZ RESULTS ! </h1>
+        <p> Quiz name: <%= quiz.title %></p>
+        <p> COMPLETED BY: <%= user.username %></p>
+        <p> Last Score: <%=result.last_score %> / <%=result.out_of %></p>
+      </div>
+    </div>
+  </main>
+
+  <%- include('partials/_bootstrap') %>
+</body>
+</html>

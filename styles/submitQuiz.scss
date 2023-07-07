@@ -3,6 +3,18 @@
   display: flex;
   flex-direction: column;
   align-items: center;
+  background-color: rgba(255, 255, 255, 0.7);
+  background-image: url(../images/natural-paper.png);
+  width: 70vw;
+  margin-top: 5em;
+  padding: 2em;
+  box-shadow: 17px 15px 5px RGBA(61,76,82,0.8);
+}
+
+.submit-container{
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .fav-icon{
@@ -19,4 +31,18 @@
   justify-content: center;
   align-items: center;
   gap: 1em;
+}
+.submit-button-myQuiz {
+  margin-left: 75px;
+}
+.icon-container {
+  display: flex;
+}
+
+.share-button {
+  border-radius: 50%;
+  background-color: #21b2bb;
+  margin-top: 30px;
+  width: 40px;
+  height: 40px;
 }

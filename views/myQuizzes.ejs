@@ -17,7 +17,7 @@
   <%- include('partials/_global_styling') %>
 
   <script src="/vendor/jquery-3.0.0.js"></script>
-
+  <script defer src="/scripts/copyToClipboard.js"></script>
   <link rel="stylesheet" href="/styles/myQuiz.css" />
 </head>
 <body>
@@ -32,7 +32,11 @@
       <p class="list-item-main">Quiz Name</p>
       <p class="list-item-main">Score</p>
       <p class="list-item-main">Rating</p>
+<<<<<<< HEAD
       <p class="list-item-main">Take</p>
+=======
+      <p class="list-item-main">Copy URL</p>
+>>>>>>> c98cf30219872e91c5b80ce28d9b9d36d8db8e21
     </span>
     <!-- Cycle through my quizzes to display them -->
     <%for (const quiz of quizzes) { %>
@@ -42,11 +46,19 @@
 
       <!-- Check if there is a quiz rating or not, if so display the rating, if not display n/a-->
       <% if(quiz.rating) { %>
+<<<<<<< HEAD
         <p class="list-item-text"><%= quiz.rating %>  <i class="fa-solid fa-star" style="color: #fcc045;"></i></p>
       <% } else { %>
         <p class="list-item-text">n/a</p>
       <% }  %>
       <p class="list-item-text"><a href="/takeQuiz/<%= quiz.id %>">Take Quiz</a></p>
+=======
+        <p class="list-item-text"><%= quiz.rating %> <i class="fa-solid fa-star" style="color: #fcc045;"></i></p>
+      <% } else { %>
+        <p class="list-item-text">n/a</p>
+      <% }  %>
+      <button class="clipboard-button list-item-text" data-copy="/takeQuiz/<%= quiz.id %>"><i class="fa-solid fa-copy"></i></button>
+>>>>>>> c98cf30219872e91c5b80ce28d9b9d36d8db8e21
     </span>
     <% } %>
 
@@ -62,7 +74,11 @@
       <p class="list-item-main">Quiz Name</p>
       <p class="list-item-main">Author</p>
       <p class="list-item-main">Rating</p>
+<<<<<<< HEAD
       <p class="list-item-main">Take</p>
+=======
+      <p class="list-item-main">Copy URL</p>
+>>>>>>> c98cf30219872e91c5b80ce28d9b9d36d8db8e21
 
 
     </span>
@@ -74,11 +90,19 @@
 
       <!-- Check if there is a quiz rating or not, if so display the rating, if not display n/a-->
       <% if(quiz.rating) { %>
+<<<<<<< HEAD
         <p class="list-item-text"><%= quiz.rating %>  <i class="fa-solid fa-star" style="color: #fcc045;"></i></p>
       <% } else { %>
         <p class="list-item-text">n/a</p>
       <% }  %>
       <p class="list-item-text"><a  href ="/takeQuiz/<%= quiz.id %>">Take Quiz</a></p>
+=======
+        <p class="list-item-text"><%= quiz.rating %> <i class="fa-solid fa-star" style="color: #fcc045;"></i></p>
+      <% } else { %>
+        <p class="list-item-text">n/a</p>
+      <% }  %>
+      <button class="clipboard-button list-item-text" data-copy="/takeQuiz/<%= quiz.id %>"><i class="fa-solid fa-copy"></i></button>
+>>>>>>> c98cf30219872e91c5b80ce28d9b9d36d8db8e21
     </span>
     <% }
     if(favourites.length === 0){ %>

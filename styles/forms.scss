@@ -34,6 +34,12 @@ $myButtonBottom: $myYellow;
   margin-top: 1em;
 }
 
+.form-text-field{
+  display: inline-block;
+  width: 10em;
+  text-align: center;
+}
+
 .form-input-field{
   outline: 2px solid $myBlueDark;
   width: 20em;

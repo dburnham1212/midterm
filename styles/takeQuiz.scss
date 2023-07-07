@@ -30,10 +30,10 @@ textarea {
   display: flex;
   flex-direction: column;
   align-items: center;
-  border-top: 2px solid $myBlueDark;
+  //border-top: 2px solid $myBlueDark;
   background-color: rgba(255, 255, 255, 0.8);
   background-image: url(../images/natural-paper.png);
-  width: 80%;
+  width: 70vw;
   margin: auto;
 }
 
@@ -58,7 +58,7 @@ textarea {
 
 .answer-text-field{
   padding: 0 1em;
-  width: 25em;
+  width: 60vw;
   height: 1em;
 }
 
@@ -71,7 +71,6 @@ textarea {
 .delete-question-button{
   margin: 1em;
 }
-
 
 .btnTwo {
   position : relative;

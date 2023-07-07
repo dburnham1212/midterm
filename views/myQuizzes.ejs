@@ -59,7 +59,7 @@
     <h1 class="text-centered">Favourite Quizzes</h1>
     <span class="list-item">
       <p class="list-item-main">Quiz Name</p>
-      <p class="list-item-main">Author</p>
+      <p class="list-item-main">Quiz Author</p>
       <p class="list-item-main">Rating</p>
       <p class="list-item-main">Copy URL</p>
 
@@ -69,7 +69,7 @@
     <%for (const quiz of favourites) { %>
     <span class="list-item">
       <p class="list-item-text"><a  href ="/takeQuiz/<%= quiz.id %>"><%= quiz.title %></a></p>
-      <p class="list-item-text"><%= quiz.username %></p>
+      <p class="list-item-text"><%= quiz.email %></p>
       <!-- Check if there is a quiz rating or not, if so display the rating, if not display n/a-->
       <% if(quiz.rating) { %>
         <p class="list-item-text"><%= quiz.rating %> <i class="fa-solid fa-star" style="color: #fcc045;"></i></p>

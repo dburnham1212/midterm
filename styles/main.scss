@@ -80,19 +80,27 @@ h1.text-centered {
 
 section.public-quizzes,
 section.my-quizzes,
-section.favourite-quizzes,
+section.favourite-quizzes {
+  background-image: url('../images/natural-paper.png');
+  background-color:rgba(255,255,255,0.77);
+  width:  70vw;
+  margin: auto;
+  box-shadow: 17px 15px 5px RGBA(61,76,82,0.6);
+
+}
+
 section.create-quiz {
   background-image: url('../images/natural-paper.png');
   background-color:rgba(255,255,255,0.77);
   width:  70vw;
-  margin-left: 24%;
+  margin: auto;
   box-shadow: 17px 15px 5px RGBA(61,76,82,0.6);
 
 }
 
 #take-quiz {
   background-color: $myBlue;
-  width: 80%;
+  width: 70vw;
   height: 90px;
   background-image: url('../images/natural-paper.png');
   padding-top: 1em;

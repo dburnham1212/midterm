@@ -15,7 +15,7 @@ const { updateFavourite, updateQuizRating  } = require("../db/queries/miscUpdate
 router.get('/', async(req, res) => {
   const userID = req.session.userID; // Set user id to id set in the cookie
   if(!userID){
-    return res.redirect("/login");
+    return res.redirect("/users/login");
   }
   const user = await getUserById(userID); // get the user from the db
   const myQuizzes = await getMyQuizzesByID(userID); // get my quizzes from db

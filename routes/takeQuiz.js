@@ -15,7 +15,7 @@ const { getAnswersByQuizId } = require("../db/queries/miscGetQueries");
 router.get('/:id', async(req, res) => {
   const userID = req.session.userID; // Set user id to id set in the cookie
   if(!userID){
-    return res.redirect("/login");
+    return res.redirect("/users/login");
   }
   // Get Files from the database for user, quiz, questions and answers
   const user = getUserById(userID);

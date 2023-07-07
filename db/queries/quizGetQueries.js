@@ -54,7 +54,7 @@ const getFavQuizzesByUserId = (userID) => {
 const getQuizAvgRatingById = (quizID) => {
   return db
   .query(`SELECT ROUND(AVG(results.rating), 2) AS rating FROM quizs
-  LEFT OUTER JOIN results ON results.quiz_id = quizs.id
+  JOIN results ON results.quiz_id = quizs.id
   WHERE quizs.id = $1;
   `, [quizID])
   .then(data => {

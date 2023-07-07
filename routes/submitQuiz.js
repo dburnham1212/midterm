@@ -22,7 +22,7 @@ const { removeFromFavourites } = require("../db/queries/miscDeleteQueries");
 router.get('/:id', async(req, res) => {
   const userID = req.session.userID; // Set user id to id set in the cookie
   if(!userID){
-    return res.redirect("/login");
+    return res.redirect("/users/login");
   }
   // Get objects from the db
   const user = await getUserById(userID); // Get the user from the db
@@ -38,7 +38,7 @@ router.get('/:id', async(req, res) => {
 router.post('/:id', async(req, res) => {
   const userID = req.session.userID; // Set user id to id set in the cookie
   if(!userID){
-    return res.redirect("/login");
+    return res.redirect("/users/login");
   }
   // let currentQuiz;
   let answerCount = 0;
@@ -97,7 +97,7 @@ router.post('/:id', async(req, res) => {
 router.post('/submitReview/:id', async(req, res) => {
   const userID = req.session.userID; // Set user id to id set in the cookie
   if(!userID){
-    return res.redirect("/login");
+    return res.redirect("/users/login");
   }
   // let currentQuiz;
   // cycle through quizzes and find the one that was taken
@@ -116,7 +116,7 @@ router.post('/submitReview/:id', async(req, res) => {
       }
     }
   }
-  updateResult(result);
+  await updateResult(result);
 
   // redirect to myquizzes page
   res.redirect(`/myQuizzes`);
@@ -142,7 +142,7 @@ router.post('/submitReview/:id', async(req, res) => {
       }
     }
   }
-  updateResult(result);
+  await updateResult(result);
 
   // redirect to myquizzes page
   res.redirect(`/myQuizzes`);

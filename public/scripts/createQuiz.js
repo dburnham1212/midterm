@@ -56,7 +56,7 @@ $(() => {
 
     $('.delete-question-button').on('click', function (event) {
       event.preventDefault();
-      $(this).closest(".question-card").remove();
+      $(this).closest(".question-main").remove();
     })
   }
 

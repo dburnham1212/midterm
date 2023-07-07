@@ -5,6 +5,7 @@ textarea {
   height: 50px;
   width: 400px;
 }
+//
 
 .create-quiz-header{
   display: flex;
@@ -31,9 +32,9 @@ textarea {
   flex-direction: column;
   align-items: center;
   border-top: 2px solid black;
-  background-color: rgba(255, 255, 255, 0.7);
+  background-color: rgba(255, 255, 255, 0.8);
   background-image: url(../images/natural-paper.png);
-  width: 1000px;
+  width: 70vw;
   margin: auto;
 }
 
@@ -68,7 +69,7 @@ textarea {
   align-items: center;
   margin:auto;
   padding: 0 1em;
-  width: 40em;
+  width: 50vw;
   height: 1em;
 }
 
@@ -78,10 +79,10 @@ textarea {
   margin-left: 1em;
 }
 
+
 .delete-question-button{
   margin: 1em;
 }
-
 
 .btnTwo {
   position : relative;
@@ -107,4 +108,3 @@ textarea {
 .button:active { /*Clicked and held*/
   box-shadow: 0px 5px 6px rgba(0,0,0,0.3);
 }
-

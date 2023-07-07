@@ -13,9 +13,9 @@ $myButtonBottom: $myRed;
 
 section.create-quiz {
   // border-style: solid;
-  border-color: #0b0b0b;
+  // border-color: #0b0b0b;
   // width:  70vw;
-  padding: 0;
+  // padding: 0;
   // margin-left: auto;
   // box-shadow: 7px 5px 5px #3D4C53;
 }
@@ -25,7 +25,7 @@ section.favourite-quizzes {
 }
 
 #new-question-form > header > div > div > div {
-  margin: 0;
+  // margin: 0;
 }
 
 #new-question-form > header > div > div > div > textarea {
@@ -35,13 +35,16 @@ section.favourite-quizzes {
 header div h1 {
   // display: flex;
   // justify-content: center;
-  margin: 0;
+  // margin: 0;
   color: #fff;
-  width: 70vw;
+  width: 64vw;
   background-color: $myBlueDark;
   text-align: center;
-  // padding: 0.3em 0 0.3em 0;
+  margin: auto;
   background-image: url('../images/natural-paper.png');
+  // display: flex;
+  // justify-content: center;
+  // padding: 0.3em 0 0.3em 0;
   // border-bottom: 2px, $myRed;
 }
 
@@ -64,7 +67,7 @@ header.create-quiz-header {
 }
 
 article {
-  margin: 1em;
+  // margin: 1em;
 }
 
 .question-container {
@@ -73,7 +76,7 @@ article {
 }
 
 .question-container textarea {
-  margin-left: 0.5em;
+  // margin-left: 0.5em;
 }
 .answer-container {
   // margin-right: 24%;
@@ -102,8 +105,7 @@ section.new-question-container {
 #new-question-form > header > div > div > div {
   display: flex;
   justify-content: center;
-  // flex-direction: row-reverse;
-  margin: 1em;
+  margin-top: 1em;
 }
 
 .input-public p {
@@ -118,14 +120,6 @@ section.new-question-container {
   margin: 1em;
 
 }
-
-// .create-quiz-header{
-//   display: flex;
-//   justify-content: center;
-//   flex-direction: column;
-//   align-items: center;
-//   // margin: 1em;
-// }
 
 .create-quiz-footer {
   display: flex;
@@ -153,6 +147,12 @@ article.question-card {
   width: 50vw ;
 }
 
+.answer-input-field{
+  padding: 0 1em;
+  width: 25em;
+  height: 1em;
+}
+
 .answer-container{
   display: flex;
   flex-direction: column;
@@ -165,18 +165,8 @@ article.question-card {
   justify-content: flex-end;
   padding-right: 2em;
 }
-// .answer-input-field{
-//   width: 40em;
-//   height: 1.5em;
-// }
 
-// .answer-checkbox{
-//   width: 1em;
-//   height: 1em;
-//   margin-left: 1em;
-// }
-
-// .delete-question-button{
-//   margin: 1em;
-// }
-
+.answer{
+  display: flex;
+  align-items: center;
+}

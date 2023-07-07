@@ -55,9 +55,19 @@ textarea {
   display: flex;
   align-items: center;
   justify-content: center;
+  margin:auto;
+}
+
+.answer-num {
+  display: flex;
+  align-items: center;
+  margin: auto;
 }
 
 .answer-text-field{
+  display: flex;
+  align-items: center;
+  margin:auto;
   padding: 0 1em;
   width: 50vw;
 }

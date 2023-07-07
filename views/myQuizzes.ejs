@@ -42,7 +42,7 @@
       <p class="list-item-text"><a href="/takeQuiz/<%= quiz.id %>">Take Quiz</a></p>
       <!-- Check if there is a quiz rating or not, if so display the rating, if not display n/a-->
       <% if(quiz.rating) { %>
-        <p class="list-item-text"><%= quiz.rating %></p>
+        <p class="list-item-text"><%= quiz.rating %> <i class="fa-solid fa-star" style="color: #fcc045;"></i></p>
       <% } else { %>
         <p class="list-item-text">n/a</p>
       <% }  %>
@@ -73,7 +73,7 @@
       <p class="list-item-text"><a  href ="/takeQuiz/<%= quiz.id %>">Take Quiz</a></p>
       <!-- Check if there is a quiz rating or not, if so display the rating, if not display n/a-->
       <% if(quiz.rating) { %>
-        <p class="list-item-text"><%= quiz.rating %></p>
+        <p class="list-item-text"><%= quiz.rating %> <i class="fa-solid fa-star" style="color: #fcc045;"></i></p>
       <% } else { %>
         <p class="list-item-text">n/a</p>
       <% }  %>

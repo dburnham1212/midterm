@@ -29,7 +29,7 @@ router.get('/', async(req, res) => {
     }
 
     let result = await getResultByUserAndQuiz(userID, quiz.id);//Get the result for the quiz and user
-    if (result) { // If the result exists set the score string based off of user score
+    if (result && result.highest_score > 0) { // If the result exists set the score string based off of user score
       quiz.scoreString = `${result.highest_score} / ${result.out_of}`;
     } else { // Otherwise set the string to n/a
       quiz.scoreString = "n/a";

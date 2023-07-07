@@ -29,19 +29,23 @@
         <h1 class="text-centered">Create Quiz</h1>
         <form id="new-question-form" action="/createQuiz" method="POST">
           <header class="create-quiz-header">
-            <h1>Quiz Name</h1>
-            <input class="quiz-name-input" name="quiz-title" required>
+            <div>
+            <span><h1>Quiz Name</h1></span>
+            <div>
+            <div class="input">
+            <textarea class="quiz-name-input" name="quiz-title" required></textarea>
             <div class="form-inline-field">
-              <p>Public</p>
-              <input name="public" class="form-checkbox" type="checkbox" />
+              <p>public
+              <input name="public" class="form-checkbox" type="checkbox"/></p>
+            </div>
             </div>
           </header>
           <section class="new-question-container">
 
           </section>
           <footer class="create-quiz-footer">
-            <button class="add-button submit-button">Add question</button>
-            <button class="submit-button">submit quiz</button>
+            <button class="add-button submit-button">Add Question</button>
+            <button class="submit-button">Submit Quiz</button>
           </footer>
         </form>
       </section>

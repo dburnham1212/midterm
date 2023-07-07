@@ -6,6 +6,6 @@ $(() => {
     // console.log(location)
     event.preventDefault();
     navigator.clipboard.writeText(`${location}`);
-    alert("click ok to copy the link");
+    alert("Click ok to copy the link");
   })
 });

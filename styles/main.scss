@@ -29,7 +29,7 @@ main{
   // Add padding to seperate nav from rest of page, should change if size of nav changes
   // background-color:#012d3d;
   padding-top: 110px;
-  padding-bottom: 100px;
+  // padding-bottom: 100px;
 }
 
 .list-item{
@@ -52,8 +52,8 @@ main{
   color: #fff;
   box-sizing: $myGreen;
   padding: 0.25em;
-  margin: 0.25;
-  margin-top: 0;
+  // margin: 0.55;
+  margin-top: 0em;
 }
 
 p.centered-text{
@@ -85,7 +85,8 @@ section.favourite-quizzes {
   background-image: url('../images/natural-paper.png');
   background-color:rgba(255,255,255,0.77);
   width:  70vw;
-  padding: 0.5em;
+  margin-top: 0.5em;
+  // padding-top: em;
   margin-left: 24%;
   box-shadow: 17px 15px 5px RGBA(61,76,82,0.6);
   // margin-bottom: 2em;

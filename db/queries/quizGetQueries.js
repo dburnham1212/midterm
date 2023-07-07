@@ -36,7 +36,7 @@ const getMyQuizzesByID = (userID) => {
 // Get favourite quizzes from the db
 const getFavQuizzesByUserId = (userID) => {
   return db
-  .query(`SELECT quizs.id, users.username, quizs.title, quizs.rating FROM quizs
+  .query(`SELECT quizs.id, users.email, quizs.title, quizs.rating FROM quizs
   JOIN favourites ON favourites.quiz_id = quizs.id
   JOIN users ON quizs.user_id = users.id
   WHERE favourites.user_id = $1

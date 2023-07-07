@@ -116,7 +116,7 @@ router.post('/submitReview/:id', async(req, res) => {
       }
     }
   }
-  updateResult(result);
+  await updateResult(result);
 
   // redirect to myquizzes page
   res.redirect(`/myQuizzes`);

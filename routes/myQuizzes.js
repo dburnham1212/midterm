@@ -9,6 +9,8 @@ const { getMyQuizzesByID, getFavQuizzesByUserId, getQuizAvgRatingById } = requir
 const { getFavourite, getResultByUserAndQuiz } = require("../db/queries/miscGetQueries");
 // Misc update queries
 const { updateFavourite, updateQuizRating  } = require("../db/queries/miscUpdateQueries");
+// Misc update queries
+const { removeFromQuizzes } = require("../db/queries/miscDeleteQueries");
 
 
 // get route for MyQuizzes page
@@ -50,6 +52,12 @@ router.get('/', async(req, res) => {
   // pass the values to the webpage and display it
   const templateVars = {user: user, quizzes: myQuizzes, favourites: favQuizzes};
   res.render('myQuizzes', templateVars);
+});
+
+router.post('/delete/:id', async(req, res) => {
+  await removeFromQuizzes(req.params.id);
+
+  res.redirect("/myQuizzes");
 });
 
 

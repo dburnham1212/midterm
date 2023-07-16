@@ -4,7 +4,7 @@ const router  = express.Router();
 // User get queries
 const { getUserById } = require("../db/queries/userGetQueries");
 // Quiz get queries
-const { getQuizzesByPublic, getQuizAvgRatingById  } = require("../db/queries/quizGetQueries");
+const { getQuizzesByPublic, getQuizAvgRatingById, getFavQuizzesByUserId } = require("../db/queries/quizGetQueries");
 // Misc update queries
 const { updateQuizRating  } = require("../db/queries/miscUpdateQueries");
 
@@ -16,7 +16,7 @@ router.get('/', async ( req, res) => {
   }
   // Getting files from the db
   const user = await getUserById(userID)// Get the user from the db
-  const quizzes = await getQuizzesByPublic(); // Get pulblic quizzes from the db
+  const quizzes = await getQuizzesByPublic(); // Get public quizzes from the db
 
   // Cycle through the quizzes
   for(const quiz of quizzes){
@@ -25,6 +25,7 @@ router.get('/', async ( req, res) => {
     if(quiz.rating){ // Set the quiz rating to be exual to the average
       await updateQuizRating(quiz.id, quiz.rating);
     }
+
   }
 
   // Pass the variables to the page and display them

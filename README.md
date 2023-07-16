@@ -1,6 +1,6 @@
 Quizereedoo 
 
-Quizereedoo is a full stack web based quiz application using Node, Express, Postgres, jQuery amd Ajax. 
+Quizereedoo is a full stack web based quiz application using Node, Express, Postgres, jQuery and Ajax. 
 
 =========
 ## Getting Started

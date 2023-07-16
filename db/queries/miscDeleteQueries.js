@@ -13,4 +13,17 @@ const removeFromFavourites = function (userID, quizID) {
   })
 };
 
-module.exports = { removeFromFavourites }
+const removeFromQuizzes = function (quizID) {
+  return db
+  .query(`DELETE FROM quizs
+  WHERE id = $1`,
+   [quizID]).then(data => {
+    console.log(data.rows[0]);
+    return data.rows[0];
+  })
+  .catch((err) => {
+    console.log(err.message);
+  })
+};
+
+module.exports = { removeFromFavourites, removeFromQuizzes }

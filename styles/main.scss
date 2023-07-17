@@ -80,7 +80,7 @@ section.create-quiz {
   background-image: url(variables.$paperBackground);
   padding-top: 1em;
   margin: auto;
-  color: #fff;
+  color: variables.$myWhite;
 }
 
 section.favourite-quizzes {
@@ -103,6 +103,10 @@ button, html [type="button"], [type="reset"], [type="submit"] {
 }
 
 i.fa-solid.fa-copy:hover {
+  color: variables.$myRed;
+}
+
+i.fa-solid.fa-x:hover {
   color: variables.$myRed;
 }
 

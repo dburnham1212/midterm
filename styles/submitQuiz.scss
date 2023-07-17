@@ -17,15 +17,6 @@
   align-items: center;
 }
 
-.fav-icon{
-  color: #30c5ff;
-}
-
-.fav-icon:hover:before {
-  font-family: FontAwesome;
-  content: "\f005";
-}
-
 .favourite-container {
   display: flex;
   justify-content: center;
@@ -41,7 +32,7 @@
 
 .share-button {
   border-radius: 50%;
-  background-color: #21b2bb;
+  background-color: variables.$myBlue;
   margin-top: 30px;
   width: 40px;
   height: 40px;

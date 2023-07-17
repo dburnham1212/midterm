@@ -1,40 +1,22 @@
-$myBlue: #18a3dd;
-$myYellow:#fcc045;
-$myRed: #da5252;
-$myGreen: #21b2bb;
-$myBrown: #100d0b;
-$myGrey: #666;
-$myBlueDark: #012d3d;
-
-$myBackground: #fff;
-$myFontSize: 22px;
-
+@use 'variables';
 
 body {
-  // display: flex;
-  // flex-direction: column;
-  // justify-content: space-between;
-  // align-items: center;
-  background-image: url('../images/lighthouseflip.png');
+  background-image: url(variables.$mainBackground);
   background-size: 180%;
   background-position:  97% 13%;
-  // background-size:cover;
   background-attachment: fixed;
-  font-size: $myFontSize;
+  font-size: variables.$myFontSize;
   font-family: 'Belanosima', sans-serif;
-  // min-height: 100vh;
 }
 
 main{
   // Add padding to seperate nav from rest of page, should change if size of nav changes
-  // background-color:#012d3d;
   padding-top: 140px;
-  // padding-bottom: 100px;
 }
 
 .list-item{
   display: flex;
-  border-bottom: 1.5px solid $myGrey;
+  border-bottom: 1.5px solid variables.$myGrey;
   width: 90%;
   margin: auto;
 }
@@ -45,14 +27,13 @@ main{
 }
 
 .list-item-main {
-  background-color: $myBlueDark;
-  background-image: url('../images/natural-paper.png');
+  background-color: variables.$myBlueDark;
+  background-image: url(variables.$paperBackground);
   width: 100%;
   text-align: center;
-  color: #fff;
-  box-sizing: $myGreen;
+  color: variables.$myWhite;
+  box-sizing: variables.$myGreen;
   padding: 0.25em;
-  // margin: 0.55;
   margin-top: 0em;
 }
 
@@ -62,26 +43,20 @@ p.centered-text{
 }
 
 h1.text-centered {
-  color: #fff;
+  color: variables.$myWhite;
   width: 70vw;
-  background-color: $myBlue;
+  background-color: variables.$myBlue;
   text-align: center;
   padding: 0.3em 0 0.3em 0;
-  background-image: url('../images/natural-paper.png');
-  border-bottom: 2px, $myRed;
+  background-image: url(variables.$paperBackground);
+  border-bottom: 2px, variables.$myRed;
 
 }
-
-// #title {
-//   margin: 0.25;
-//   box-shadow: 10px, $myBlueDark;
-// }
-
 
 section.public-quizzes,
 section.my-quizzes,
 section.favourite-quizzes {
-  background-image: url('../images/natural-paper.png');
+  background-image: url(variables.$paperBackground);
   background-color:rgba(255,255,255,0.77);
   width:  70vw;
   margin: auto;
@@ -90,7 +65,7 @@ section.favourite-quizzes {
 }
 
 section.create-quiz {
-  background-image: url('../images/natural-paper.png');
+  background-image: url(variables.$paperBackground);
   background-color:rgba(255,255,255,0.77);
   width:  70vw;
   margin: auto;
@@ -99,54 +74,36 @@ section.create-quiz {
 }
 
 #take-quiz {
-  background-color: $myBlue;
+  background-color: variables.$myBlue;
   width: 70vw;
   height: 90px;
-  background-image: url('../images/natural-paper.png');
+  background-image: url(variables.$paperBackground);
   padding-top: 1em;
   margin: auto;
   color: #fff;
 }
-
-// header.create-quiz-header {
-
-// }
-
-// header.create-quiz-header {
-//   margin-left: 24%;
-// }
-
-// section.create-quiz {
-//   // border-style: solid;
-//   background-image: url('../images/natural-paper.png');
-//   background-color:rgba(255,255,255,0.77);
-//   width:  70vw;
-//   padding: 0;
-//   margin: auto;
-//   box-shadow: 17px 15px 5px RGBA(61,76,82,0.8);
-// }
 
 section.favourite-quizzes {
   margin-top: 1em;
 }
 
 p.list-item-text a {
-  color: $myBlueDark;
+  color: variables.$myBlueDark;
 }
 
 p.list-item-text a:hover {
- color: $myRed;
+ color: variables.$myRed;
 }
 
 
 button, html [type="button"], [type="reset"], [type="submit"] {
   background-color: rgba(0,0,0,0);
   border-style: none;
-  color: $myBlueDark;
+  color: variables.$myBlueDark;
 }
 
 i.fa-solid.fa-copy:hover {
-  color: $myRed;
+  color: variables.$myRed;
 }
 
 .clipboard-button .list-item-text {

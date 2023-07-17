@@ -1,106 +1,17 @@
-$myBlue: #18a3dd;
-$myYellow:#fcc045;
-$myRed: #da5252;
-$myGreen: #21b2bb;
-$myBrown: #100d0b;
-$myGrey: #666;
-$myBlueDark: #012d3d;
-$myFontSize: 22px;
-$myBackground: grey;
-$myButton: $myGreen;
-$myButtonHover: $myBlue;
-$myButtonBottom: $myRed;
-
-section.create-quiz {
-  // border-style: solid;
-  // border-color: #0b0b0b;
-  // width:  70vw;
-  // padding: 0;
-  // margin-left: auto;
-  // box-shadow: 7px 5px 5px #3D4C53;
-}
-
-section.favourite-quizzes {
-  // margin-top: 1em;
-}
-
-#new-question-form > header > div > div > div {
-  // margin: 0;
-}
+@use 'variables';
 
 #new-question-form > header > div > div > div > textarea {
   margin-top: 0.5em;
 }
 
 header div h1 {
-  // display: flex;
-  // justify-content: center;
-  // margin: 0;
-  color: #fff;
+  color: variables.$myWhite;
   width: 64vw;
-  background-color: $myBlueDark;
+  background-color: variables.$myBlueDark;
   text-align: center;
   margin: auto;
   background-image: url('../images/natural-paper.png');
-  // display: flex;
-  // justify-content: center;
-  // padding: 0.3em 0 0.3em 0;
-  // border-bottom: 2px, $myRed;
 }
-
-header.create-quiz-header {
-  // border: solid red;
-  // display: flex;
-  // justify-content: center;
-  // flex-direction: column;
-  // align-items: center;
-
-}
-.question-main {
-
-}
-
-.question-main {
-  // display:flex;
-  // flex-direction: rows;
-  // justify-content: center;
-}
-
-article {
-  // margin: 1em;
-}
-
-.question-container {
-  // display: flex;
-  // flex-direction: row;
-}
-
-.question-container textarea {
-  // margin-left: 0.5em;
-}
-.answer-container {
-  // margin-right: 24%;
-  // display: flex;
-  // flex-direction: column;
-  // align-items: center;
-}
-
-
-.question-card {
-  // display: flex;
-  // flex-direction: column;
-  // justify-content: space-between;
-  // align-items: center;
-
-}
-
-section.new-question-container {
-  // margin: 0;
-}
-
-// #new-question-form > header > div > div > div > div > p {
-// }
-
 
 #new-question-form > header > div > div > div {
   display: flex;

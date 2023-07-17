@@ -1,16 +1,4 @@
-$myBlue: #18a3dd;
-$myYellow:#fcc045;
-$myRed: #da5252;
-$myGreen: #21b2bb;
-$myBrown: #100d0b;
-$myGrey: #666;
-$myBlueDark: #012d3d;
-$myFontSize: 22px;
-$myBackground: grey;
-$myButton: $myBlue;
-$myButtonHover: $myGreen;
-$myButtonBottom: $myYellow;
-
+@use 'variables';
 
 .form-centered {
   display: flex;
@@ -23,7 +11,6 @@ $myButtonBottom: $myYellow;
   align-items: center;
   gap: 0.25em
 }
-
 
 .form-checkbox{
   height: 1em;
@@ -41,61 +28,11 @@ $myButtonBottom: $myYellow;
 }
 
 .form-input-field{
-  outline: 2px solid $myBlueDark;
+  outline: 2px solid variables.$myBlueDark;
   width: 20em;
 }
 
 .form-button{
   margin-top: 2em;
-}
-
-.submit-button {
-  background-color: $myButton;
-  border: none;
-  color: #fff;
-  width: 140px;
-  height: 45px;
-  font-family: 'Roboto', sans-serif;
-  font-size: 12px;
-  text-transform: uppercase;
-  letter-spacing: 2.5px;
-  font-weight: 550;
-  border-radius: 45px;
-  box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.1);
-  transition: all 0.3s ease 0s;
-  cursor: pointer;
-  outline: none;
-}
-
-.submit-button:hover {
-  background-color: $myBlue;
-  box-shadow: 0px 15px 20px $myButtonBottom;
-  color: #fff;
-  transform: translateY(-7px);
-}
-
-.danger-button{
-  background-color: $myButton;
-  width: 140px;
-  height: 45px;
-  font-family: 'Roboto', sans-serif;
-  font-size: 11px;
-  text-transform: uppercase;
-  letter-spacing: 2.5px;
-  font-weight: 500;
-  color: #fff;
-  border: none;
-  border-radius: 45px;
-  box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.1);
-  transition: all 0.3s ease 0s;
-  cursor: pointer;
-  outline: none;
-}
-
-.danger-button:hover{
-  background-color: $myButtonHover;
-  box-shadow: 0px 15px 20px $myButtonBottom;
-  color: #fff;
-  transform: translateY(-7px);
 }
 

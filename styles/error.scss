@@ -3,11 +3,11 @@
 .error-title{
   width: 100%;
   height: 1.5em;
+  text-align: center;
   background-color: variables.$myBlue;
   background-image: url(variables.$paperBackground);
-  text-align: center;
-  padding: .25em 0;
   color: variables.$myWhite;
+  padding: .25em 0;
   margin: 0;
 }
 
@@ -16,6 +16,6 @@
   height: 2em;
   text-align: center;
   background-color: variables.$myTransWhite;
-  padding: .5em 0;
   background-image: url(variables.$paperBackground);
+  padding: .5em 0;
 }

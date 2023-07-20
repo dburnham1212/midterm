@@ -82,28 +82,3 @@ textarea {
 .delete-question-button{
   margin: 1em;
 }
-
-.btnTwo {
-  position : relative;
-  width : 200px;
-  height : 100px;
-  margin-top: -100px;
-  padding-top: 2px;
-  background : #30c5ff;
-  left : -250px;
-  transition : .3s;
-}
-.btnText {
-  color : variables.$myWhite;
-  transition : .3s;
-}
-
-.btnTwo:hover{ /*When hovering over .button change .btnTwo*/
-  left: -130px;
-}
-.button:hover .btnText{ /*When hovering over .button change .btnText*/
-  margin-left : 65px;
-}
-.button:active { /*Clicked and held*/
-  box-shadow: 0px 5px 6px rgba(0,0,0,0.3);
-}

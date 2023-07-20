@@ -9,10 +9,12 @@
   <title>Quiz Review</title>
 
   <!-- Bootstrap CSS -->
-  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css"
-    integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+  integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
 
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw=="
+    crossorigin="anonymous" referrerpolicy="no-referrer" />
 
   <!-- Include global styles-->
   <%- include('partials/_global_styling') %>
@@ -25,46 +27,48 @@
 
 <body>
   <%- include('partials/_header') %>
-  <!-- middle -->
-  <main>
-    <div class="submit-container">
-      <div class ="submit-card">
-        <h1 class="text-centered"> QUIZ COMPLETE! </h1>
-        <p> Quiz name: <%= quiz.title %></p>
-        <p> Best Score: <%=result.highest_score %> / <%=result.out_of %></p>
-        <p> Last Score: <%=result.last_score %> / <%=result.out_of %></p>
-        <form action="/submitQuiz/submitReview/<%= quiz.id %>" method="POST">
-        <div class="favourite-container">
-          <p><i class="fa-solid fa-heart" style="color: #da5252;"></i>Favourited
-          <input type="checkbox" id="fav-button" name="favourite" checked="<%= result.favourited %>"></input></p>
+    <!-- middle -->
+    <main>
+      <div class="d-flex flex-column justify-content-center align-items-center">
+        <div class="submit-card d-flex flex-column align-items-center">
+          <h1 class="text-centered"> QUIZ COMPLETE! </h1>
+          <p> Quiz name: <%= quiz.title %>
+          </p>
+          <p> Best Score: <%=result.highest_score %> / <%=result.out_of %>
+          </p>
+          <p> Last Score: <%=result.last_score %> / <%=result.out_of %>
+          </p>
+          <form class="d-flex flex-column align-items-center" action="/submitQuiz/submitReview/<%= quiz.id %>" method="POST">
+            <div class="d-flex justify-content-center align-items-baseline gap-4">
+              <span class="d-flex justify-content-center align-items-baseline gap-2">
+                <i class="fa-solid fa-heart" style="color: #da5252;"></i>
+                <p>Favourited</p>
+                <input type="checkbox" id="fav-button" name="favourite" checked="<%= result.favourited %>"></input>
+              </span>
 
-          <p><i class="fa-solid fa-star" style="color: #fcc045;"></i>Rating
-
-          <select name="rating">
-            <option value="1">1</option>
-            <option value="2">2</option>
-            <option value="3">3</option>
-            <option value="4">4</option>
-            <option value="5">5</option>
-          </select></p>
+              <span class="d-flex justify-content-center align-items-baseline gap-2">
+                <i class="fa-solid fa-star" style="color: #fcc045;"></i>
+                <p>Rating</p>
+                <select name="rating">
+                  <option value="1">1</option>
+                  <option value="2">2</option>
+                  <option value="3">3</option>
+                  <option value="4">4</option>
+                  <option value="5">5</option>
+                </select>
+              </span>
+            </div>
+            <button class="submit-button form-button"> done </button>
+          </form>
+          <button class="share-button" data-url="/shareResults/<%- quiz.id %>/<%- user.id %>">
+            <i class="fas fa-share-alt">
+            </i>
+          </button>
 
         </div>
-
-
-        <button class="submit-button form-button submit-button-myQuiz"> done </button>
-      </form>
-      <div class="icon-container">
-        <!-- icons -->
-        <button class="share-button" data-url="/shareResults/<%- quiz.id %>/<%- user.id %>">
-          <i class="fas fa-share-alt">
-            </i>
-        </button>
       </div>
-
-      </div>
-    </div>
-  </main>
-<%- include('partials/_bootstrap') %>
+    </main>
+    <%- include('partials/_bootstrap') %>
 </body>
 
 </html>

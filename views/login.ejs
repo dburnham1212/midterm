@@ -5,10 +5,6 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Login</title>
 
-  <!-- Bootstrap CSS -->
-  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css"
-    integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
-
   <!-- Include global styles-->
   <%- include('partials/_global_styling') %>
   <link rel="stylesheet" href="/styles/userForms.css" />
@@ -23,11 +19,11 @@
       <h1> Login </h1>
       <div class="form-field">
         <label for = "login" class = "form-text-field">Email:</label>
-        <input class ="form-input-field" for = "login" name="email" type="email" placeholder="example@gmail.com">
+        <input class ="form-input-field" for = "login" name="email" type="email" placeholder="example@gmail.com" required>
       </div>
       <div class="form-field">
         <label for = "login" class = "form-text-field">Password:</label>
-        <input class="form-input-field" for = "login" name="password" type="password"  placeholder="password">
+        <input class="form-input-field" for = "login" name="password" type="password"  placeholder="password" required>
       </div>
       <button type="submit" class="form-button submit-button">Login</button>
     </form>

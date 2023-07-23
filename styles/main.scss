@@ -14,8 +14,13 @@ main{
   padding-top: 140px;
 }
 
+a{
+  text-decoration: none;
+}
+
 .list-item{
   display: flex;
+  align-items: center;
   border-bottom: 1.5px solid variables.$myGrey;
   width: 90%;
   margin: auto;

@@ -4,18 +4,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-
   <title>Quiz Review</title>
-
-  <!-- Bootstrap CSS -->
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
-  integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
-
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
-    integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw=="
-    crossorigin="anonymous" referrerpolicy="no-referrer" />
-
   <!-- Include global styles-->
   <%- include('partials/_global_styling') %>
     <!--Local Styling -->
@@ -40,15 +29,14 @@
           </p>
           <form class="d-flex flex-column align-items-center" action="/submitQuiz/submitReview/<%= quiz.id %>" method="POST">
             <div class="d-flex justify-content-center align-items-baseline gap-4">
-              <span class="d-flex justify-content-center align-items-baseline gap-2">
+              <span class="fancy-checkbox d-flex justify-content-center align-items-center gap-2">
                 <i class="fa-solid fa-heart" style="color: #da5252;"></i>
-                <p>Favourited</p>
-                <input type="checkbox" id="fav-button" name="favourite" checked="<%= result.favourited %>"></input>
+                <label>Favourited</label>
+                <input type="checkbox" id="fav-button" name="favourite" checked="<%= result.favourited %>" />
               </span>
-
-              <span class="d-flex justify-content-center align-items-baseline gap-2">
+              <span class="d-flex justify-content-center align-items-center gap-2">
                 <i class="fa-solid fa-star" style="color: #fcc045;"></i>
-                <p>Rating</p>
+                <label>Rating</label>
                 <select name="rating">
                   <option value="1">1</option>
                   <option value="2">2</option>
@@ -58,7 +46,7 @@
                 </select>
               </span>
             </div>
-            <button class="submit-button form-button"> done </button>
+            <button class="submit-button form-button mt-4"> done </button>
           </form>
           <button class="share-button" data-url="/shareResults/<%- quiz.id %>/<%- user.id %>">
             <i class="fas fa-share-alt">

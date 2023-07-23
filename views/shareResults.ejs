@@ -7,10 +7,6 @@
 
   <title>Quiz Review Shared</title>
 
-  <!-- Bootstrap CSS -->
-  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css"
-    integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
-
   <!-- Include global styles-->
   <%- include('partials/_global_styling') %>
   <!--Local Styling -->
@@ -21,8 +17,8 @@
 <body>
   <!-- middle -->
   <main>
-    <div class="submit-container">
-      <div class ="submit-card">
+    <div class="d-flex flex-column justify-content-center align-items-center">
+      <div class ="submit-card d-flex flex-column align-items-center">
         <h1 class="text-centered"> QUIZ RESULTS ! </h1>
         <p> Quiz name: <%= quiz.title %></p>
         <p> COMPLETED BY: <%= user.username %></p>

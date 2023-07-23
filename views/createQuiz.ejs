@@ -4,13 +4,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
   <title>Create Quiz</title>
-
-  <!-- Bootstrap CSS -->
-  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css"
-    integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
-
   <!-- Include global styles-->
   <%- include('partials/_global_styling') %>
 
@@ -35,7 +29,7 @@
                 <div class="input">
                   <textarea class="quiz-name-input" name="quiz-title" required></textarea>
                   <div class="public-inline-field">
-                    <p>public</p>
+                    <label>public</label>
                     <input name="public" class="public-checkbox" type="checkbox" />
                   </div>
                 </div>
